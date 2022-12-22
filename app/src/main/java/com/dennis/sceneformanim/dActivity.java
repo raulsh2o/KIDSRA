@@ -42,7 +42,7 @@ public class dActivity extends AppCompatActivity {
     private ModelAnimator animator;
     private int nextAnimation;
     private FloatingActionButton btn_anim, btn_anim1;
-    private ModelRenderable animationCrab, horse01;
+    private ModelRenderable animationCrab, horse01, tiger, horse;
     private TransformableNode transformableNode;
 
     private int clickNo = 0;
@@ -58,37 +58,28 @@ public class dActivity extends AppCompatActivity {
         setContentView(R.layout.dactivity);
 
 
-        setupModel();// initialice the object
+        setupModel();// INICIALIZA LOS OBJETOS
 
         arFragment = (ArFragment)getSupportFragmentManager()
                 .findFragmentById(R.id.sceneform_fragment);
-        //Tap on plane event
+
         arFragment.setOnTapArPlaneListener(new BaseArFragment.OnTapArPlaneListener() {
             @Override
             public void onTapPlane(HitResult hitResult, Plane plane, MotionEvent motionEvent) {
                 if(animationCrab ==null)
                     return;
-                //Create the Anchor
+                //CREA LA ANCLA
                 clickNo++;
                 Anchor anchor = hitResult.createAnchor();
 
                 if(clickNo==1) {
-                    if (anchorNode == null) //If crab is not place on plane
+                    if (anchorNode == null) //SI LA ANIMACIÓN NO SE COLOCA EN EL PLANO
                     {
                         anchorNode = new AnchorNode(anchor);
                         anchorNode.setParent(arFragment.getArSceneView().getScene());
-
                         transformableNode = new TransformableNode(arFragment.getTransformationSystem());
-                        //Scale model
-                        /*transformableNode.getScaleController().setMinScale(0.09f);
-                        transformableNode.getScaleController().setMaxScale(0.1f);*/
-                        //transformableNode.getScaleController().setMinScale(0.59f);
-                        //transformableNode.getScaleController().setMaxScale(0.6f);
-                        //transformableNode.getRotationController().setRotationRateDegrees(17.5f);// add
-                        // transformableNode.setLocalPosition(new Vector3(0f, 0f, -1f));
                         transformableNode.setParent(anchorNode);
                         transformableNode.setRenderable(animationCrab);
-                        //************ 20221221 *************
                         currentSelectedAnchorNode=anchorNode;
                     }
                 }
@@ -107,7 +98,7 @@ public class dActivity extends AppCompatActivity {
             }
         });
 
-        //Add frame update to control state of button
+        //AGREGA LA ACTUALIZACIÓN DEL MARCO PARA CONTROLAR EL ESTADO DEL BOTON
         arFragment.getArSceneView().getScene()
                 .addOnUpdateListener(new Scene.OnUpdateListener(){
                     public void onUpdate(FrameTime frameTime){
@@ -130,6 +121,7 @@ public class dActivity extends AppCompatActivity {
                     }
                 });
 
+        //DECLARA PRIMER BOTON
         btn_anim = (FloatingActionButton)findViewById(R.id.btn_anim);
         btn_anim.setEnabled(false);
         btn_anim.setOnClickListener(new View.OnClickListener() {
@@ -144,6 +136,8 @@ public class dActivity extends AppCompatActivity {
                 }
             }
         });
+
+        //DECLARA SEGUNDO BOTON
         btn_anim1 = (FloatingActionButton)findViewById(R.id.button12);
         btn_anim1.setEnabled(false);
         btn_anim1.setOnClickListener(new View.OnClickListener() {
@@ -158,10 +152,9 @@ public class dActivity extends AppCompatActivity {
                 }
             }
         });
-        // setupModel();
+
     }
-    // .setSource(this, R.raw.cangrejo)
-    // .africanelephantattacka
+
     private void setupModel() {
         ModelRenderable.builder()
                 .setSource(this, R.raw.horseflx18)
@@ -188,35 +181,17 @@ public class dActivity extends AppCompatActivity {
             arFragment.getArSceneView().getScene().removeChild(markAnchorNodeToMove);
             anchorNodeList.remove(markAnchorNodeToMove);
         } else {
-            //Log.d(TAG,"moveRenderable - markAnchorNode was null, the little £$%^...");
             return null;
         }
         Frame frame = arFragment.getArSceneView().getArFrame();
         Session session = arFragment.getArSceneView().getSession();
         Anchor markAnchor = session.createAnchor(newPoseToMoveTo.extractTranslation());
         AnchorNode newMarkAnchorNode = new AnchorNode(markAnchor);
-
         TransformableNode andy = new TransformableNode(arFragment.getTransformationSystem());
         andy.setParent(newMarkAnchorNode);
-
-        //switch(Status1)
-        //{
-        //case 1:
-        //stopSound(choose);
-        //choose = "gato";
         andy.setRenderable(horse01);
-        //audiogCat.start();
-        //information = "Mamífero de contextura pequeña, de abundante pelaje y muy suave, son muy cariñoso con los humanos.";
-        //break;
-        // }
         newMarkAnchorNode.setParent(arFragment.getArSceneView().getScene());
         anchorNodeList.add(newMarkAnchorNode);
-        //*****************************************************
-        // Get the animation data called "andy_dance" from the `andyRenderable`.
-        //******************************************************
-        //Delete the line if it is drawn
-        //removeLine(nodeForLine);
-
         return newMarkAnchorNode;
 
 

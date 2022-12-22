@@ -1,10 +1,11 @@
 <?xml version="1.0" encoding="utf-8"?>
-<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<RelativeLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".MainActivity">
+    tools:context=".dActivity">
 
     <fragment
         android:id="@+id/sceneform_fragment"
@@ -12,31 +13,122 @@
         android:layout_width="match_parent"
         android:layout_height="match_parent"/>
 
+    <LinearLayout
+        android:id="@+id/preview_control_panel1"
+        android:layout_width="match_parent"
+        android:layout_height="100dp"
+        android:background="#82212121"
+        android:orientation="horizontal"
+        android:padding="10dp"
+        android:layout_alignParentBottom="true"
+        tools:layout_editor_absoluteX="0dp"
+        tools:layout_editor_absoluteY="626dp">
+
+        <HorizontalScrollView
+            android:layout_width="match_parent"
+            android:layout_height="150dp"
+            android:fillViewport="true">
+            <!--  android:layout_alignParentBottom="true"
+                        tools:layout_editor_absoluteX="0dp"
+                tools:layout_editor_absoluteY="626dp"-->
+            <LinearLayout
+                android:id="@+id/preview_control_panel"
+                android:layout_width="match_parent"
+                android:layout_height="80dp"
+                android:background="#82212121"
+                android:orientation="horizontal"
+                android:padding="10dp"
+                android:layout_alignParentBottom="true">
+
+                <Button
+                    android:id="@+id/id_gato1"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_margin="5dp"
+                    android:text="Gato"
+                    tools:layout_editor_absoluteX="130dp"
+                    tools:layout_editor_absoluteY="667dp" />
+                <Button
+                    android:id="@+id/id_perro1"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_margin="5dp"
+                    android:text="Perro"
+                    tools:layout_editor_absoluteX="18dp"
+                    tools:layout_editor_absoluteY="667dp" />
+                <Button
+                    android:id="@+id/id_conejo1"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_margin="5dp"
+                    android:text="Conejo"
+                    tools:layout_editor_absoluteX="231dp"
+                    tools:layout_editor_absoluteY="667dp" />
+                <Button
+                    android:id="@+id/id_gallina1"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_margin="5dp"
+                    android:layout_weight="1"
+                    android:text="Gallina" />
+
+                <Button
+                    android:id="@+id/id_pato1"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_margin="5dp"
+                    android:layout_weight="1"
+                    android:text="Pato" />
+                <Button
+                    android:id="@+id/id_pajaro1"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_margin="5dp"
+                    android:layout_weight="1"
+                    android:text="Pájaro" />
+                <Button
+                    android:id="@+id/id_vaca1"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_margin="5dp"
+                    android:layout_weight="1"
+                    android:text="Vaca" />
+                <Button
+                    android:id="@+id/id_caballo1"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_margin="5dp"
+                    android:layout_weight="1"
+                    android:text="Caballo" />
+
+            </LinearLayout>
+        </HorizontalScrollView>
+    </LinearLayout>
 
     <com.google.android.material.floatingactionbutton.FloatingActionButton
         android:id="@+id/btn_anim"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
         android:clickable="true"
         android:focusable="true"
         app:elevation="1dp"
-        app:layout_constraintHorizontal_chainStyle="spread"
-        app:layout_constraintHorizontal_bias="0.45"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintStart_toEndOf="parent"
         app:layout_constraintBottom_toBottomOf="parent"
-        app:srcCompat="@drawable/ic_launcher_background"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content" />
+        app:layout_constraintHorizontal_bias="0.45"
+        app:layout_constraintHorizontal_chainStyle="spread"
+        app:layout_constraintStart_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:srcCompat="@drawable/ic_launcher_background" />
 
     <com.google.android.material.floatingactionbutton.FloatingActionButton
         android:id="@+id/button12"
-        android:clickable="true"
-        android:focusable="true"
-        app:elevation="1dp"
-        app:srcCompat="@drawable/ic_launcher_background"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
+        android:clickable="true"
+        android:focusable="true"
         android:text="start"
+        app:elevation="1dp"
+        app:srcCompat="@drawable/circulo"
         tools:layout_editor_absoluteX="231dp"
         tools:layout_editor_absoluteY="1096dp" />
 
-</androidx.constraintlayout.widget.ConstraintLayout>
+</RelativeLayout>
