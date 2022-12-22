@@ -13,6 +13,8 @@ import android.graphics.Color;
 import android.os.Bundle;
 import android.view.MotionEvent;
 import android.view.View;
+import android.widget.Button;
+import android.widget.ImageButton;
 import android.widget.Toast;
 
 import com.google.android.material.floatingactionbutton.FloatingActionButton;
@@ -32,6 +34,8 @@ import com.google.ar.sceneform.ux.ArFragment;
 import com.google.ar.sceneform.ux.BaseArFragment;
 import com.google.ar.sceneform.ux.TransformableNode;
 
+import android.media.MediaPlayer;
+
 import java.util.ArrayList;
 import java.util.List;
 
@@ -42,10 +46,16 @@ public class dActivity extends AppCompatActivity {
     private ModelAnimator animator;
     private int nextAnimation;
     private FloatingActionButton btn_anim, btn_anim1;
-    private ModelRenderable animationCrab, horse01, tiger, horse;
+    private ModelRenderable animationCrab, horse01, punto, tiger, horse;
     private TransformableNode transformableNode;
 
     private int clickNo = 0;
+    private int Status1 = 0;
+    private String information = "";
+    private String choose = "";
+
+    //DECLARAR AUDIOS
+    MediaPlayer audioDog, audioCat, audioRabbit, audioChicken, audioHorse,audioBird, audioDuck, audioCow, audioi, audiogDog, audiogCat, audiogRabbit, audiogChicken, audiogHorse,audiogBird, audiogDuck, audiogCow;
 
     //*************************************************************
     private List<AnchorNode> anchorNodeList = new ArrayList<>();
@@ -57,8 +67,45 @@ public class dActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.dactivity);
 
+        // DECLARA BOTONES DE CAMBIO DE OBJETO
+        Button catshow = (Button) findViewById(R.id.id_gato1);
+        Button birdshow = (Button) findViewById(R.id.id_pajaro1);
+        Button chickenshow= (Button) findViewById(R.id.id_gallina1);
+        Button cowshow=(Button) findViewById(R.id.id_vaca1);
+        Button dogshow=(Button) findViewById(R.id.id_perro1);
+        Button duckshow=(Button) findViewById(R.id.id_pato1);
+        Button horseshow=(Button) findViewById(R.id.id_caballo1);
+        Button rabbitshow=(Button) findViewById(R.id.id_conejo1);
+        ImageButton informacion = (ImageButton) findViewById(R.id.id_informacion);
+
+        //INICIALIZA AUDIOS
+        audioDog = MediaPlayer.create(this,R.raw.daperro);
+        audioCat = MediaPlayer.create(this,R.raw.dagato);
+        audioRabbit = MediaPlayer.create(this,R.raw.daconejo);
+        audioChicken = MediaPlayer.create(this,R.raw.dagallina);
+        audioHorse = MediaPlayer.create(this,R.raw.dacaballo);
+        audioBird = MediaPlayer.create(this,R.raw.dapajaro);
+        audioDuck = MediaPlayer.create(this,R.raw.dapato);
+        audioCow = MediaPlayer.create(this,R.raw.davaca);
+        audioi = MediaPlayer.create(this,R.raw.naintro);
+        //INICIALIZA RUGIDOS
+        audiogDog = MediaPlayer.create(this,R.raw.sgperro);
+        audiogCat = MediaPlayer.create(this,R.raw.sggato);
+        audiogRabbit = MediaPlayer.create(this,R.raw.sgconejo);
+        audiogChicken = MediaPlayer.create(this,R.raw.sggallina);
+        audiogHorse = MediaPlayer.create(this,R.raw.sgcaballo);
+        audiogBird = MediaPlayer.create(this,R.raw.sgpajaro);
+        audiogDuck = MediaPlayer.create(this,R.raw.sgpato);
+        audiogCow = MediaPlayer.create(this,R.raw.sgvaca);
+        //REPRODUCIR AUDIO DE INTRO
+        audioi.start();
+        choose = "audioi";
 
         setupModel();// INICIALIZA LOS OBJETOS
+
+        ///////////////////////////////////////////////////////////////////////////
+        ///////////////////////  CREATE ANCHOR, TAP AND FRAME    ////////////////////////////////
+        //////////////////////////////////////////////////////////////////////////
 
         arFragment = (ArFragment)getSupportFragmentManager()
                 .findFragmentById(R.id.sceneform_fragment);
@@ -121,6 +168,10 @@ public class dActivity extends AppCompatActivity {
                     }
                 });
 
+        ///////////////////////////////////////////////////////////////////////////
+        ///////////////////////      BOTONES       ////////////////////////////////
+        //////////////////////////////////////////////////////////////////////////
+
         //DECLARA PRIMER BOTON
         btn_anim = (FloatingActionButton)findViewById(R.id.btn_anim);
         btn_anim.setEnabled(false);
@@ -129,30 +180,141 @@ public class dActivity extends AppCompatActivity {
             public void onClick(View view) {
                 if(animator == null || !animator.isRunning())
                 {
-                    AnimationData data = animationCrab.getAnimationData(nextAnimation);
-                    nextAnimation = (nextAnimation+1)%animationCrab.getAnimationDataCount();
-                    animator = new ModelAnimator(data,animationCrab);
-                    animator.start();
-                }
-            }
-        });
-
-        //DECLARA SEGUNDO BOTON
-        btn_anim1 = (FloatingActionButton)findViewById(R.id.button12);
-        btn_anim1.setEnabled(false);
-        btn_anim1.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-                if(animator == null || !animator.isRunning())
-                {
+                    if (choose == "gato"){
+                        AnimationData data = animationCrab.getAnimationData(nextAnimation);
+                        nextAnimation = (nextAnimation+1)%animationCrab.getAnimationDataCount();
+                        animator = new ModelAnimator(data,animationCrab);
+                        animator.start();
+                    }else if (choose == "perro"){
                     AnimationData data = horse01.getAnimationData(nextAnimation);
                     nextAnimation = (nextAnimation+1)%horse01.getAnimationDataCount();
                     animator = new ModelAnimator(data,horse01);
                     animator.start();
+                    }
+
                 }
             }
         });
 
+        // BOTON DE INFORMACIÓN
+        informacion.setOnClickListener(new View.OnClickListener(){
+            @Override
+            public void onClick(View view){
+                if (choose == "gato"){
+                    stopSound(choose);
+                    audioCat.start();
+                    choose = "ggato";
+                }else if (choose == "pajaro"){
+                    stopSound(choose);
+                    audioBird.start();
+                    choose = "gpajaro";
+                }else if (choose == "gallina"){
+                    stopSound(choose);
+                    audioChicken.start();
+                    choose = "ggallina";
+                }else if (choose == "vaca"){
+                    stopSound(choose);
+                    audioCow.start();
+                    choose = "gvaca";
+                }else if (choose == "perro"){
+                    stopSound(choose);
+                    audioDog.start();
+                    choose = "gperro";
+                }else if (choose == "pato"){
+                    stopSound(choose);
+                    audioDuck.start();
+                    choose = "gpato";
+                }else if (choose == "caballo"){
+                    stopSound(choose);
+                    audioHorse.start();
+                    choose = "gcaballo";
+                }else if (choose == "conejo"){
+                    stopSound(choose);
+                    audioRabbit.start();
+                    choose = "gconejo";
+                }
+                AlertDialog.Builder builder = new AlertDialog.Builder(dActivity.this);
+                builder.setIcon(R.drawable.info).
+                        setMessage(information).
+                        setTitle("Información:");
+                AlertDialog alertDialog=builder.create();
+                alertDialog.show();
+            }
+        });
+
+        //ESCUCHA BOTON SI GATO ES PULSADO
+        catshow.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                Status1 = 1;
+                if (currentSelectedAnchorNode != null) {
+
+                    Session session = arFragment.getArSceneView().getSession();
+                    Anchor currentAnchor = currentSelectedAnchorNode.getAnchor();
+                    Pose oldPose = currentAnchor.getPose();
+                    Pose newPose = oldPose.compose(Pose.makeTranslation(0,0.05f,0));
+                    currentSelectedAnchorNode = moveRenderable(currentSelectedAnchorNode, newPose);
+
+                }
+            }
+        });
+        //ESCUCHA BOTON SI PERRO ES PULSADO
+        dogshow.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                Status1 = 2;
+                if (currentSelectedAnchorNode != null) {
+
+                    Session session = arFragment.getArSceneView().getSession();
+                    Anchor currentAnchor = currentSelectedAnchorNode.getAnchor();
+                    Pose oldPose = currentAnchor.getPose();
+                    Pose newPose = oldPose.compose(Pose.makeTranslation(0,0.05f,0));
+                    currentSelectedAnchorNode = moveRenderable(currentSelectedAnchorNode, newPose);
+
+                }
+            }
+        });
+
+    }
+
+    /////////////////////////////////////////////////////////////////////////////
+    ////////////////////////////       FUNCIONES        /////////////////////////
+    /////////////////////////////////////////////////////////////////////////////
+
+    private void stopSound(String sound){
+        if (sound == "gato"){
+            audiogCat.pause();
+        }else if (sound == "pajaro"){
+            audiogBird.pause();
+        }else if (sound == "gallina"){
+            audiogChicken.pause();
+        }else if (sound == "vaca"){
+            audiogCow.pause();
+        }else if (sound == "perro"){
+            audiogDog.pause();
+        }else if (sound == "pato"){
+            audiogDuck.pause();
+        }else if (sound == "caballo"){
+            audiogHorse.pause();
+        }else if (sound == "conejo"){
+            audiogRabbit.pause();
+        }else if (sound == "ggato"){
+            audioCat.pause();
+        }else if (sound == "gpajaro"){
+            audioBird.pause();
+        }else if (sound == "ggallina"){
+            audioChicken.pause();
+        }else if (sound == "gvaca"){
+            audioCow.pause();
+        }else if (sound == "gperro"){
+            audioDog.pause();
+        }else if (sound == "gpato"){
+            audioDuck.pause();
+        }else if (sound == "gcaballo"){
+            audioHorse.pause();
+        }else if (sound == "gconejo"){
+            audioRabbit.pause();
+        }
     }
 
     private void setupModel() {
@@ -173,6 +335,8 @@ public class dActivity extends AppCompatActivity {
                     Toast.makeText(this, ""+throwable.getMessage(), Toast.LENGTH_SHORT).show();
                     return null;
                 });
+
+
     }
 
     private AnchorNode moveRenderable(AnchorNode markAnchorNodeToMove, Pose newPoseToMoveTo) {
@@ -189,7 +353,72 @@ public class dActivity extends AppCompatActivity {
         AnchorNode newMarkAnchorNode = new AnchorNode(markAnchor);
         TransformableNode andy = new TransformableNode(arFragment.getTransformationSystem());
         andy.setParent(newMarkAnchorNode);
-        andy.setRenderable(horse01);
+
+        // AQUI RENDERIZA LOS OBJETOS PARA MOSTRAR EN LA PANTALLA
+
+        switch(Status1)
+        {
+            case 1:
+                stopSound(choose);
+                choose = "gato";
+                andy.setRenderable(animationCrab);
+                audiogCat.start();
+                information = "Mamífero de contextura pequeña, de abundante pelaje y muy suave, son muy cariñoso con los humanos.";
+                break;
+            case 6:
+                stopSound(choose);
+                choose = "pajaro";
+                //andy.setRenderable(horse01);
+                audiogBird.start();
+                information = "Las aves son seres extraordinarios y fascinantes: muchas de ellas poseen un plumaje colorido, producen sonidos extraordinarios o pueden volar.";
+                break;
+            case 4:
+                stopSound(choose);
+                choose = "gallina";
+                //andy.setRenderable(chicken1);
+                audiogChicken.start();
+                information = "La gallina es denominado un ave conocida por su cacareo, pone huevos, y está cubierta de plumas de diversos colores";
+                break;
+            case 7:
+                stopSound(choose);
+                choose = "vaca";
+                //andy.setRenderable(cow1);
+                audiogCow.start();
+                information = "La vaca es un animal mamífero, se alimenta del pasto, hierbas, tallos, hojas, semillas y raíces.";
+                break;
+            case 2:
+                stopSound(choose);
+                choose = "perro";
+                andy.setRenderable(horse01);
+                audiogDog.start();
+                information = "El perro doméstico es un mamífero carnívoro, Su tamaño, forma y pelaje varían en función de la raza de perro, ven bien, usan mayormente su oído y su olfato, sentidos que tienen muy desarrollados y que son muy prácticos para el humano.";
+                break;
+            case 5:
+                stopSound(choose);
+                choose = "pato";
+                //andy.setRenderable(duck1);
+                audiogDuck.start();
+                information = "El pato es un ave, vive cerca del agua y nadan.";
+                break;
+            case 8:
+                stopSound(choose);
+                choose = "caballo";
+                //andy.setRenderable(horse1);
+                audiogHorse.start();
+                information = "Un Caballo es un animal cuadrúpedo perteneciente a la especie de los mamíferos, se caracteriza por su gran tamaño, son animales que galopan y relinchan";
+                break;
+            case 3:
+                stopSound(choose);
+                choose = "conejo";
+                //andy.setRenderable(rabbit1);
+                audiogRabbit.start();
+                information = "Son animales que tienen muy buena relación con los humanos, ya que son muy amistosos y agradables.";
+                break;
+            default:
+                break;
+        }
+
+
         newMarkAnchorNode.setParent(arFragment.getArSceneView().getScene());
         anchorNodeList.add(newMarkAnchorNode);
         return newMarkAnchorNode;
