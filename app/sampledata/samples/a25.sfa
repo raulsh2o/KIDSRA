@@ -1,0 +1,76 @@
+{
+  animations: [
+    {
+      clips: [
+        {
+          name: 'Text|Shader NodetreeAction',
+        },
+        {
+          name: 'Text|TextAction',
+        },
+      ],
+      path: 'sampledata/samples/a25.fbx',
+    },
+  ],
+  materials: [
+    {
+      name: 'Material.002',
+      parameters: [
+        {
+          baseColor: [
+            1,
+            1,
+            1,
+            1,
+          ],
+        },
+        {
+          baseColorMap: 'fbx export',
+        },
+        {
+          normalMap: null,
+        },
+        {
+          interpolatedColor: null,
+        },
+        {
+          metallic: 0,
+        },
+        {
+          metallicMap: null,
+        },
+        {
+          roughness: 1,
+        },
+        {
+          roughnessMap: null,
+        },
+        {
+          opacity: null,
+        },
+      ],
+      source: 'build/sceneform_sdk/default_materials/fbx_material.sfm',
+    },
+  ],
+  model: {
+    attributes: [
+      'Position',
+      'TexCoord',
+      'Orientation',
+      'BoneIndices',
+      'BoneWeights',
+    ],
+    collision: {},
+    file: 'sampledata/samples/a25.fbx',
+    name: 'a25',
+    recenter: 'root',
+  },
+  samplers: [
+    {
+      file: 'sampledata/samples\\a25.fbm\\fbx export.jpg',
+      name: 'fbx export',
+      pipeline_name: 'a25.fbm\\fbx export.jpg',
+    },
+  ],
+  version: '0.54:2',
+}

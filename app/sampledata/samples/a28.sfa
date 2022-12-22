@@ -1,0 +1,76 @@
+{
+  animations: [
+    {
+      clips: [
+        {
+          name: 'Text|Shader NodetreeAction',
+        },
+        {
+          name: 'Text|TextAction',
+        },
+      ],
+      path: 'sampledata/samples/a28.fbx',
+    },
+  ],
+  materials: [
+    {
+      name: 'Material.002',
+      parameters: [
+        {
+          baseColor: [
+            1,
+            1,
+            1,
+            1,
+          ],
+        },
+        {
+          baseColorMap: 'plank_flooring_02_arm_1k',
+        },
+        {
+          normalMap: null,
+        },
+        {
+          interpolatedColor: null,
+        },
+        {
+          metallic: 0,
+        },
+        {
+          metallicMap: null,
+        },
+        {
+          roughness: 1,
+        },
+        {
+          roughnessMap: null,
+        },
+        {
+          opacity: null,
+        },
+      ],
+      source: 'build/sceneform_sdk/default_materials/fbx_material.sfm',
+    },
+  ],
+  model: {
+    attributes: [
+      'Position',
+      'TexCoord',
+      'Orientation',
+      'BoneIndices',
+      'BoneWeights',
+    ],
+    collision: {},
+    file: 'sampledata/samples/a28.fbx',
+    name: 'a28',
+    recenter: 'root',
+  },
+  samplers: [
+    {
+      file: 'sampledata/samples\\a28.fbm\\plank_flooring_02_arm_1k.jpg',
+      name: 'plank_flooring_02_arm_1k',
+      pipeline_name: 'a28.fbm\\plank_flooring_02_arm_1k.jpg',
+    },
+  ],
+  version: '0.54:2',
+}

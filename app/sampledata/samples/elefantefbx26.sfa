@@ -1,0 +1,73 @@
+{
+  animations: [
+    {
+      clips: [
+        {
+          name: 'ArmatureAction',
+        },
+      ],
+      path: 'sampledata/samples/elefantefbx26.fbx',
+    },
+  ],
+  materials: [
+    {
+      name: 'Material.003',
+      parameters: [
+        {
+          baseColor: [
+            1,
+            1,
+            1,
+            1,
+          ],
+        },
+        {
+          baseColorMap: 'ELPHSKIN',
+        },
+        {
+          normalMap: null,
+        },
+        {
+          interpolatedColor: null,
+        },
+        {
+          metallic: 0,
+        },
+        {
+          metallicMap: null,
+        },
+        {
+          roughness: 1,
+        },
+        {
+          roughnessMap: null,
+        },
+        {
+          opacity: null,
+        },
+      ],
+      source: 'build/sceneform_sdk/default_materials/fbx_material.sfm',
+    },
+  ],
+  model: {
+    attributes: [
+      'Position',
+      'TexCoord',
+      'Orientation',
+      'BoneIndices',
+      'BoneWeights',
+    ],
+    collision: {},
+    file: 'sampledata/samples/elefantefbx26.fbx',
+    name: 'elefantefbx26',
+    recenter: 'root',
+  },
+  samplers: [
+    {
+      file: 'sampledata/samples\\elefantefbx26.fbm\\ELPHSKIN.jpg',
+      name: 'ELPHSKIN',
+      pipeline_name: 'elefantefbx26.fbm\\ELPHSKIN.jpg',
+    },
+  ],
+  version: '0.54:2',
+}

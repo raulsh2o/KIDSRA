@@ -1,0 +1,182 @@
+{
+  materials: [
+    {
+      name: 'Material_0',
+      parameters: [
+        {
+          baseColorFactor: [
+            1,
+            1,
+            1,
+            1,
+          ],
+        },
+        {
+          baseColor: 'e77fee34f538d2a68f28da14623a67837e71cbba',
+        },
+        {
+          diffuseColorFactor: null,
+        },
+        {
+          diffuseColor: null,
+        },
+        {
+          normal: '95dc78b190cb35f1bc1823bc513f9fc4f5211d54',
+        },
+        {
+          metallicFactor: 1,
+        },
+        {
+          roughnessFactor: 1,
+        },
+        {
+          specularFactor: null,
+        },
+        {
+          glossinessFactor: null,
+        },
+        {
+          specularGlossiness: null,
+        },
+        {
+          specularGlossinessCalculation: null,
+        },
+        {
+          metallicRoughness: '21e7125de051701c7c2b77f42a9fae24fb55a419',
+        },
+        {
+          occlusion: null,
+        },
+        {
+          emissiveFactor: [
+            0,
+            0,
+            0,
+            1,
+          ],
+        },
+        {
+          emissive: null,
+        },
+        {
+          opacity: null,
+        },
+      ],
+      source: 'build/sceneform_sdk/default_materials/gltf_material.sfm',
+    },
+    {
+      name: 'Material_1',
+      parameters: [
+        {
+          baseColorFactor: [
+            1,
+            1,
+            1,
+            1,
+          ],
+        },
+        {
+          baseColor: 'd2127a6592ade5114b6dd57d9a186dc63d07be45',
+        },
+        {
+          diffuseColorFactor: null,
+        },
+        {
+          diffuseColor: null,
+        },
+        {
+          normal: 'fdadc8ee4b77df77e04d6ba010b498c160c3a2ec',
+        },
+        {
+          metallicFactor: 1,
+        },
+        {
+          roughnessFactor: 1,
+        },
+        {
+          specularFactor: null,
+        },
+        {
+          glossinessFactor: null,
+        },
+        {
+          specularGlossiness: null,
+        },
+        {
+          specularGlossinessCalculation: null,
+        },
+        {
+          metallicRoughness: 'c0bb51a663d8a2fd0ed148e999731b36e29b5944',
+        },
+        {
+          occlusion: null,
+        },
+        {
+          emissiveFactor: [
+            0,
+            0,
+            0,
+            1,
+          ],
+        },
+        {
+          emissive: null,
+        },
+        {
+          opacity: null,
+        },
+      ],
+      source: 'build/sceneform_sdk/default_materials/gltf_material.sfm',
+    },
+  ],
+  model: {
+    attributes: [
+      'Position',
+      'TexCoord',
+      'Orientation',
+    ],
+    collision: {},
+    file: 'sampledata/samples/cangrejo.glb',
+    name: 'cangrejo',
+    recenter: 'root',
+  },
+  samplers: [
+    {
+      name: 'e77fee34f538d2a68f28da14623a67837e71cbba',
+      pipeline_name: '*0',
+    },
+    {
+      name: '21e7125de051701c7c2b77f42a9fae24fb55a419',
+      params: {
+        usage_type: 'Data',
+      },
+      pipeline_name: '*1',
+    },
+    {
+      name: '95dc78b190cb35f1bc1823bc513f9fc4f5211d54',
+      params: {
+        usage_type: 'Normal',
+      },
+      pipeline_name: '*2',
+    },
+    {
+      name: 'd2127a6592ade5114b6dd57d9a186dc63d07be45',
+      pipeline_name: '*3',
+    },
+    {
+      name: 'c0bb51a663d8a2fd0ed148e999731b36e29b5944',
+      params: {
+        usage_type: 'Data',
+      },
+      pipeline_name: '*4',
+    },
+    {
+      name: 'fdadc8ee4b77df77e04d6ba010b498c160c3a2ec',
+      params: {
+        usage_type: 'Normal',
+      },
+      pipeline_name: '*5',
+    },
+  ],
+  version: '0.54:2',
+}

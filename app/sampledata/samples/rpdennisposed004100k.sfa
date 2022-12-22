@@ -1,0 +1,68 @@
+{
+  animations: [
+    {
+      path: 'sampledata/samples/rpdennisposed004100k.fbx',
+    },
+  ],
+  materials: [
+    {
+      name: 'rp_dennis_posed_004_100k_mat',
+      parameters: [
+        {
+          baseColor: [
+            1,
+            1,
+            1,
+            1,
+          ],
+        },
+        {
+          baseColorMap: 'rp_dennis_posed_004_dif_8k',
+        },
+        {
+          normalMap: null,
+        },
+        {
+          interpolatedColor: null,
+        },
+        {
+          metallic: 0,
+        },
+        {
+          metallicMap: null,
+        },
+        {
+          roughness: 1,
+        },
+        {
+          roughnessMap: null,
+        },
+        {
+          opacity: null,
+        },
+      ],
+      source: 'build/sceneform_sdk/default_materials/fbx_material.sfm',
+    },
+  ],
+  model: {
+    attributes: [
+      'Position',
+      'TexCoord',
+      'Orientation',
+      'BoneIndices',
+      'BoneWeights',
+    ],
+    collision: {},
+    file: 'sampledata/samples/rpdennisposed004100k.fbx',
+    name: 'rpdennisposed004100k',
+    recenter: 'root',
+  },
+  samplers: [
+    {
+      file: 'sampledata/samples\\rpdennisposed004100k.fbm\\rp_dennis_posed_004_dif_8k.jpg',
+      name: 'rp_dennis_posed_004_dif_8k',
+      pipeline_name: 'rpdennisposed004100k.fbm\\rp_dennis_posed_004_dif_8k.jpg',
+    },
+  ],
+  version: '0.54:2',
+}

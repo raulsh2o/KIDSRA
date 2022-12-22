@@ -1,0 +1,76 @@
+{
+  animations: [
+    {
+      clips: [
+        {
+          name: 'Armature|ArmatureAction',
+        },
+        {
+          name: 'Armature|ArmatureAction.001',
+        },
+      ],
+      path: 'sampledata/samples/girafafbx17.fbx',
+    },
+  ],
+  materials: [
+    {
+      name: 'mat_0-Giraffe_D.jpg',
+      parameters: [
+        {
+          baseColor: [
+            1,
+            1,
+            1,
+            1,
+          ],
+        },
+        {
+          baseColorMap: 'Giraffe_D',
+        },
+        {
+          normalMap: null,
+        },
+        {
+          interpolatedColor: null,
+        },
+        {
+          metallic: 0,
+        },
+        {
+          metallicMap: null,
+        },
+        {
+          roughness: 1,
+        },
+        {
+          roughnessMap: null,
+        },
+        {
+          opacity: null,
+        },
+      ],
+      source: 'build/sceneform_sdk/default_materials/fbx_material.sfm',
+    },
+  ],
+  model: {
+    attributes: [
+      'Position',
+      'TexCoord',
+      'Orientation',
+      'BoneIndices',
+      'BoneWeights',
+    ],
+    collision: {},
+    file: 'sampledata/samples/girafafbx17.fbx',
+    name: 'girafafbx17',
+    recenter: 'root',
+  },
+  samplers: [
+    {
+      file: 'sampledata/samples\\girafafbx17.fbm\\Giraffe_D.jpg',
+      name: 'Giraffe_D',
+      pipeline_name: 'girafafbx17.fbm\\Giraffe_D.jpg',
+    },
+  ],
+  version: '0.54:2',
+}

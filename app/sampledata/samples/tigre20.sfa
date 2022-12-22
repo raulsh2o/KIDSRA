@@ -1,0 +1,73 @@
+{
+  animations: [
+    {
+      clips: [
+        {
+          name: 'Armature|ArmatureAction',
+        },
+      ],
+      path: 'sampledata/samples/tigre20.fbx',
+    },
+  ],
+  materials: [
+    {
+      name: 'Material.003',
+      parameters: [
+        {
+          baseColor: [
+            1,
+            1,
+            1,
+            1,
+          ],
+        },
+        {
+          baseColorMap: 'body1',
+        },
+        {
+          normalMap: null,
+        },
+        {
+          interpolatedColor: null,
+        },
+        {
+          metallic: 0,
+        },
+        {
+          metallicMap: null,
+        },
+        {
+          roughness: 1,
+        },
+        {
+          roughnessMap: null,
+        },
+        {
+          opacity: null,
+        },
+      ],
+      source: 'build/sceneform_sdk/default_materials/fbx_material.sfm',
+    },
+  ],
+  model: {
+    attributes: [
+      'Position',
+      'TexCoord',
+      'Orientation',
+      'BoneIndices',
+      'BoneWeights',
+    ],
+    collision: {},
+    file: 'sampledata/samples/tigre20.fbx',
+    name: 'tigre20',
+    recenter: 'root',
+  },
+  samplers: [
+    {
+      file: 'sampledata/samples\\tigre20.fbm\\body1.jpg',
+      name: 'body1',
+      pipeline_name: 'tigre20.fbm\\body1.jpg',
+    },
+  ],
+  version: '0.54:2',
+}

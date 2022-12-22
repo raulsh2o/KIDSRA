@@ -1,0 +1,67 @@
+{
+  animations: [
+    {
+      clips: [
+        {
+          name: 'Take 001',
+          runtime_name: 'tigeridlea',
+        },
+      ],
+      path: 'sampledata/samples/tigeridlea.fbx',
+    },
+  ],
+  materials: [
+    {
+      name: 'default2',
+      parameters: [
+        {
+          baseColor: [
+            1,
+            1,
+            1,
+            1,
+          ],
+        },
+        {
+          baseColorMap: null,
+        },
+        {
+          normalMap: null,
+        },
+        {
+          interpolatedColor: null,
+        },
+        {
+          metallic: 0,
+        },
+        {
+          metallicMap: null,
+        },
+        {
+          roughness: 1,
+        },
+        {
+          roughnessMap: null,
+        },
+        {
+          opacity: null,
+        },
+      ],
+      source: 'build/sceneform_sdk/default_materials/fbx_material.sfm',
+    },
+  ],
+  model: {
+    attributes: [
+      'Position',
+      'TexCoord',
+      'Orientation',
+      'BoneIndices',
+      'BoneWeights',
+    ],
+    collision: {},
+    file: 'sampledata/samples/tigeridlea.fbx',
+    name: 'tigeridlea',
+    recenter: 'root',
+  },
+  version: '0.54:2',
+}
