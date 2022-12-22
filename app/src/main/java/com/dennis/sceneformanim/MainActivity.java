@@ -1,52 +1,12 @@
 package com.dennis.sceneformanim;
 
 import androidx.appcompat.app.AppCompatActivity;
-import androidx.core.content.ContextCompat;
-
-import android.app.AlertDialog;
-import android.content.Context;
 import android.content.Intent;
-import android.content.res.ColorStateList;
-import android.graphics.Color;
 import android.net.Uri;
 import android.os.Bundle;
-import android.view.MotionEvent;
 import android.view.View;
 import android.widget.Button;
-import android.widget.Toast;
 
-import com.google.android.material.floatingactionbutton.FloatingActionButton;
-import com.google.ar.core.Anchor;
-import com.google.ar.core.Frame;
-import com.google.ar.core.HitResult;
-import com.google.ar.core.Plane;
-import com.google.ar.core.Pose;
-import com.google.ar.core.Session;
-import com.google.ar.sceneform.AnchorNode;
-import com.google.ar.sceneform.FrameTime;
-import com.google.ar.sceneform.Scene;
-import com.google.ar.sceneform.animation.ModelAnimator;
-import com.google.ar.sceneform.rendering.AnimationData;
-import com.google.ar.sceneform.rendering.ModelRenderable;
-import com.google.ar.sceneform.ux.ArFragment;
-import com.google.ar.sceneform.ux.BaseArFragment;
-import com.google.ar.sceneform.ux.TransformableNode;
-
-import java.util.ArrayList;
-import java.util.List;
-//*************************************************************************
-/*import com.google.ar.core.Pose;
-import com.google.ar.core.Session;
-import com.google.ar.sceneform.AnchorNode;
-import com.google.ar.sceneform.HitTestResult;
-import com.google.ar.sceneform.Node;
-import com.google.ar.sceneform.rendering.Color;
-import com.google.ar.sceneform.rendering.ModelRenderable;
-import com.google.ar.sceneform.rendering.Renderable;
-import com.google.ar.sceneform.ux.ArFragment;
-import com.google.ar.sceneform.ux.BaseArFragment;
-import com.google.ar.sceneform.ux.TransformableNode;*/
-//*************************************************************************
 
 public class MainActivity extends AppCompatActivity {
     //SE DECLARA BOTONES DE MENU PRINCIPAL
@@ -63,6 +23,7 @@ public class MainActivity extends AppCompatActivity {
         bfrutas = (Button)findViewById(R.id.iFrutas);
         bnumeros=(Button)findViewById(R.id.inumeros);
 
+        // SE DECLARA LOS INTENT
         Intent intentDo = new Intent(this, dActivity.class);
         Intent intentSa = new Intent(this, SalvajesA.class);
         Intent intentVo = new Intent(this, VocalesA.class);
