@@ -1,0 +1,73 @@
+{
+  animations: [
+    {
+      clips: [
+        {
+          name: 'Armature|ArmatureAction',
+        },
+      ],
+      path: 'sampledata/samples/caballo21.fbx',
+    },
+  ],
+  materials: [
+    {
+      name: '13___Default.001',
+      parameters: [
+        {
+          baseColor: [
+            1,
+            1,
+            1,
+            1,
+          ],
+        },
+        {
+          baseColorMap: 'Horse_v01',
+        },
+        {
+          normalMap: null,
+        },
+        {
+          interpolatedColor: null,
+        },
+        {
+          metallic: 0,
+        },
+        {
+          metallicMap: null,
+        },
+        {
+          roughness: 1,
+        },
+        {
+          roughnessMap: null,
+        },
+        {
+          opacity: null,
+        },
+      ],
+      source: 'build/sceneform_sdk/default_materials/fbx_material.sfm',
+    },
+  ],
+  model: {
+    attributes: [
+      'Position',
+      'TexCoord',
+      'Orientation',
+      'BoneIndices',
+      'BoneWeights',
+    ],
+    collision: {},
+    file: 'sampledata/samples/caballo21.fbx',
+    name: 'caballo21',
+    recenter: 'root',
+  },
+  samplers: [
+    {
+      file: 'sampledata/samples\\caballo21.fbm\\Horse_v01.jpg',
+      name: 'Horse_v01',
+      pipeline_name: 'caballo21.fbm\\Horse_v01.jpg',
+    },
+  ],
+  version: '0.54:2',
+}

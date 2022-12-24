@@ -1,0 +1,74 @@
+{
+  animations: [
+    {
+      clips: [
+        {
+          name: 'Armature|ArmatureAction',
+        },
+      ],
+      path: 'sampledata/samples/vaca7.fbx',
+    },
+  ],
+  materials: [
+    {
+      name: 'mat_1-Body.jpg',
+      parameters: [
+        {
+          baseColor: [
+            1,
+            1,
+            1,
+            1,
+          ],
+        },
+        {
+          baseColorMap: 'Body',
+        },
+        {
+          normalMap: null,
+        },
+        {
+          interpolatedColor: null,
+        },
+        {
+          metallic: 0,
+        },
+        {
+          metallicMap: null,
+        },
+        {
+          roughness: 1,
+        },
+        {
+          roughnessMap: null,
+        },
+        {
+          opacity: null,
+        },
+      ],
+      source: 'build/sceneform_sdk/default_materials/fbx_material.sfm',
+    },
+  ],
+  model: {
+    attributes: [
+      'Position',
+      'TexCoord',
+      'Orientation',
+      'BoneIndices',
+      'BoneWeights',
+    ],
+    collision: {},
+    file: 'sampledata/samples/vaca7.fbx',
+    name: 'vaca7',
+    recenter: 'root',
+    scale: 0.928207,
+  },
+  samplers: [
+    {
+      file: 'sampledata/samples\\vaca7.fbm\\Body.jpg',
+      name: 'Body',
+      pipeline_name: 'vaca7.fbm\\Body.jpg',
+    },
+  ],
+  version: '0.54:2',
+}

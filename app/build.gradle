@@ -42,7 +42,7 @@ dependencies {
     implementation 'com.android.support:design:29.0.0'
 }
 
-        sceneform.asset('sampledata/samples/tigre21.fbx',
+        sceneform.asset('sampledata/samples/vaca7.fbx',
                 'default',                    // 'Material Path' specified during import.
-                'sampledata/samples/tigre21.sfa',
-                'src/main/res/raw/tigre21')      // 'location you want to store the generated .sfb file'
+                'sampledata/samples/vaca7.sfa',
+                'src/main/res/raw/vaca7')      // 'location you want to store the generated .sfb file'

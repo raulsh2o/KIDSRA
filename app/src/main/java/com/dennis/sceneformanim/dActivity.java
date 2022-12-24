@@ -45,8 +45,8 @@ public class dActivity extends AppCompatActivity {
     private AnchorNode anchorNode;
     private ModelAnimator animator;
     private int nextAnimation;
-    private FloatingActionButton btn_anim, btn_anim1;
-    private ModelRenderable animationCrab, horse01, punto, tiger, horse;
+    private FloatingActionButton btn_anim;
+    private ModelRenderable animationCrab, horse01, punto, vaca;
     private TransformableNode transformableNode;
 
     private int clickNo = 0;
@@ -126,7 +126,7 @@ public class dActivity extends AppCompatActivity {
                         anchorNode.setParent(arFragment.getArSceneView().getScene());
                         transformableNode = new TransformableNode(arFragment.getTransformationSystem());
                         transformableNode.setParent(anchorNode);
-                        transformableNode.setRenderable(animationCrab);
+                        transformableNode.setRenderable(punto);
                         currentSelectedAnchorNode=anchorNode;
                     }
                 }
@@ -180,12 +180,12 @@ public class dActivity extends AppCompatActivity {
             public void onClick(View view) {
                 if(animator == null || !animator.isRunning())
                 {
-                    if (choose == "gato"){
+                    if (choose == "vaca"){
                         AnimationData data = animationCrab.getAnimationData(nextAnimation);
                         nextAnimation = (nextAnimation+1)%animationCrab.getAnimationDataCount();
-                        animator = new ModelAnimator(data,animationCrab);
+                        animator = new ModelAnimator(data,vaca);
                         animator.start();
-                    }else if (choose == "perro"){
+                    }else if (choose == "caballo"){
                     AnimationData data = horse01.getAnimationData(nextAnimation);
                     nextAnimation = (nextAnimation+1)%horse01.getAnimationDataCount();
                     animator = new ModelAnimator(data,horse01);
@@ -242,11 +242,11 @@ public class dActivity extends AppCompatActivity {
             }
         });
 
-        //ESCUCHA BOTON SI GATO ES PULSADO
-        catshow.setOnClickListener(new View.OnClickListener() {
+        //ESCUCHA BOTON SI CABALLO ES PULSADO
+        horseshow.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                Status1 = 1;
+                Status1 = 8;
                 if (currentSelectedAnchorNode != null) {
 
                     Session session = arFragment.getArSceneView().getSession();
@@ -258,15 +258,15 @@ public class dActivity extends AppCompatActivity {
                 }
             }
         });
-        //ESCUCHA BOTON SI PERRO ES PULSADO
-        dogshow.setOnClickListener(new View.OnClickListener() {
+        //ESCUCHA BOTON SI VACA ES PULSADO
+        cowshow.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                Status1 = 2;
+                Status1 = 7;
                 if (currentSelectedAnchorNode != null) {
 
                     Session session = arFragment.getArSceneView().getSession();
-                    Anchor currentAnchor = currentSelectedAnchorNode.getAnchor();
+             CD CD       Anchor currentAnchor = currentSelectedAnchorNode.getAnchor();
                     Pose oldPose = currentAnchor.getPose();
                     Pose newPose = oldPose.compose(Pose.makeTranslation(0,0.05f,0));
                     currentSelectedAnchorNode = moveRenderable(currentSelectedAnchorNode, newPose);
@@ -317,7 +317,12 @@ public class dActivity extends AppCompatActivity {
         }
     }
 
+    ///////////////////////////////////////////////////////////////////////////
+    ///////////////////////// INICIALIZA ANIMACIONES //////////////////////////
+    ///////////////////////////////////////////////////////////////////////////
+
     private void setupModel() {
+        //CARGA CABALLO
         ModelRenderable.builder()
                 .setSource(this, R.raw.horseflx18)
                 .build()
@@ -327,6 +332,7 @@ public class dActivity extends AppCompatActivity {
                     return null;
                 });
 
+        //CARGA TIGRE
         ModelRenderable.builder()
                 .setSource(this, R.raw.tigre21)
                 .build()
@@ -336,7 +342,25 @@ public class dActivity extends AppCompatActivity {
                     return null;
                 });
 
+        //CARGA PUNTO
+        ModelRenderable.builder()
+                .setSource(this, R.raw.point13)
+                .build()
+                .thenAccept(renderable -> punto = renderable)
+                .exceptionally(throwable -> {
+                    Toast.makeText(this, ""+throwable.getMessage(), Toast.LENGTH_SHORT).show();
+                    return null;
+                });
 
+        //CARGA VACA
+        ModelRenderable.builder()
+                .setSource(this, R.raw.vaca7)
+                .build()
+                .thenAccept(renderable -> vaca = renderable)
+                .exceptionally(throwable -> {
+                    Toast.makeText(this, ""+throwable.getMessage(), Toast.LENGTH_SHORT).show();
+                    return null;
+                });
     }
 
     private AnchorNode moveRenderable(AnchorNode markAnchorNodeToMove, Pose newPoseToMoveTo) {
@@ -361,7 +385,7 @@ public class dActivity extends AppCompatActivity {
             case 1:
                 stopSound(choose);
                 choose = "gato";
-                andy.setRenderable(animationCrab);
+                //andy.setRenderable(animationCrab);
                 audiogCat.start();
                 information = "Mamífero de contextura pequeña, de abundante pelaje y muy suave, son muy cariñoso con los humanos.";
                 break;
@@ -382,14 +406,14 @@ public class dActivity extends AppCompatActivity {
             case 7:
                 stopSound(choose);
                 choose = "vaca";
-                //andy.setRenderable(cow1);
+                andy.setRenderable(vaca);
                 audiogCow.start();
                 information = "La vaca es un animal mamífero, se alimenta del pasto, hierbas, tallos, hojas, semillas y raíces.";
                 break;
             case 2:
                 stopSound(choose);
                 choose = "perro";
-                andy.setRenderable(horse01);
+                //andy.setRenderable(horse01);
                 audiogDog.start();
                 information = "El perro doméstico es un mamífero carnívoro, Su tamaño, forma y pelaje varían en función de la raza de perro, ven bien, usan mayormente su oído y su olfato, sentidos que tienen muy desarrollados y que son muy prácticos para el humano.";
                 break;
@@ -403,7 +427,7 @@ public class dActivity extends AppCompatActivity {
             case 8:
                 stopSound(choose);
                 choose = "caballo";
-                //andy.setRenderable(horse1);
+                andy.setRenderable(horse01);
                 audiogHorse.start();
                 information = "Un Caballo es un animal cuadrúpedo perteneciente a la especie de los mamíferos, se caracteriza por su gran tamaño, son animales que galopan y relinchan";
                 break;
