@@ -266,7 +266,7 @@ public class dActivity extends AppCompatActivity {
                 if (currentSelectedAnchorNode != null) {
 
                     Session session = arFragment.getArSceneView().getSession();
-             CD CD       Anchor currentAnchor = currentSelectedAnchorNode.getAnchor();
+                    Anchor currentAnchor = currentSelectedAnchorNode.getAnchor();
                     Pose oldPose = currentAnchor.getPose();
                     Pose newPose = oldPose.compose(Pose.makeTranslation(0,0.05f,0));
                     currentSelectedAnchorNode = moveRenderable(currentSelectedAnchorNode, newPose);
