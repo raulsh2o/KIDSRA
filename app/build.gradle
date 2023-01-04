@@ -42,7 +42,7 @@ dependencies {
     implementation 'com.android.support:design:29.0.0'
 }
 
-        sceneform.asset('sampledata/samples/cocodrilo5.fbx',
+        sceneform.asset('sampledata/samples/manocero7.fbx',
                 'default',                    // 'Material Path' specified during import.
-                'sampledata/samples/cocodrilo5.sfa',
-                'src/main/res/raw/cocodrilo5')      // 'location you want to store the generated .sfb file'
+                'sampledata/samples/manocero7.sfa',
+                'src/main/res/raw/manocero7')      // 'location you want to store the generated .sfb file'

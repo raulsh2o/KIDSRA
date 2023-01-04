@@ -1,0 +1,73 @@
+{
+  animations: [
+    {
+      clips: [
+        {
+          name: 'Armature|ArmatureAction',
+        },
+      ],
+      path: 'sampledata/samples/mono7.fbx',
+    },
+  ],
+  materials: [
+    {
+      name: '12958_Spider_Monkey',
+      parameters: [
+        {
+          baseColor: [
+            1,
+            1,
+            1,
+            1,
+          ],
+        },
+        {
+          baseColorMap: '12958_Spider_Monkey_diff',
+        },
+        {
+          normalMap: null,
+        },
+        {
+          interpolatedColor: null,
+        },
+        {
+          metallic: 0,
+        },
+        {
+          metallicMap: null,
+        },
+        {
+          roughness: 1,
+        },
+        {
+          roughnessMap: null,
+        },
+        {
+          opacity: null,
+        },
+      ],
+      source: 'build/sceneform_sdk/default_materials/fbx_material.sfm',
+    },
+  ],
+  model: {
+    attributes: [
+      'Position',
+      'TexCoord',
+      'Orientation',
+      'BoneIndices',
+      'BoneWeights',
+    ],
+    collision: {},
+    file: 'sampledata/samples/mono7.fbx',
+    name: 'mono7',
+    recenter: 'root',
+  },
+  samplers: [
+    {
+      file: 'sampledata/samples\\mono7.fbm\\12958_Spider_Monkey_diff.jpg',
+      name: '12958_Spider_Monkey_diff',
+      pipeline_name: 'mono7.fbm\\12958_Spider_Monkey_diff.jpg',
+    },
+  ],
+  version: '0.54:2',
+}

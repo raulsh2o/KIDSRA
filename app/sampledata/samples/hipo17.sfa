@@ -1,0 +1,246 @@
+{
+  animations: [
+    {
+      clips: [
+        {
+          name: 'Armature|ArmatureAction',
+        },
+      ],
+      path: 'sampledata/samples/hipo17.fbx',
+    },
+  ],
+  materials: [
+    {
+      name: 'mat_0-default-grey.jpg',
+      parameters: [
+        {
+          baseColor: [
+            1,
+            1,
+            1,
+            1,
+          ],
+        },
+        {
+          baseColorMap: 'default-grey',
+        },
+        {
+          normalMap: null,
+        },
+        {
+          interpolatedColor: null,
+        },
+        {
+          metallic: 0,
+        },
+        {
+          metallicMap: null,
+        },
+        {
+          roughness: 1,
+        },
+        {
+          roughnessMap: null,
+        },
+        {
+          opacity: null,
+        },
+      ],
+      source: 'build/sceneform_sdk/default_materials/fbx_material.sfm',
+    },
+    {
+      name: 'mat_1-HIPPA2TX.jpg',
+      parameters: [
+        {
+          baseColor: [
+            1,
+            1,
+            1,
+            1,
+          ],
+        },
+        {
+          baseColorMap: 'HIPPA2TX',
+        },
+        {
+          normalMap: null,
+        },
+        {
+          interpolatedColor: null,
+        },
+        {
+          metallic: 0,
+        },
+        {
+          metallicMap: null,
+        },
+        {
+          roughness: 1,
+        },
+        {
+          roughnessMap: null,
+        },
+        {
+          opacity: null,
+        },
+      ],
+      source: 'build/sceneform_sdk/default_materials/fbx_material.sfm',
+    },
+    {
+      name: 'mat_2-HIPPA1TX.jpg',
+      parameters: [
+        {
+          baseColor: [
+            1,
+            1,
+            1,
+            1,
+          ],
+        },
+        {
+          baseColorMap: 'HIPPA1TX',
+        },
+        {
+          normalMap: null,
+        },
+        {
+          interpolatedColor: null,
+        },
+        {
+          metallic: 0,
+        },
+        {
+          metallicMap: null,
+        },
+        {
+          roughness: 1,
+        },
+        {
+          roughnessMap: null,
+        },
+        {
+          opacity: null,
+        },
+      ],
+      source: 'build/sceneform_sdk/default_materials/fbx_material.sfm',
+    },
+    {
+      name: 'mat_3-HIPCPOTX.jpg',
+      parameters: [
+        {
+          baseColor: [
+            1,
+            1,
+            1,
+            1,
+          ],
+        },
+        {
+          baseColorMap: 'HIPCPOTX',
+        },
+        {
+          normalMap: null,
+        },
+        {
+          interpolatedColor: null,
+        },
+        {
+          metallic: 0,
+        },
+        {
+          metallicMap: null,
+        },
+        {
+          roughness: 1,
+        },
+        {
+          roughnessMap: null,
+        },
+        {
+          opacity: null,
+        },
+      ],
+      source: 'build/sceneform_sdk/default_materials/fbx_material.sfm',
+    },
+    {
+      name: 'mat_4-HIPOJOTX.jpg',
+      parameters: [
+        {
+          baseColor: [
+            1,
+            1,
+            1,
+            1,
+          ],
+        },
+        {
+          baseColorMap: 'HIPOJOTX',
+        },
+        {
+          normalMap: null,
+        },
+        {
+          interpolatedColor: null,
+        },
+        {
+          metallic: 0,
+        },
+        {
+          metallicMap: null,
+        },
+        {
+          roughness: 1,
+        },
+        {
+          roughnessMap: null,
+        },
+        {
+          opacity: null,
+        },
+      ],
+      source: 'build/sceneform_sdk/default_materials/fbx_material.sfm',
+    },
+  ],
+  model: {
+    attributes: [
+      'Position',
+      'TexCoord',
+      'Orientation',
+      'BoneIndices',
+      'BoneWeights',
+    ],
+    collision: {},
+    file: 'sampledata/samples/hipo17.fbx',
+    name: 'hipo17',
+    recenter: 'root',
+    scale: 0.64937999999999996,
+  },
+  samplers: [
+    {
+      file: 'sampledata/samples\\hipo17.fbm\\default-grey.jpg',
+      name: 'default-grey',
+      pipeline_name: 'hipo17.fbm\\default-grey.jpg',
+    },
+    {
+      file: 'sampledata/samples\\hipo17.fbm\\HIPPA2TX.jpg',
+      name: 'HIPPA2TX',
+      pipeline_name: 'hipo17.fbm\\HIPPA2TX.jpg',
+    },
+    {
+      file: 'sampledata/samples\\hipo17.fbm\\HIPPA1TX.jpg',
+      name: 'HIPPA1TX',
+      pipeline_name: 'hipo17.fbm\\HIPPA1TX.jpg',
+    },
+    {
+      file: 'sampledata/samples\\hipo17.fbm\\HIPCPOTX.jpg',
+      name: 'HIPCPOTX',
+      pipeline_name: 'hipo17.fbm\\HIPCPOTX.jpg',
+    },
+    {
+      file: 'sampledata/samples\\hipo17.fbm\\HIPOJOTX.jpg',
+      name: 'HIPOJOTX',
+      pipeline_name: 'hipo17.fbm\\HIPOJOTX.jpg',
+    },
+  ],
+  version: '0.54:2',
+}

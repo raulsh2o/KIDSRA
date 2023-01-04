@@ -1,0 +1,73 @@
+{
+  animations: [
+    {
+      clips: [
+        {
+          name: 'Armature|ArmatureAction',
+        },
+      ],
+      path: 'sampledata/samples/pato5.fbx',
+    },
+  ],
+  materials: [
+    {
+      name: '12248_Bird_v1',
+      parameters: [
+        {
+          baseColor: [
+            1,
+            1,
+            1,
+            1,
+          ],
+        },
+        {
+          baseColorMap: '12248_Bird_v1_diff',
+        },
+        {
+          normalMap: null,
+        },
+        {
+          interpolatedColor: null,
+        },
+        {
+          metallic: 0,
+        },
+        {
+          metallicMap: null,
+        },
+        {
+          roughness: 1,
+        },
+        {
+          roughnessMap: null,
+        },
+        {
+          opacity: null,
+        },
+      ],
+      source: 'build/sceneform_sdk/default_materials/fbx_material.sfm',
+    },
+  ],
+  model: {
+    attributes: [
+      'Position',
+      'TexCoord',
+      'Orientation',
+      'BoneIndices',
+      'BoneWeights',
+    ],
+    collision: {},
+    file: 'sampledata/samples/pato5.fbx',
+    name: 'pato5',
+    recenter: 'root',
+  },
+  samplers: [
+    {
+      file: 'sampledata/samples\\pato5.fbm\\12248_Bird_v1_diff.jpg',
+      name: '12248_Bird_v1_diff',
+      pipeline_name: 'pato5.fbm\\12248_Bird_v1_diff.jpg',
+    },
+  ],
+  version: '0.54:2',
+}

@@ -45,7 +45,7 @@ public class SalvajesA extends AppCompatActivity {
     private ModelAnimator animator;
     private int nextAnimation;
     private FloatingActionButton btn_anim;
-    private ModelRenderable tigre, punto, cocodrilo, elefante, jirafa;
+    private ModelRenderable tigre, punto, cocodrilo, elefante, jirafa, mono, hipopotamo, leon, serpiente;
     private TransformableNode transformableNode;
 
     private int clickNo = 0;
@@ -198,6 +198,18 @@ public class SalvajesA extends AppCompatActivity {
                         animator = new ModelAnimator(data,jirafa);
                         animator.start();
                     }
+                    else if (choose == "mono"){
+                        AnimationData data = mono.getAnimationData(nextAnimation);
+                        nextAnimation = (nextAnimation+1)%mono.getAnimationDataCount();
+                        animator = new ModelAnimator(data,mono);
+                        animator.start();
+                    }
+                    else if (choose == "hipopotamo"){
+                        AnimationData data = hipopotamo.getAnimationData(nextAnimation);
+                        nextAnimation = (nextAnimation+1)%hipopotamo.getAnimationDataCount();
+                        animator = new ModelAnimator(data,hipopotamo);
+                        animator.start();
+                    }
 
                 }
             }
@@ -240,6 +252,7 @@ public class SalvajesA extends AppCompatActivity {
                     audioCocodrile.start();
                     choose = "gcocodrilo";
                 }
+
                 AlertDialog.Builder builder = new AlertDialog.Builder(SalvajesA.this);
                 builder.setIcon(R.drawable.info).
                         setMessage(information).
@@ -313,6 +326,38 @@ public class SalvajesA extends AppCompatActivity {
                 }
             }
         });
+        //ESCUCHA BOTON SI MONO ES PULSADO
+        mono1show.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                Status1 = 1;
+                if (currentSelectedAnchorNode != null) {
+
+                    Session session = arFragment.getArSceneView().getSession();
+                    Anchor currentAnchor = currentSelectedAnchorNode.getAnchor();
+                    Pose oldPose = currentAnchor.getPose();
+                    Pose newPose = oldPose.compose(Pose.makeTranslation(0,0.05f,0));
+                    currentSelectedAnchorNode = moveRenderable(currentSelectedAnchorNode, newPose);
+
+                }
+            }
+        });
+        //ESCUCHA BOTON SI HIPOPOTAMO ES PULSADO
+        hipopotamo1show.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                Status1 = 1;
+                if (currentSelectedAnchorNode != null) {
+
+                    Session session = arFragment.getArSceneView().getSession();
+                    Anchor currentAnchor = currentSelectedAnchorNode.getAnchor();
+                    Pose oldPose = currentAnchor.getPose();
+                    Pose newPose = oldPose.compose(Pose.makeTranslation(0,0.05f,0));
+                    currentSelectedAnchorNode = moveRenderable(currentSelectedAnchorNode, newPose);
+
+                }
+            }
+        });
 
     }
 
@@ -364,7 +409,7 @@ public class SalvajesA extends AppCompatActivity {
 
         //CARGA TIGRE
         ModelRenderable.builder()
-                .setSource(this, R.raw.tigre21)
+                .setSource(this, R.raw.tigre31)
                 .build()
                 .thenAccept(renderable -> tigre = renderable)
                 .exceptionally(throwable -> {
@@ -410,6 +455,25 @@ public class SalvajesA extends AppCompatActivity {
                     Toast.makeText(this, ""+throwable.getMessage(), Toast.LENGTH_SHORT).show();
                     return null;
                 });
+        //CARGA MONO
+        ModelRenderable.builder()
+                .setSource(this, R.raw.mono)
+                .build()
+                .thenAccept(renderable -> mono = renderable)
+                .exceptionally(throwable -> {
+                    Toast.makeText(this, ""+throwable.getMessage(), Toast.LENGTH_SHORT).show();
+                    return null;
+                });
+        //CARGA HIPOPOTAMO
+        ModelRenderable.builder()
+                .setSource(this, R.raw.hipo17)
+                .build()
+                .thenAccept(renderable -> hipopotamo = renderable)
+                .exceptionally(throwable -> {
+                    Toast.makeText(this, ""+throwable.getMessage(), Toast.LENGTH_SHORT).show();
+                    return null;
+                });
+
     }
 
     private AnchorNode moveRenderable(AnchorNode markAnchorNodeToMove, Pose newPoseToMoveTo) {
@@ -434,7 +498,7 @@ public class SalvajesA extends AppCompatActivity {
             case 1:
                 stopSound(choose);
                 choose = "mono";
-                //andy.setRenderable(monkey1);
+                andy.setRenderable(mono);
                 audiogMonkey.start();
                 information = "El mono es proveniente de la familia de los primates, usas sus extremidades para cazar, comer o hacer otras acciones diferentes.";
                 break;
@@ -478,14 +542,14 @@ public class SalvajesA extends AppCompatActivity {
             case 7:
                 stopSound(choose);
                 choose = "hipopotamo";
-                //andy.setRenderable(hipopo1);
+                andy.setRenderable(hipopotamo);
                 audiogHipopo.start();
                 information = "El hipopótamo es un animal de boca enorme con grandes dientes, son grandes y pesados, son muy agresivos y de patas cortas.";
                 break;
             case 8:
                 stopSound(choose);
                 choose = "cocodrilo";
-                //andy.setRenderable(crocodrile1);
+                andy.setRenderable(cocodrilo);
                 audiogCocodrile.start();
                 information = "El cocodrilo   es un animal con 4 patas, se arrastra por el suelo, con una boca enorme y dientes muy grandes, tiene una cola muy larga, y viven en los pantanos, lagos o ríos.";
                 break;

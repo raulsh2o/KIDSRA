@@ -46,7 +46,7 @@ public class dActivity extends AppCompatActivity {
     private ModelAnimator animator;
     private int nextAnimation;
     private FloatingActionButton btn_anim;
-    private ModelRenderable animationCrab, horse01, punto, vaca;
+    private ModelRenderable animationCrab, horse01, punto, vaca, perro, gallina, pato;
     private TransformableNode transformableNode;
 
     private int clickNo = 0;
@@ -190,6 +190,16 @@ public class dActivity extends AppCompatActivity {
                     nextAnimation = (nextAnimation+1)%horse01.getAnimationDataCount();
                     animator = new ModelAnimator(data,horse01);
                     animator.start();
+                    }else if (choose == "perro"){
+                        AnimationData data = perro.getAnimationData(nextAnimation);
+                        nextAnimation = (nextAnimation+1)%perro.getAnimationDataCount();
+                        animator = new ModelAnimator(data,perro);
+                        animator.start();
+                    }else if (choose == "pato"){
+                        AnimationData data = pato.getAnimationData(nextAnimation);
+                        nextAnimation = (nextAnimation+1)%pato.getAnimationDataCount();
+                        animator = new ModelAnimator(data,pato);
+                        animator.start();
                     }
 
                 }
@@ -263,6 +273,38 @@ public class dActivity extends AppCompatActivity {
             @Override
             public void onClick(View view) {
                 Status1 = 7;
+                if (currentSelectedAnchorNode != null) {
+
+                    Session session = arFragment.getArSceneView().getSession();
+                    Anchor currentAnchor = currentSelectedAnchorNode.getAnchor();
+                    Pose oldPose = currentAnchor.getPose();
+                    Pose newPose = oldPose.compose(Pose.makeTranslation(0,0.05f,0));
+                    currentSelectedAnchorNode = moveRenderable(currentSelectedAnchorNode, newPose);
+
+                }
+            }
+        });
+        //ESCUCHA BOTON SI PERRO ES PULSADO
+        dogshow.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                Status1 = 2;
+                if (currentSelectedAnchorNode != null) {
+
+                    Session session = arFragment.getArSceneView().getSession();
+                    Anchor currentAnchor = currentSelectedAnchorNode.getAnchor();
+                    Pose oldPose = currentAnchor.getPose();
+                    Pose newPose = oldPose.compose(Pose.makeTranslation(0,0.05f,0));
+                    currentSelectedAnchorNode = moveRenderable(currentSelectedAnchorNode, newPose);
+
+                }
+            }
+        });
+        //ESCUCHA BOTON SI PATO ES PULSADO
+        duckshow.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                Status1 = 2;
                 if (currentSelectedAnchorNode != null) {
 
                     Session session = arFragment.getArSceneView().getSession();
@@ -361,6 +403,24 @@ public class dActivity extends AppCompatActivity {
                     Toast.makeText(this, ""+throwable.getMessage(), Toast.LENGTH_SHORT).show();
                     return null;
                 });
+        //CARGA PERRO
+        ModelRenderable.builder()
+                .setSource(this, R.raw.dalmata)
+                .build()
+                .thenAccept(renderable -> perro = renderable)
+                .exceptionally(throwable -> {
+                    Toast.makeText(this, ""+throwable.getMessage(), Toast.LENGTH_SHORT).show();
+                    return null;
+                });
+        //CARGA PATO
+        ModelRenderable.builder()
+                .setSource(this, R.raw.pato5)
+                .build()
+                .thenAccept(renderable -> pato = renderable)
+                .exceptionally(throwable -> {
+                    Toast.makeText(this, ""+throwable.getMessage(), Toast.LENGTH_SHORT).show();
+                    return null;
+                });
     }
 
     private AnchorNode moveRenderable(AnchorNode markAnchorNodeToMove, Pose newPoseToMoveTo) {
@@ -413,14 +473,14 @@ public class dActivity extends AppCompatActivity {
             case 2:
                 stopSound(choose);
                 choose = "perro";
-                //andy.setRenderable(horse01);
+                andy.setRenderable(perro);
                 audiogDog.start();
                 information = "El perro doméstico es un mamífero carnívoro, Su tamaño, forma y pelaje varían en función de la raza de perro, ven bien, usan mayormente su oído y su olfato, sentidos que tienen muy desarrollados y que son muy prácticos para el humano.";
                 break;
             case 5:
                 stopSound(choose);
                 choose = "pato";
-                //andy.setRenderable(duck1);
+                andy.setRenderable(pato);
                 audiogDuck.start();
                 information = "El pato es un ave, vive cerca del agua y nadan.";
                 break;
