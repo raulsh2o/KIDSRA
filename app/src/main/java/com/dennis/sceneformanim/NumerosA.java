@@ -45,7 +45,7 @@ public class NumerosA extends AppCompatActivity {
     private ModelAnimator animator;
     private int nextAnimation;
     private FloatingActionButton btn_anim;
-    private ModelRenderable tigre, punto, cero, uno, dos, tres, cuatro;
+    private ModelRenderable tigre, punto, cero, uno, dos, tres, cuatro, cinco, seis, siete, ocho, nueve, diez;
     private TransformableNode transformableNode;
 
     private int clickNo = 0;
@@ -206,6 +206,30 @@ public class NumerosA extends AppCompatActivity {
                         animator = new ModelAnimator(data,cuatro);
                         animator.start();
                     }
+                    else if (choose == "cinco"){
+                        AnimationData data = cinco.getAnimationData(nextAnimation);
+                        nextAnimation = (nextAnimation+1)%cinco.getAnimationDataCount();
+                        animator = new ModelAnimator(data,cinco);
+                        animator.start();
+                    }
+                    else if (choose == "ocho"){
+                        AnimationData data = ocho.getAnimationData(nextAnimation);
+                        nextAnimation = (nextAnimation+1)%ocho.getAnimationDataCount();
+                        animator = new ModelAnimator(data,ocho);
+                        animator.start();
+                    }
+                    else if (choose == "nueve"){
+                        AnimationData data = nueve.getAnimationData(nextAnimation);
+                        nextAnimation = (nextAnimation+1)%nueve.getAnimationDataCount();
+                        animator = new ModelAnimator(data,nueve);
+                        animator.start();
+                    }
+                    else if (choose == "diez"){
+                        AnimationData data = diez.getAnimationData(nextAnimation);
+                        nextAnimation = (nextAnimation+1)%diez.getAnimationDataCount();
+                        animator = new ModelAnimator(data,diez);
+                        animator.start();
+                    }
 
                 }
             }
@@ -294,6 +318,70 @@ public class NumerosA extends AppCompatActivity {
             @Override
             public void onClick(View view) {
                 Status1 = 5;
+                if (currentSelectedAnchorNode != null) {
+
+                    Session session = arFragment.getArSceneView().getSession();
+                    Anchor currentAnchor = currentSelectedAnchorNode.getAnchor();
+                    Pose oldPose = currentAnchor.getPose();
+                    Pose newPose = oldPose.compose(Pose.makeTranslation(0,0.05f,0));
+                    currentSelectedAnchorNode = moveRenderable(currentSelectedAnchorNode, newPose);
+
+                }
+            }
+        });
+        //ESCUCHA BOTON SI CINCO ES PULSADO
+        Ncinco.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                Status1 = 6;
+                if (currentSelectedAnchorNode != null) {
+
+                    Session session = arFragment.getArSceneView().getSession();
+                    Anchor currentAnchor = currentSelectedAnchorNode.getAnchor();
+                    Pose oldPose = currentAnchor.getPose();
+                    Pose newPose = oldPose.compose(Pose.makeTranslation(0,0.05f,0));
+                    currentSelectedAnchorNode = moveRenderable(currentSelectedAnchorNode, newPose);
+
+                }
+            }
+        });
+        //ESCUCHA BOTON SI OCHO ES PULSADO
+        Nocho.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                Status1 = 9;
+                if (currentSelectedAnchorNode != null) {
+
+                    Session session = arFragment.getArSceneView().getSession();
+                    Anchor currentAnchor = currentSelectedAnchorNode.getAnchor();
+                    Pose oldPose = currentAnchor.getPose();
+                    Pose newPose = oldPose.compose(Pose.makeTranslation(0,0.05f,0));
+                    currentSelectedAnchorNode = moveRenderable(currentSelectedAnchorNode, newPose);
+
+                }
+            }
+        });
+        //ESCUCHA BOTON SI NUEVE ES PULSADO
+        Nnueve.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                Status1 = 10;
+                if (currentSelectedAnchorNode != null) {
+
+                    Session session = arFragment.getArSceneView().getSession();
+                    Anchor currentAnchor = currentSelectedAnchorNode.getAnchor();
+                    Pose oldPose = currentAnchor.getPose();
+                    Pose newPose = oldPose.compose(Pose.makeTranslation(0,0.05f,0));
+                    currentSelectedAnchorNode = moveRenderable(currentSelectedAnchorNode, newPose);
+
+                }
+            }
+        });
+        //ESCUCHA BOTON SI DIEZ ES PULSADO
+        Ndiez.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                Status1 = 11;
                 if (currentSelectedAnchorNode != null) {
 
                     Session session = arFragment.getArSceneView().getSession();
@@ -413,6 +501,42 @@ public class NumerosA extends AppCompatActivity {
                     Toast.makeText(this, ""+throwable.getMessage(), Toast.LENGTH_SHORT).show();
                     return null;
                 });
+        //CARGA CINCO
+        ModelRenderable.builder()
+                .setSource(this, R.raw.manocinco)
+                .build()
+                .thenAccept(renderable -> cinco = renderable)
+                .exceptionally(throwable -> {
+                    Toast.makeText(this, ""+throwable.getMessage(), Toast.LENGTH_SHORT).show();
+                    return null;
+                });
+        //CARGA OCHO
+        ModelRenderable.builder()
+                .setSource(this, R.raw.manoocho8)
+                .build()
+                .thenAccept(renderable -> ocho = renderable)
+                .exceptionally(throwable -> {
+                    Toast.makeText(this, ""+throwable.getMessage(), Toast.LENGTH_SHORT).show();
+                    return null;
+                });
+        //CARGA NUEVE
+        ModelRenderable.builder()
+                .setSource(this, R.raw.manonueve9)
+                .build()
+                .thenAccept(renderable -> nueve = renderable)
+                .exceptionally(throwable -> {
+                    Toast.makeText(this, ""+throwable.getMessage(), Toast.LENGTH_SHORT).show();
+                    return null;
+                });
+        //CARGA DIEZ
+        ModelRenderable.builder()
+                .setSource(this, R.raw.manodiez10)
+                .build()
+                .thenAccept(renderable -> diez = renderable)
+                .exceptionally(throwable -> {
+                    Toast.makeText(this, ""+throwable.getMessage(), Toast.LENGTH_SHORT).show();
+                    return null;
+                });
     }
 
     private AnchorNode moveRenderable(AnchorNode markAnchorNodeToMove, Pose newPoseToMoveTo) {
@@ -473,7 +597,7 @@ public class NumerosA extends AppCompatActivity {
             case 6:
                 stopSound(choose);
                 choose = "cinco";
-                //andy.setRenderable(cinco);
+                andy.setRenderable(cinco);
                 audio5.start();
                 information = "El número cinco tiene orejas, parece un conejito.";
                 break;
@@ -495,14 +619,14 @@ public class NumerosA extends AppCompatActivity {
             case 9:
                 stopSound(choose);
                 choose = "ocho";
-                //andy.setRenderable(ocho);
+                andy.setRenderable(ocho);
                 audio8.start();
                 information = "El número ocho son las gafas que lleva don Ramón.";
                 break;
             case 10:
                 stopSound(choose);
                 choose = "nueve";
-                //andy.setRenderable(nueve);
+                andy.setRenderable(nueve);
                 audio9.start();
                 information = "El número nueve es un globito atado a un cordel.";
                 break;
@@ -510,7 +634,7 @@ public class NumerosA extends AppCompatActivity {
             case 11:
                 stopSound(choose);
                 choose = "diez";
-                //andy.setRenderable(diez);
+                andy.setRenderable(diez);
                 audio10.start();
                 information = "El número diez es un soldado que lleva un gran melón.";
                 break;
