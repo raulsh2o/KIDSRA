@@ -54,7 +54,7 @@ public class FrutasA extends AppCompatActivity {
     private String choose = "";
 
     //DECLARAR AUDIOS
-    MediaPlayer audioMonkey, audioLion, audioTiger, audioElephant, audioSerpent,audioJirafa, audioHipopo, audioCocodrile, audioi, audiogMonkey, audiogLion, audiogTiger, audiogElephant, audiogSerpent,audiogJirafa, audiogHipopo, audiogCocodrile;
+    MediaPlayer audioMonkey, audioLion, audioTiger, audioElephant, audioSerpent,audioJirafa, audioHipopo, audioCocodrile, audioi, audiogMonkey, audiogLion, audiogTiger, audiogElephant, audiogSerpent,audiogJirafa, audiogHipopo, audiogCocodrile, audiomanzana, audiopera, audiobanana, audiouva, audiosandia, audiomelon, audiopina;
 
     //*************************************************************
     private List<AnchorNode> anchorNodeList = new ArrayList<>();
@@ -83,6 +83,14 @@ public class FrutasA extends AppCompatActivity {
         audioJirafa = MediaPlayer.create(this,R.raw.sajirafa);
         audioHipopo = MediaPlayer.create(this,R.raw.sahipopotamo);
         audioCocodrile = MediaPlayer.create(this,R.raw.sacocodrilo);
+
+        audiomanzana = MediaPlayer.create(this,R.raw.famanzana);
+        audiopera = MediaPlayer.create(this,R.raw.fapera);
+        audiobanana = MediaPlayer.create(this,R.raw.fabanana);
+        audiouva = MediaPlayer.create(this,R.raw.fauva);
+        audiosandia = MediaPlayer.create(this,R.raw.fasandia);
+        audiomelon = MediaPlayer.create(this,R.raw.famelon);
+        audiopina = MediaPlayer.create(this,R.raw.fapina);
         //INICIALIZA RUGIDOS
         audiogMonkey = MediaPlayer.create(this,R.raw.sgmono);
         audiogLion = MediaPlayer.create(this,R.raw.sgleon);
@@ -218,38 +226,27 @@ public class FrutasA extends AppCompatActivity {
         informacion.setOnClickListener(new View.OnClickListener(){
             @Override
             public void onClick(View view){
-                if (choose == "mono"){
-                    stopSound(choose);
-                    audioMonkey.start();
-                    choose = "gmono";
-                }else if (choose == "leon"){
-                    stopSound(choose);
-                    audioLion.start();
-                    choose = "gleon";
-                }else if (choose == "tigre"){
-                    stopSound(choose);
-                    audioTiger.start();
-                    choose = "gtigre";
-                }else if (choose == "elefante"){
-                    stopSound(choose);
-                    audioElephant.start();
-                    choose = "gelefante";
-                }else if (choose == "serpiente"){
-                    stopSound(choose);
-                    audioSerpent.start();
-                    choose = "gserpiente";
-                }else if (choose == "jirafa"){
-                    stopSound(choose);
-                    audioJirafa.start();
-                    choose = "gjirafa";
-                }else if (choose == "hipopotamo"){
-                    stopSound(choose);
-                    audioHipopo.start();
-                    choose = "ghipopotamo";
-                }else if (choose == "cocodrilo"){
-                    stopSound(choose);
-                    audioCocodrile.start();
-                    choose = "gcocodrilo";
+                if (choose == "pera"){
+                    //stopSound(choose);
+                    audiopera.start();
+                }else if (choose == "manzana"){
+                    //stopSound(choose);
+                    audiomanzana.start();
+                }else if (choose == "banana"){
+                    //stopSound(choose);
+                    audiobanana.start();
+                }else if (choose == "uva"){
+                    //stopSound(choose);
+                    audiouva.start();
+                }else if (choose == "sandia"){
+                    //stopSound(choose);
+                    audiosandia.start();
+                }else if (choose == "melon"){
+                    //stopSound(choose);
+                    audiomelon.start();
+                }else if (choose == "pina"){
+                    //stopSound(choose);
+                    audiopina.start();
                 }
 
                 AlertDialog.Builder builder = new AlertDialog.Builder(FrutasA.this);
@@ -334,38 +331,20 @@ public class FrutasA extends AppCompatActivity {
     /////////////////////////////////////////////////////////////////////////////
 
     private void stopSound(String sound){
-        if (sound == "mono"){
-            audiogMonkey.pause();
-        }else if (sound == "leon"){
-            audiogLion.pause();
-        }else if (sound == "tigre"){
-            audiogTiger.pause();
-        }else if (sound == "elefante"){
-            audiogElephant.pause();
-        }else if (sound == "serpiente"){
-            audiogSerpent.pause();
-        }else if (sound == "jirafa"){
-            audiogJirafa.pause();
-        }else if (sound == "hipopotamo"){
-            audiogHipopo.pause();
-        }else if (sound == "cocodrilo"){
-            audiogCocodrile.pause();
-        }else if (sound == "gmono"){
-            audioMonkey.pause();
-        }else if (sound == "gleon"){
-            audioLion.pause();
-        }else if (sound == "gtigre"){
-            audioTiger.pause();
-        }else if (sound == "gelefante"){
-            audioElephant.pause();
-        }else if (sound == "gserpiente"){
-            audioSerpent.pause();
-        }else if (sound == "gjirafa"){
-            audioJirafa.pause();
-        }else if (sound == "ghipopotamo"){
-            audioHipopo.pause();
-        }else if (sound == "gcocodrilo"){
-            audioCocodrile.pause();
+        if (sound == "pera"){
+            audiopera.pause();
+        }else if (sound == "manzana"){
+            audiomanzana.pause();
+        }else if (sound == "banana"){
+            audiobanana.pause();
+        }else if (sound == "uva"){
+            audiouva.pause();
+        }else if (sound == "sandia"){
+            audiosandia.pause();
+        }else if (sound == "melon"){
+            audiomelon.pause();
+        }else if (sound == "pina"){
+            audiopina.pause();
         }
     }
 
@@ -509,66 +488,54 @@ public class FrutasA extends AppCompatActivity {
         {
             case 1:
                 stopSound(choose);
-                choose = "mono";
+                choose = "pera";
                 andy.setRenderable(pera);
-                audiogMonkey.start();
-                information = "El mono es proveniente de la familia de los primates, usas sus extremidades para cazar, comer o hacer otras acciones diferentes.";
+                //audiopera.start();
+                information = "La pera tiene forma como una guitarra, es rica y da mucha energía.";
                 break;
+
             case 2:
                 stopSound(choose);
-                choose = "leon";
+                choose = "manzana";
                 andy.setRenderable(manzana);
-                audiogLion.start();
-                information = "El león es el rey de la selva, es salvaje, fuerte, grande y tiene dientes muy grandes.";
+                //audiomanzana.start();
+                information = "La manzana es roja, amarilla, verde, es dulces , una fruta muy rica para hacernos fuertes.";
                 break;
             case 3:
                 stopSound(choose);
-                choose = "tigre";
-                //andy.setRenderable();
-                audiogTiger.start();
-                information = "El tigre es un animal grande, corren muy rápido, son solitarios y cazadores.";
+                choose = "banana";
+                //andy.setRenderable(banana);
+                //audiobanana.start();
+                information = "La banana es de color amarillo por fuera pero blanco por dentro, es muy dulce y muy rico en vitaminas.";
                 break;
             case 4:
                 stopSound(choose);
-                choose = "elefante";
+                choose = "uva";
                 andy.setRenderable(uva);
-                audiogElephant.start();
-                information = "El elefante es el animal terrestre más grande, tiene orejas grandes y su trompa muy larga, tienen ojos pequeños.";
+                //audiouva.start();
+                information = "La uva tiene forma de pequeños círculos, hay una semillita en el centro, tiene colores verde y morado, es dulce y muy rica.";
                 break;
             case 5:
                 stopSound(choose);
-                choose = "serpiente";
-                //andy.setRenderable(serpiente01);
-                audiogSerpent.start();
-                information = "\n" +
-                        "La serpiente es un animal que se arrastra por el suelo, no tiene patas, vota veneno por su boca, su cuerpo es muy largo.";
+                choose = "sandia";
+                //andy.setRenderable(sandia);
+                //audiosandia.start();
+                information = "La sandía es una fruta verde por fuera y roja por dentro, tiene semillitas las cuales no hay que comer, es muy jugosa, rica y dulce.";
                 break;
             case 6:
                 stopSound(choose);
-                choose = "jirafa";
-                andy.setRenderable(jirafa);
-                audiogJirafa.start();
-                information = "Las jirafas son animales de cuello largo, son de color amarillo con manchas negras y tiene dos cuernos pequeños.";
+                choose = "melon";
+                andy.setRenderable(melon);
+                //audiomelon.start();
+                information = "El melón es una fruta muy dulce, pero para probarla, hay que pelar, hay de varios colores, tiene semillita, pero no se pueden comer.";
                 break;
-
             case 7:
                 stopSound(choose);
-                choose = "hipopotamo";
-                andy.setRenderable(hipopotamo);
-                audiogHipopo.start();
-                information = "El hipopótamo es un animal de boca enorme con grandes dientes, son grandes y pesados, son muy agresivos y de patas cortas.";
+                choose = "pina";
+                andy.setRenderable(pina);
+                //audiopina.start();
+                information = "La piña es una fruta que tiene una forma muy particular, es grande y por dentro es muy dulces y huele muy rico, sirve también para jugos.";
                 break;
-            case 8:
-                stopSound(choose);
-                choose = "cocodrilo";
-                andy.setRenderable(cocodrilo);
-                audiogCocodrile.start();
-                information = "El cocodrilo   es un animal con 4 patas, se arrastra por el suelo, con una boca enorme y dientes muy grandes, tiene una cola muy larga, y viven en los pantanos, lagos o ríos.";
-                break;
-            /*case 20:
-                newMarkAnchorNode.setRenderable(jirafa01);
-            break;*/
-
             default:
                 break;
         }
