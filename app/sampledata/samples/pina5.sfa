@@ -1,0 +1,74 @@
+{
+  animations: [
+    {
+      clips: [
+        {
+          name: 'Armature|ArmatureAction',
+        },
+      ],
+      path: 'sampledata/samples/pina5.fbx',
+    },
+  ],
+  materials: [
+    {
+      name: 'Material',
+      parameters: [
+        {
+          baseColor: [
+            1,
+            1,
+            1,
+            1,
+          ],
+        },
+        {
+          baseColorMap: '10200_Pineapple',
+        },
+        {
+          normalMap: null,
+        },
+        {
+          interpolatedColor: null,
+        },
+        {
+          metallic: 0,
+        },
+        {
+          metallicMap: null,
+        },
+        {
+          roughness: 1,
+        },
+        {
+          roughnessMap: null,
+        },
+        {
+          opacity: null,
+        },
+      ],
+      source: 'build/sceneform_sdk/default_materials/fbx_material.sfm',
+    },
+  ],
+  model: {
+    attributes: [
+      'Position',
+      'TexCoord',
+      'Orientation',
+      'BoneIndices',
+      'BoneWeights',
+    ],
+    collision: {},
+    file: 'sampledata/samples/pina5.fbx',
+    name: 'pina5',
+    recenter: 'root',
+    scale: 0.87840399999999996,
+  },
+  samplers: [
+    {
+      file: 'sampledata/samples\\pina5.fbm\\10200_Pineapple.jpg',
+      name: '10200_Pineapple',
+      pipeline_name: 'pina5.fbm\\10200_Pineapple.jpg',
+    },
+  ],
+  version: '0.54:2',
+}

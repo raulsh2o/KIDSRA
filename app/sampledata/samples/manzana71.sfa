@@ -1,0 +1,74 @@
+{
+  animations: [
+    {
+      clips: [
+        {
+          name: 'Armature|ArmatureAction',
+        },
+      ],
+      path: 'sampledata/samples/manzana71.fbx',
+    },
+  ],
+  materials: [
+    {
+      name: 'Material',
+      parameters: [
+        {
+          baseColor: [
+            1,
+            1,
+            1,
+            1,
+          ],
+        },
+        {
+          baseColorMap: 'Apple_BaseColor',
+        },
+        {
+          normalMap: null,
+        },
+        {
+          interpolatedColor: null,
+        },
+        {
+          metallic: 0,
+        },
+        {
+          metallicMap: null,
+        },
+        {
+          roughness: 1,
+        },
+        {
+          roughnessMap: null,
+        },
+        {
+          opacity: null,
+        },
+      ],
+      source: 'build/sceneform_sdk/default_materials/fbx_material.sfm',
+    },
+  ],
+  model: {
+    attributes: [
+      'Position',
+      'TexCoord',
+      'Orientation',
+      'BoneIndices',
+      'BoneWeights',
+    ],
+    collision: {},
+    file: 'sampledata/samples/manzana71.fbx',
+    name: 'manzana71',
+    recenter: 'root',
+    scale: 0.49282700000000002,
+  },
+  samplers: [
+    {
+      file: 'sampledata/samples\\manzana71.fbm\\Apple_BaseColor.png',
+      name: 'Apple_BaseColor',
+      pipeline_name: 'manzana71.fbm\\Apple_BaseColor.png',
+    },
+  ],
+  version: '0.54:2',
+}

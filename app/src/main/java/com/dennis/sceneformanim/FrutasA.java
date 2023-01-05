@@ -45,7 +45,7 @@ public class FrutasA extends AppCompatActivity {
     private ModelAnimator animator;
     private int nextAnimation;
     private FloatingActionButton btn_anim;
-    private ModelRenderable tigre, punto, cocodrilo, elefante, jirafa, mono, hipopotamo, leon, serpiente;
+    private ModelRenderable tigre, punto, cocodrilo, elefante, jirafa, mono, hipopotamo, leon, serpiente, manzana, uva, melon, pera, pina;
     private TransformableNode transformableNode;
 
     private int clickNo = 0;
@@ -65,14 +65,13 @@ public class FrutasA extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_frutas);
         // DECLARA BOTONES DE CAMBIO DE OBJETO
-        Button mono1show = (Button) findViewById(R.id.id_Mono1);
-        Button leon1show = (Button) findViewById(R.id.id_leon1);
-        Button tigre1show = (Button) findViewById(R.id.id_tigre1);
-        Button elefante1show = (Button) findViewById(R.id.id_elefante1);
-        Button serpiente1show = (Button) findViewById(R.id.id_serpiente1);
-        Button jirafa1show = (Button) findViewById(R.id.id_jirafa1);
-        Button hipopotamo1show = (Button) findViewById(R.id.id_hipopotamo1);
-        Button cocodrilo1show = (Button) findViewById(R.id.id_cocodrilo1);
+        Button Pera = (Button) findViewById(R.id.id_Pera);
+        Button Manzana = (Button) findViewById(R.id.id_Manzana);
+        Button Banana = (Button) findViewById(R.id.id_Banana);
+        Button Uva = (Button) findViewById(R.id.id_Uva);
+        Button Sandia = (Button) findViewById(R.id.id_Sandia);
+        Button Melon = (Button) findViewById(R.id.id_Melon);
+        Button Pina = (Button) findViewById(R.id.id_Piña);
         ImageButton informacion = (ImageButton) findViewById(R.id.id_informacion);
 
         //INICIALIZA AUDIOS
@@ -199,9 +198,9 @@ public class FrutasA extends AppCompatActivity {
                         animator.start();
                     }
                     else if (choose == "mono"){
-                        AnimationData data = mono.getAnimationData(nextAnimation);
-                        nextAnimation = (nextAnimation+1)%mono.getAnimationDataCount();
-                        animator = new ModelAnimator(data,mono);
+                        AnimationData data = manzana.getAnimationData(nextAnimation);
+                        nextAnimation = (nextAnimation+1)%manzana.getAnimationDataCount();
+                        animator = new ModelAnimator(data,manzana);
                         animator.start();
                     }
                     else if (choose == "hipopotamo"){
@@ -262,72 +261,8 @@ public class FrutasA extends AppCompatActivity {
             }
         });
 
-        //ESCUCHA BOTON SI COCODRILO ES PULSADO
-        cocodrilo1show.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-                Status1 = 8;
-                if (currentSelectedAnchorNode != null) {
-
-                    Session session = arFragment.getArSceneView().getSession();
-                    Anchor currentAnchor = currentSelectedAnchorNode.getAnchor();
-                    Pose oldPose = currentAnchor.getPose();
-                    Pose newPose = oldPose.compose(Pose.makeTranslation(0,0.05f,0));
-                    currentSelectedAnchorNode = moveRenderable(currentSelectedAnchorNode, newPose);
-
-                }
-            }
-        });
-        //ESCUCHA BOTON SI ELEFANTE ES PULSADO
-        elefante1show.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-                Status1 = 4;
-                if (currentSelectedAnchorNode != null) {
-
-                    Session session = arFragment.getArSceneView().getSession();
-                    Anchor currentAnchor = currentSelectedAnchorNode.getAnchor();
-                    Pose oldPose = currentAnchor.getPose();
-                    Pose newPose = oldPose.compose(Pose.makeTranslation(0,0.05f,0));
-                    currentSelectedAnchorNode = moveRenderable(currentSelectedAnchorNode, newPose);
-
-                }
-            }
-        });
-        //ESCUCHA BOTON SI JIRAFA ES PULSADO
-        jirafa1show.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-                Status1 = 6;
-                if (currentSelectedAnchorNode != null) {
-
-                    Session session = arFragment.getArSceneView().getSession();
-                    Anchor currentAnchor = currentSelectedAnchorNode.getAnchor();
-                    Pose oldPose = currentAnchor.getPose();
-                    Pose newPose = oldPose.compose(Pose.makeTranslation(0,0.05f,0));
-                    currentSelectedAnchorNode = moveRenderable(currentSelectedAnchorNode, newPose);
-
-                }
-            }
-        });
-        //ESCUCHA BOTON SI TIGRE ES PULSADO
-        tigre1show.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-                Status1 = 3;
-                if (currentSelectedAnchorNode != null) {
-
-                    Session session = arFragment.getArSceneView().getSession();
-                    Anchor currentAnchor = currentSelectedAnchorNode.getAnchor();
-                    Pose oldPose = currentAnchor.getPose();
-                    Pose newPose = oldPose.compose(Pose.makeTranslation(0,0.05f,0));
-                    currentSelectedAnchorNode = moveRenderable(currentSelectedAnchorNode, newPose);
-
-                }
-            }
-        });
-        //ESCUCHA BOTON SI MONO ES PULSADO
-        mono1show.setOnClickListener(new View.OnClickListener() {
+        //ESCUCHA BOTON SI PERA ES PULSADO
+        Pera.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
                 Status1 = 1;
@@ -342,11 +277,11 @@ public class FrutasA extends AppCompatActivity {
                 }
             }
         });
-        //ESCUCHA BOTON SI HIPOPOTAMO ES PULSADO
-        hipopotamo1show.setOnClickListener(new View.OnClickListener() {
+        //ESCUCHA BOTON SI MANZANA ES PULSADO
+        Manzana.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                Status1 = 7;
+                Status1 = 2;
                 if (currentSelectedAnchorNode != null) {
 
                     Session session = arFragment.getArSceneView().getSession();
@@ -358,6 +293,39 @@ public class FrutasA extends AppCompatActivity {
                 }
             }
         });
+        //ESCUCHA BOTON SI BANANA ES PULSADO
+        Banana.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                Status1 = 3;
+                if (currentSelectedAnchorNode != null) {
+
+                    Session session = arFragment.getArSceneView().getSession();
+                    Anchor currentAnchor = currentSelectedAnchorNode.getAnchor();
+                    Pose oldPose = currentAnchor.getPose();
+                    Pose newPose = oldPose.compose(Pose.makeTranslation(0,0.05f,0));
+                    currentSelectedAnchorNode = moveRenderable(currentSelectedAnchorNode, newPose);
+
+                }
+            }
+        });
+        //ESCUCHA BOTON SI UVA ES PULSADO
+        Uva.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                Status1 = 4;
+                if (currentSelectedAnchorNode != null) {
+
+                    Session session = arFragment.getArSceneView().getSession();
+                    Anchor currentAnchor = currentSelectedAnchorNode.getAnchor();
+                    Pose oldPose = currentAnchor.getPose();
+                    Pose newPose = oldPose.compose(Pose.makeTranslation(0,0.05f,0));
+                    currentSelectedAnchorNode = moveRenderable(currentSelectedAnchorNode, newPose);
+
+                }
+            }
+        });
+
 
     }
 
@@ -473,7 +441,51 @@ public class FrutasA extends AppCompatActivity {
                     Toast.makeText(this, ""+throwable.getMessage(), Toast.LENGTH_SHORT).show();
                     return null;
                 });
-
+        //CARGA MANZANA
+        ModelRenderable.builder()
+                .setSource(this, R.raw.manzana71)
+                .build()
+                .thenAccept(renderable -> manzana = renderable)
+                .exceptionally(throwable -> {
+                    Toast.makeText(this, ""+throwable.getMessage(), Toast.LENGTH_SHORT).show();
+                    return null;
+                });
+        //CARGA PERA
+        ModelRenderable.builder()
+                .setSource(this, R.raw.pera15)
+                .build()
+                .thenAccept(renderable -> pera = renderable)
+                .exceptionally(throwable -> {
+                    Toast.makeText(this, ""+throwable.getMessage(), Toast.LENGTH_SHORT).show();
+                    return null;
+                });
+        //CARGA UVA
+        ModelRenderable.builder()
+                .setSource(this, R.raw.uvas15)
+                .build()
+                .thenAccept(renderable -> uva = renderable)
+                .exceptionally(throwable -> {
+                    Toast.makeText(this, ""+throwable.getMessage(), Toast.LENGTH_SHORT).show();
+                    return null;
+                });
+        //CARGA MELON
+        ModelRenderable.builder()
+                .setSource(this, R.raw.melon13)
+                .build()
+                .thenAccept(renderable -> melon = renderable)
+                .exceptionally(throwable -> {
+                    Toast.makeText(this, ""+throwable.getMessage(), Toast.LENGTH_SHORT).show();
+                    return null;
+                });
+        //CARGA PIÑA
+        ModelRenderable.builder()
+                .setSource(this, R.raw.pina5)
+                .build()
+                .thenAccept(renderable -> pina = renderable)
+                .exceptionally(throwable -> {
+                    Toast.makeText(this, ""+throwable.getMessage(), Toast.LENGTH_SHORT).show();
+                    return null;
+                });
     }
 
     private AnchorNode moveRenderable(AnchorNode markAnchorNodeToMove, Pose newPoseToMoveTo) {
@@ -498,28 +510,28 @@ public class FrutasA extends AppCompatActivity {
             case 1:
                 stopSound(choose);
                 choose = "mono";
-                andy.setRenderable(mono);
+                andy.setRenderable(pera);
                 audiogMonkey.start();
                 information = "El mono es proveniente de la familia de los primates, usas sus extremidades para cazar, comer o hacer otras acciones diferentes.";
                 break;
             case 2:
                 stopSound(choose);
                 choose = "leon";
-                //andy.setRenderable(lion1);
+                andy.setRenderable(manzana);
                 audiogLion.start();
                 information = "El león es el rey de la selva, es salvaje, fuerte, grande y tiene dientes muy grandes.";
                 break;
             case 3:
                 stopSound(choose);
                 choose = "tigre";
-                andy.setRenderable(tigre);
+                //andy.setRenderable();
                 audiogTiger.start();
                 information = "El tigre es un animal grande, corren muy rápido, son solitarios y cazadores.";
                 break;
             case 4:
                 stopSound(choose);
                 choose = "elefante";
-                andy.setRenderable(elefante);
+                andy.setRenderable(uva);
                 audiogElephant.start();
                 information = "El elefante es el animal terrestre más grande, tiene orejas grandes y su trompa muy larga, tienen ojos pequeños.";
                 break;

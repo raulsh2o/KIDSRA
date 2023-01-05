@@ -1,0 +1,82 @@
+{
+  animations: [
+    {
+      clips: [
+        {
+          name: 'Armature|ArmatureAction',
+        },
+        {
+          name: 'Armature|ArmatureAction.002',
+        },
+        {
+          name: 'Armature|Armature|Armature|ArmatureAction',
+        },
+        {
+          name: 'Armature|nurbsToPoly43_fruit_0Action',
+        },
+      ],
+      path: 'sampledata/samples/uvas15.fbx',
+    },
+  ],
+  materials: [
+    {
+      name: 'Material.003',
+      parameters: [
+        {
+          baseColor: [
+            1,
+            1,
+            1,
+            1,
+          ],
+        },
+        {
+          baseColorMap: 'Image_3',
+        },
+        {
+          normalMap: null,
+        },
+        {
+          interpolatedColor: null,
+        },
+        {
+          metallic: 0,
+        },
+        {
+          metallicMap: null,
+        },
+        {
+          roughness: 1,
+        },
+        {
+          roughnessMap: null,
+        },
+        {
+          opacity: null,
+        },
+      ],
+      source: 'build/sceneform_sdk/default_materials/fbx_material.sfm',
+    },
+  ],
+  model: {
+    attributes: [
+      'Position',
+      'TexCoord',
+      'Orientation',
+      'BoneIndices',
+      'BoneWeights',
+    ],
+    collision: {},
+    file: 'sampledata/samples/uvas15.fbx',
+    name: 'uvas15',
+    recenter: 'root',
+  },
+  samplers: [
+    {
+      file: 'sampledata/samples\\uvas15.fbm\\Image_3.png',
+      name: 'Image_3',
+      pipeline_name: 'uvas15.fbm\\Image_3.png',
+    },
+  ],
+  version: '0.54:2',
+}

@@ -41,64 +41,58 @@
                 android:padding="10dp"
                 android:layout_alignParentBottom="true">
                 <Button
-                    android:id="@+id/id_Mono1"
+                    android:id="@+id/id_Pera"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_margin="5dp"
-                    android:layout_weight="1"
-                    android:text="Mono" />
-                <Button
-                    android:id="@+id/id_leon1"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:layout_margin="5dp"
-                    android:layout_weight="1"
-                    android:text="León" />
-                <Button
-                    android:id="@+id/id_tigre1"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:layout_margin="5dp"
-                    android:layout_weight="1"
-                    android:text="Tigre" />
-                <Button
-                    android:id="@+id/id_elefante1"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:layout_margin="5dp"
-                    android:layout_weight="1"
-                    android:text="Elefante" />
-                <Button
-                    android:id="@+id/id_serpiente1"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:layout_margin="5dp"
-                    android:text="Serpiente"
+                    android:text="Pera"
                     tools:layout_editor_absoluteX="130dp"
                     tools:layout_editor_absoluteY="667dp" />
 
                 <Button
-                    android:id="@+id/id_jirafa1"
+                    android:id="@+id/id_Manzana"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_margin="5dp"
                     android:layout_weight="1"
-                    android:text="Jirafa" />
+                    android:text="Manzana" />
 
                 <Button
-                    android:id="@+id/id_hipopotamo1"
+                    android:id="@+id/id_Banana"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_margin="5dp"
                     android:layout_weight="1"
-                    android:text="Hipopotamo" />
+                    android:text="Banana" />
                 <Button
-                    android:id="@+id/id_cocodrilo1"
+                    android:id="@+id/id_Uva"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_margin="5dp"
                     android:layout_weight="1"
-                    android:text="Cocodrilo" />
+                    android:text="Uva" />
+                <Button
+                    android:id="@+id/id_Sandia"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_margin="5dp"
+                    android:layout_weight="1"
+                    android:text="Sandia" />
+
+                <Button
+                    android:id="@+id/id_Melon"
+                    android:layout_width="101dp"
+                    android:layout_height="wrap_content"
+                    android:layout_margin="5dp"
+                    android:layout_weight="1"
+                    android:text="Melon" />
+                <Button
+                    android:id="@+id/id_Piña"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_margin="5dp"
+                    android:layout_weight="1"
+                    android:text="Piña" />
 
 
             </LinearLayout>
