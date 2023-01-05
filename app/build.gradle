@@ -42,7 +42,7 @@ dependencies {
     implementation 'com.android.support:design:29.0.0'
 }
 
-        sceneform.asset('sampledata/samples/manodiez10.fbx',
+        sceneform.asset('sampledata/samples/dalmata14.fbx',
                 'default',                    // 'Material Path' specified during import.
-                'sampledata/samples/manodiez10.sfa',
-                'src/main/res/raw/manodiez10')      // 'location you want to store the generated .sfb file'
+                'sampledata/samples/dalmata14.sfa',
+                'src/main/res/raw/dalmata14')      // 'location you want to store the generated .sfb file'

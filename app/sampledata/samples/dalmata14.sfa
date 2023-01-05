@@ -1,0 +1,202 @@
+{
+  animations: [
+    {
+      clips: [
+        {
+          name: 'Armature|ArmatureAction',
+        },
+      ],
+      path: 'sampledata/samples/dalmata14.fbx',
+    },
+  ],
+  materials: [
+    {
+      name: 'mat_1-texture002.jpg',
+      parameters: [
+        {
+          baseColor: [
+            1,
+            1,
+            1,
+            1,
+          ],
+        },
+        {
+          baseColorMap: 'texture002',
+        },
+        {
+          normalMap: null,
+        },
+        {
+          interpolatedColor: null,
+        },
+        {
+          metallic: 0,
+        },
+        {
+          metallicMap: null,
+        },
+        {
+          roughness: 1,
+        },
+        {
+          roughnessMap: null,
+        },
+        {
+          opacity: null,
+        },
+      ],
+      source: 'build/sceneform_sdk/default_materials/fbx_material.sfm',
+    },
+    {
+      name: 'mat_2-texture001.jpg',
+      parameters: [
+        {
+          baseColor: [
+            1,
+            1,
+            1,
+            1,
+          ],
+        },
+        {
+          baseColorMap: 'texture001',
+        },
+        {
+          normalMap: null,
+        },
+        {
+          interpolatedColor: null,
+        },
+        {
+          metallic: 0,
+        },
+        {
+          metallicMap: null,
+        },
+        {
+          roughness: 1,
+        },
+        {
+          roughnessMap: null,
+        },
+        {
+          opacity: null,
+        },
+      ],
+      source: 'build/sceneform_sdk/default_materials/fbx_material.sfm',
+    },
+    {
+      name: 'mat_3-texture000.jpg',
+      parameters: [
+        {
+          baseColor: [
+            1,
+            1,
+            1,
+            1,
+          ],
+        },
+        {
+          baseColorMap: 'texture000',
+        },
+        {
+          normalMap: null,
+        },
+        {
+          interpolatedColor: null,
+        },
+        {
+          metallic: 0,
+        },
+        {
+          metallicMap: null,
+        },
+        {
+          roughness: 1,
+        },
+        {
+          roughnessMap: null,
+        },
+        {
+          opacity: null,
+        },
+      ],
+      source: 'build/sceneform_sdk/default_materials/fbx_material.sfm',
+    },
+    {
+      name: 'mat_4-texture004.jpg',
+      parameters: [
+        {
+          baseColor: [
+            1,
+            1,
+            1,
+            1,
+          ],
+        },
+        {
+          baseColorMap: 'texture004',
+        },
+        {
+          normalMap: null,
+        },
+        {
+          interpolatedColor: null,
+        },
+        {
+          metallic: 0,
+        },
+        {
+          metallicMap: null,
+        },
+        {
+          roughness: 1,
+        },
+        {
+          roughnessMap: null,
+        },
+        {
+          opacity: null,
+        },
+      ],
+      source: 'build/sceneform_sdk/default_materials/fbx_material.sfm',
+    },
+  ],
+  model: {
+    attributes: [
+      'Position',
+      'TexCoord',
+      'Orientation',
+      'BoneIndices',
+      'BoneWeights',
+    ],
+    collision: {},
+    file: 'sampledata/samples/dalmata14.fbx',
+    name: 'dalmata14',
+    recenter: 'root',
+  },
+  samplers: [
+    {
+      file: 'sampledata/samples\\dalmata14.fbm\\texture002.jpg',
+      name: 'texture002',
+      pipeline_name: 'dalmata14.fbm\\texture002.jpg',
+    },
+    {
+      file: 'sampledata/samples\\dalmata14.fbm\\texture001.jpg',
+      name: 'texture001',
+      pipeline_name: 'dalmata14.fbm\\texture001.jpg',
+    },
+    {
+      file: 'sampledata/samples\\dalmata14.fbm\\texture000.jpg',
+      name: 'texture000',
+      pipeline_name: 'dalmata14.fbm\\texture000.jpg',
+    },
+    {
+      file: 'sampledata/samples\\dalmata14.fbm\\texture004.jpg',
+      name: 'texture004',
+      pipeline_name: 'dalmata14.fbm\\texture004.jpg',
+    },
+  ],
+  version: '0.54:2',
+}

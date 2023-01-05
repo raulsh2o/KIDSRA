@@ -405,7 +405,7 @@ public class dActivity extends AppCompatActivity {
                 });
         //CARGA PERRO
         ModelRenderable.builder()
-                .setSource(this, R.raw.dalmata)
+                .setSource(this, R.raw.dalmata14)
                 .build()
                 .thenAccept(renderable -> perro = renderable)
                 .exceptionally(throwable -> {

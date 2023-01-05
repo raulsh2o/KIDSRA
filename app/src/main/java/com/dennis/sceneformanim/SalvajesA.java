@@ -346,7 +346,7 @@ public class SalvajesA extends AppCompatActivity {
         hipopotamo1show.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                Status1 = 1;
+                Status1 = 7;
                 if (currentSelectedAnchorNode != null) {
 
                     Session session = arFragment.getArSceneView().getSession();
