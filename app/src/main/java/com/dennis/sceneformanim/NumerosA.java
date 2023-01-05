@@ -45,7 +45,7 @@ public class NumerosA extends AppCompatActivity {
     private ModelAnimator animator;
     private int nextAnimation;
     private FloatingActionButton btn_anim;
-    private ModelRenderable tigre, punto, cocodrilo, elefante, jirafa, mono, hipopotamo, leon, serpiente, cero, uno, dos, tres, cuatro;
+    private ModelRenderable tigre, punto, cero, uno, dos, tres, cuatro;
     private TransformableNode transformableNode;
 
     private int clickNo = 0;
@@ -54,7 +54,7 @@ public class NumerosA extends AppCompatActivity {
     private String choose = "";
 
     //DECLARAR AUDIOS
-    MediaPlayer audioMonkey, audioLion, audioTiger, audioElephant, audioSerpent,audioJirafa, audioHipopo, audioCocodrile, audioi, audiogMonkey, audiogLion, audiogTiger, audiogElephant, audiogSerpent,audiogJirafa, audiogHipopo, audiogCocodrile, audio0, audio1, audio2, audio3, audio4,audio5,audio6,audio7,audio8,audio9,audio10;
+    MediaPlayer  audioi, audio0, audio1, audio2, audio3, audio4,audio5,audio6,audio7,audio8,audio9,audio10;
 
     //*************************************************************
     private List<AnchorNode> anchorNodeList = new ArrayList<>();
@@ -225,7 +225,7 @@ public class NumerosA extends AppCompatActivity {
             }
         });
 
-        //ESCUCHA BOTON SI MONO ES PULSADO
+        //ESCUCHA BOTON SI CERO ES PULSADO
         Ncero.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
@@ -241,7 +241,7 @@ public class NumerosA extends AppCompatActivity {
                 }
             }
         });
-        //ESCUCHA BOTON SI TIGRE ES PULSADO
+        //ESCUCHA BOTON SI UNO ES PULSADO
         Nuno.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
@@ -257,7 +257,7 @@ public class NumerosA extends AppCompatActivity {
                 }
             }
         });
-        //ESCUCHA BOTON SI TIGRE ES PULSADO
+        //ESCUCHA BOTON SI DOS ES PULSADO
         Ndos.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
@@ -273,7 +273,7 @@ public class NumerosA extends AppCompatActivity {
                 }
             }
         });
-        //ESCUCHA BOTON SI ELEFANTE ES PULSADO
+        //ESCUCHA BOTON SI TRES ES PULSADO
         Ntres.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
@@ -289,7 +289,7 @@ public class NumerosA extends AppCompatActivity {
                 }
             }
         });
-        //ESCUCHA BOTON SI JIRAFA ES PULSADO
+        //ESCUCHA BOTON SI CUATRO ES PULSADO
         Ncuatro.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
@@ -305,40 +305,6 @@ public class NumerosA extends AppCompatActivity {
                 }
             }
         });
-        //ESCUCHA BOTON SI JIRAFA ES PULSADO
-        Ncinco.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-                Status1 = 6;
-                if (currentSelectedAnchorNode != null) {
-
-                    Session session = arFragment.getArSceneView().getSession();
-                    Anchor currentAnchor = currentSelectedAnchorNode.getAnchor();
-                    Pose oldPose = currentAnchor.getPose();
-                    Pose newPose = oldPose.compose(Pose.makeTranslation(0,0.05f,0));
-                    currentSelectedAnchorNode = moveRenderable(currentSelectedAnchorNode, newPose);
-
-                }
-            }
-        });
-        //ESCUCHA BOTON SI COCODRILO ES PULSADO
-        Nsiete.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-                Status1 = 8;
-                if (currentSelectedAnchorNode != null) {
-
-                    Session session = arFragment.getArSceneView().getSession();
-                    Anchor currentAnchor = currentSelectedAnchorNode.getAnchor();
-                    Pose oldPose = currentAnchor.getPose();
-                    Pose newPose = oldPose.compose(Pose.makeTranslation(0,0.05f,0));
-                    currentSelectedAnchorNode = moveRenderable(currentSelectedAnchorNode, newPose);
-
-                }
-            }
-        });
-
-
 
     }
 
@@ -398,52 +364,6 @@ public class NumerosA extends AppCompatActivity {
                     return null;
                 });
 
-        //CARGA COCODRILO
-        ModelRenderable.builder()
-                .setSource(this, R.raw.cocodrilo5)
-                .build()
-                .thenAccept(renderable -> cocodrilo = renderable)
-                .exceptionally(throwable -> {
-                    Toast.makeText(this, ""+throwable.getMessage(), Toast.LENGTH_SHORT).show();
-                    return null;
-                });
-
-        //CARGA ELEFANTE
-        ModelRenderable.builder()
-                .setSource(this, R.raw.elefantefbx40)
-                .build()
-                .thenAccept(renderable -> elefante = renderable)
-                .exceptionally(throwable -> {
-                    Toast.makeText(this, ""+throwable.getMessage(), Toast.LENGTH_SHORT).show();
-                    return null;
-                });
-        //CARGA JIRAFA
-        ModelRenderable.builder()
-                .setSource(this, R.raw.girafafbx17)
-                .build()
-                .thenAccept(renderable -> jirafa = renderable)
-                .exceptionally(throwable -> {
-                    Toast.makeText(this, ""+throwable.getMessage(), Toast.LENGTH_SHORT).show();
-                    return null;
-                });
-        //CARGA MONO
-        ModelRenderable.builder()
-                .setSource(this, R.raw.mono)
-                .build()
-                .thenAccept(renderable -> mono = renderable)
-                .exceptionally(throwable -> {
-                    Toast.makeText(this, ""+throwable.getMessage(), Toast.LENGTH_SHORT).show();
-                    return null;
-                });
-        //CARGA HIPOPOTAMO
-        ModelRenderable.builder()
-                .setSource(this, R.raw.hipo17)
-                .build()
-                .thenAccept(renderable -> hipopotamo = renderable)
-                .exceptionally(throwable -> {
-                    Toast.makeText(this, ""+throwable.getMessage(), Toast.LENGTH_SHORT).show();
-                    return null;
-                });
         //CARGA CERO
         ModelRenderable.builder()
                 .setSource(this, R.raw.manocero7)
