@@ -45,7 +45,7 @@ public class FrutasA extends AppCompatActivity {
     private ModelAnimator animator;
     private int nextAnimation;
     private FloatingActionButton btn_anim;
-    private ModelRenderable tigre, punto, cocodrilo, elefante, jirafa, mono, hipopotamo, leon, serpiente, manzana, uva, melon, pera, pina;
+    private ModelRenderable tigre, punto, manzana, uva, melon, pera, pina;
     private TransformableNode transformableNode;
 
     private int clickNo = 0;
@@ -54,7 +54,7 @@ public class FrutasA extends AppCompatActivity {
     private String choose = "";
 
     //DECLARAR AUDIOS
-    MediaPlayer audioMonkey, audioLion, audioTiger, audioElephant, audioSerpent,audioJirafa, audioHipopo, audioCocodrile, audioi, audiogMonkey, audiogLion, audiogTiger, audiogElephant, audiogSerpent,audiogJirafa, audiogHipopo, audiogCocodrile, audiomanzana, audiopera, audiobanana, audiouva, audiosandia, audiomelon, audiopina;
+    MediaPlayer  audioi, audiomanzana, audiopera, audiobanana, audiouva, audiosandia, audiomelon, audiopina;
 
     //*************************************************************
     private List<AnchorNode> anchorNodeList = new ArrayList<>();
@@ -75,14 +75,6 @@ public class FrutasA extends AppCompatActivity {
         ImageButton informacion = (ImageButton) findViewById(R.id.id_informacion);
 
         //INICIALIZA AUDIOS
-        audioMonkey = MediaPlayer.create(this,R.raw.samono);
-        audioLion = MediaPlayer.create(this,R.raw.saleon);
-        audioTiger = MediaPlayer.create(this,R.raw.satigre);
-        audioElephant = MediaPlayer.create(this,R.raw.saelefante);
-        audioSerpent = MediaPlayer.create(this,R.raw.saserpiente);
-        audioJirafa = MediaPlayer.create(this,R.raw.sajirafa);
-        audioHipopo = MediaPlayer.create(this,R.raw.sahipopotamo);
-        audioCocodrile = MediaPlayer.create(this,R.raw.sacocodrilo);
 
         audiomanzana = MediaPlayer.create(this,R.raw.famanzana);
         audiopera = MediaPlayer.create(this,R.raw.fapera);
@@ -91,16 +83,8 @@ public class FrutasA extends AppCompatActivity {
         audiosandia = MediaPlayer.create(this,R.raw.fasandia);
         audiomelon = MediaPlayer.create(this,R.raw.famelon);
         audiopina = MediaPlayer.create(this,R.raw.fapina);
-        //INICIALIZA RUGIDOS
-        audiogMonkey = MediaPlayer.create(this,R.raw.sgmono);
-        audiogLion = MediaPlayer.create(this,R.raw.sgleon);
-        audiogTiger = MediaPlayer.create(this,R.raw.sgtigre);
-        audiogElephant = MediaPlayer.create(this,R.raw.sgelefante);
-        audiogSerpent = MediaPlayer.create(this,R.raw.sgserpiente);
-        audiogJirafa = MediaPlayer.create(this,R.raw.sgjirafa);
-        audiogHipopo = MediaPlayer.create(this,R.raw.sghipopotamo);
-        audiogCocodrile = MediaPlayer.create(this,R.raw.sgcocodrilo);
         audioi = MediaPlayer.create(this,R.raw.naintro);
+
         //REPRODUCIR AUDIO DE INTRO
         audioi.start();
         choose = "audioi";
@@ -184,39 +168,34 @@ public class FrutasA extends AppCompatActivity {
             public void onClick(View view) {
                 if(animator == null || !animator.isRunning())
                 {
-                    if (choose == "tigre"){
-                        AnimationData data = tigre.getAnimationData(nextAnimation);
-                        nextAnimation = (nextAnimation+1)%tigre.getAnimationDataCount();
-                        animator = new ModelAnimator(data,tigre);
+                    if (choose == "pera"){
+                        AnimationData data = pera.getAnimationData(nextAnimation);
+                        nextAnimation = (nextAnimation+1)%pera.getAnimationDataCount();
+                        animator = new ModelAnimator(data,pera);
                         animator.start();
-                    }else if (choose == "cocodrilo"){
-                        AnimationData data = cocodrilo.getAnimationData(nextAnimation);
-                        nextAnimation = (nextAnimation+1)%cocodrilo.getAnimationDataCount();
-                        animator = new ModelAnimator(data,cocodrilo);
-                        animator.start();
-                    }else if (choose == "elefante"){
-                        AnimationData data = elefante.getAnimationData(nextAnimation);
-                        nextAnimation = (nextAnimation+1)%elefante.getAnimationDataCount();
-                        animator = new ModelAnimator(data,elefante);
-                        animator.start();
-                    }else if (choose == "jirafa"){
-                        AnimationData data = jirafa.getAnimationData(nextAnimation);
-                        nextAnimation = (nextAnimation+1)%jirafa.getAnimationDataCount();
-                        animator = new ModelAnimator(data,jirafa);
-                        animator.start();
-                    }
-                    else if (choose == "mono"){
+                    }else if (choose == "manzana"){
                         AnimationData data = manzana.getAnimationData(nextAnimation);
                         nextAnimation = (nextAnimation+1)%manzana.getAnimationDataCount();
                         animator = new ModelAnimator(data,manzana);
                         animator.start();
-                    }
-                    else if (choose == "hipopotamo"){
-                        AnimationData data = hipopotamo.getAnimationData(nextAnimation);
-                        nextAnimation = (nextAnimation+1)%hipopotamo.getAnimationDataCount();
-                        animator = new ModelAnimator(data,hipopotamo);
+                    }else if (choose == "uva"){
+                        AnimationData data = uva.getAnimationData(nextAnimation);
+                        nextAnimation = (nextAnimation+1)%uva.getAnimationDataCount();
+                        animator = new ModelAnimator(data,uva);
+                        animator.start();
+                    }else if (choose == "melon"){
+                        AnimationData data = melon.getAnimationData(nextAnimation);
+                        nextAnimation = (nextAnimation+1)%melon.getAnimationDataCount();
+                        animator = new ModelAnimator(data,melon);
                         animator.start();
                     }
+                    else if (choose == "pina"){
+                        AnimationData data = pina.getAnimationData(nextAnimation);
+                        nextAnimation = (nextAnimation+1)%pina.getAnimationDataCount();
+                        animator = new ModelAnimator(data,pina);
+                        animator.start();
+                    }
+
 
                 }
             }
@@ -322,6 +301,38 @@ public class FrutasA extends AppCompatActivity {
                 }
             }
         });
+        //ESCUCHA BOTON SI MELON ES PULSADO
+        Melon.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                Status1 = 6;
+                if (currentSelectedAnchorNode != null) {
+
+                    Session session = arFragment.getArSceneView().getSession();
+                    Anchor currentAnchor = currentSelectedAnchorNode.getAnchor();
+                    Pose oldPose = currentAnchor.getPose();
+                    Pose newPose = oldPose.compose(Pose.makeTranslation(0,0.05f,0));
+                    currentSelectedAnchorNode = moveRenderable(currentSelectedAnchorNode, newPose);
+
+                }
+            }
+        });
+        //ESCUCHA BOTON SI PIÑA ES PULSADO
+        Pina.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                Status1 = 7;
+                if (currentSelectedAnchorNode != null) {
+
+                    Session session = arFragment.getArSceneView().getSession();
+                    Anchor currentAnchor = currentSelectedAnchorNode.getAnchor();
+                    Pose oldPose = currentAnchor.getPose();
+                    Pose newPose = oldPose.compose(Pose.makeTranslation(0,0.05f,0));
+                    currentSelectedAnchorNode = moveRenderable(currentSelectedAnchorNode, newPose);
+
+                }
+            }
+        });
 
 
     }
@@ -369,53 +380,6 @@ public class FrutasA extends AppCompatActivity {
                 .setSource(this, R.raw.point13)
                 .build()
                 .thenAccept(renderable -> punto = renderable)
-                .exceptionally(throwable -> {
-                    Toast.makeText(this, ""+throwable.getMessage(), Toast.LENGTH_SHORT).show();
-                    return null;
-                });
-
-        //CARGA COCODRILO
-        ModelRenderable.builder()
-                .setSource(this, R.raw.cocodrilo5)
-                .build()
-                .thenAccept(renderable -> cocodrilo = renderable)
-                .exceptionally(throwable -> {
-                    Toast.makeText(this, ""+throwable.getMessage(), Toast.LENGTH_SHORT).show();
-                    return null;
-                });
-
-        //CARGA ELEFANTE
-        ModelRenderable.builder()
-                .setSource(this, R.raw.elefantefbx40)
-                .build()
-                .thenAccept(renderable -> elefante = renderable)
-                .exceptionally(throwable -> {
-                    Toast.makeText(this, ""+throwable.getMessage(), Toast.LENGTH_SHORT).show();
-                    return null;
-                });
-        //CARGA JIRAFA
-        ModelRenderable.builder()
-                .setSource(this, R.raw.girafafbx17)
-                .build()
-                .thenAccept(renderable -> jirafa = renderable)
-                .exceptionally(throwable -> {
-                    Toast.makeText(this, ""+throwable.getMessage(), Toast.LENGTH_SHORT).show();
-                    return null;
-                });
-        //CARGA MONO
-        ModelRenderable.builder()
-                .setSource(this, R.raw.mono)
-                .build()
-                .thenAccept(renderable -> mono = renderable)
-                .exceptionally(throwable -> {
-                    Toast.makeText(this, ""+throwable.getMessage(), Toast.LENGTH_SHORT).show();
-                    return null;
-                });
-        //CARGA HIPOPOTAMO
-        ModelRenderable.builder()
-                .setSource(this, R.raw.hipo17)
-                .build()
-                .thenAccept(renderable -> hipopotamo = renderable)
                 .exceptionally(throwable -> {
                     Toast.makeText(this, ""+throwable.getMessage(), Toast.LENGTH_SHORT).show();
                     return null;
