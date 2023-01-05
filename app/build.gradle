@@ -42,7 +42,7 @@ dependencies {
     implementation 'com.android.support:design:29.0.0'
 }
 
-        sceneform.asset('sampledata/samples/manocero7.fbx',
+        sceneform.asset('sampledata/samples/manocuatro1.fbx',
                 'default',                    // 'Material Path' specified during import.
-                'sampledata/samples/manocero7.sfa',
-                'src/main/res/raw/manocero7')      // 'location you want to store the generated .sfb file'
+                'sampledata/samples/manocuatro1.sfa',
+                'src/main/res/raw/manocuatro1')      // 'location you want to store the generated .sfb file'

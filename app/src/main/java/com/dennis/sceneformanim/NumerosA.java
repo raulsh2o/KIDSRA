@@ -45,7 +45,7 @@ public class NumerosA extends AppCompatActivity {
     private ModelAnimator animator;
     private int nextAnimation;
     private FloatingActionButton btn_anim;
-    private ModelRenderable tigre, punto, cocodrilo, elefante, jirafa, mono, hipopotamo, leon, serpiente;
+    private ModelRenderable tigre, punto, cocodrilo, elefante, jirafa, mono, hipopotamo, leon, serpiente, cero, uno, dos, tres, cuatro;
     private TransformableNode transformableNode;
 
     private int clickNo = 0;
@@ -54,7 +54,7 @@ public class NumerosA extends AppCompatActivity {
     private String choose = "";
 
     //DECLARAR AUDIOS
-    MediaPlayer audioMonkey, audioLion, audioTiger, audioElephant, audioSerpent,audioJirafa, audioHipopo, audioCocodrile, audioi, audiogMonkey, audiogLion, audiogTiger, audiogElephant, audiogSerpent,audiogJirafa, audiogHipopo, audiogCocodrile;
+    MediaPlayer audioMonkey, audioLion, audioTiger, audioElephant, audioSerpent,audioJirafa, audioHipopo, audioCocodrile, audioi, audiogMonkey, audiogLion, audiogTiger, audiogElephant, audiogSerpent,audiogJirafa, audiogHipopo, audiogCocodrile, audio0, audio1, audio2, audio3, audio4,audio5,audio6,audio7,audio8,audio9,audio10;
 
     //*************************************************************
     private List<AnchorNode> anchorNodeList = new ArrayList<>();
@@ -65,14 +65,17 @@ public class NumerosA extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_numeros);
         // DECLARA BOTONES DE CAMBIO DE OBJETO
-        Button mono1show = (Button) findViewById(R.id.id_Mono1);
-        Button leon1show = (Button) findViewById(R.id.id_leon1);
-        Button tigre1show = (Button) findViewById(R.id.id_tigre1);
-        Button elefante1show = (Button) findViewById(R.id.id_elefante1);
-        Button serpiente1show = (Button) findViewById(R.id.id_serpiente1);
-        Button jirafa1show = (Button) findViewById(R.id.id_jirafa1);
-        Button hipopotamo1show = (Button) findViewById(R.id.id_hipopotamo1);
-        Button cocodrilo1show = (Button) findViewById(R.id.id_cocodrilo1);
+        Button Ncero = (Button) findViewById(R.id.id_cero);
+        Button Nuno = (Button) findViewById(R.id.id_uno);
+        Button Ndos = (Button) findViewById(R.id.id_dos);
+        Button Ntres = (Button) findViewById(R.id.id_tres);
+        Button Ncuatro = (Button) findViewById(R.id.id_cuatro);
+        Button Ncinco = (Button) findViewById(R.id.id_cinco);
+        Button Nseis = (Button) findViewById(R.id.id_seis);
+        Button Nsiete = (Button) findViewById(R.id.id_siete);
+        Button Nocho = (Button) findViewById(R.id.id_ocho);
+        Button Nnueve = (Button) findViewById(R.id.id_nueve);
+        Button Ndiez = (Button) findViewById(R.id.id_diez);
         ImageButton informacion = (ImageButton) findViewById(R.id.id_informacion);
 
         //INICIALIZA AUDIOS
@@ -84,6 +87,19 @@ public class NumerosA extends AppCompatActivity {
         audioJirafa = MediaPlayer.create(this,R.raw.sajirafa);
         audioHipopo = MediaPlayer.create(this,R.raw.sahipopotamo);
         audioCocodrile = MediaPlayer.create(this,R.raw.sacocodrilo);
+
+        audio0 = MediaPlayer.create(this,R.raw.nacero);
+        audio1 = MediaPlayer.create(this,R.raw.nauno);
+        audio2 = MediaPlayer.create(this,R.raw.nados);
+        audio3 = MediaPlayer.create(this,R.raw.natres);
+        audio4 = MediaPlayer.create(this,R.raw.nacuatro);
+        audio5 = MediaPlayer.create(this,R.raw.nacinco);
+        audio6 = MediaPlayer.create(this,R.raw.naseis);
+        audio7 = MediaPlayer.create(this,R.raw.nasiete);
+        audio8 = MediaPlayer.create(this,R.raw.naocho);
+        audio9 = MediaPlayer.create(this,R.raw.nanueve);
+        audio10 = MediaPlayer.create(this,R.raw.nadiez);
+
         //INICIALIZA RUGIDOS
         audiogMonkey = MediaPlayer.create(this,R.raw.sgmono);
         audiogLion = MediaPlayer.create(this,R.raw.sgleon);
@@ -199,15 +215,39 @@ public class NumerosA extends AppCompatActivity {
                         animator.start();
                     }
                     else if (choose == "mono"){
-                        AnimationData data = mono.getAnimationData(nextAnimation);
-                        nextAnimation = (nextAnimation+1)%mono.getAnimationDataCount();
-                        animator = new ModelAnimator(data,mono);
+                        AnimationData data = cero.getAnimationData(nextAnimation);
+                        nextAnimation = (nextAnimation+1)%cero.getAnimationDataCount();
+                        animator = new ModelAnimator(data,cero);
                         animator.start();
                     }
                     else if (choose == "hipopotamo"){
                         AnimationData data = hipopotamo.getAnimationData(nextAnimation);
                         nextAnimation = (nextAnimation+1)%hipopotamo.getAnimationDataCount();
                         animator = new ModelAnimator(data,hipopotamo);
+                        animator.start();
+                    }
+                    else if (choose == "cero"){
+                        AnimationData data = cero.getAnimationData(nextAnimation);
+                        nextAnimation = (nextAnimation+1)%cero.getAnimationDataCount();
+                        animator = new ModelAnimator(data,cero);
+                        animator.start();
+                    }
+                    else if (choose == "uno"){
+                        AnimationData data = cero.getAnimationData(nextAnimation);
+                        nextAnimation = (nextAnimation+1)%cero.getAnimationDataCount();
+                        animator = new ModelAnimator(data,cero);
+                        animator.start();
+                    }
+                    else if (choose == "dos"){
+                        AnimationData data = cero.getAnimationData(nextAnimation);
+                        nextAnimation = (nextAnimation+1)%cero.getAnimationDataCount();
+                        animator = new ModelAnimator(data,cero);
+                        animator.start();
+                    }
+                    else if (choose == "tres"){
+                        AnimationData data = cero.getAnimationData(nextAnimation);
+                        nextAnimation = (nextAnimation+1)%cero.getAnimationDataCount();
+                        animator = new ModelAnimator(data,cero);
                         animator.start();
                     }
 
@@ -262,11 +302,43 @@ public class NumerosA extends AppCompatActivity {
             }
         });
 
-        //ESCUCHA BOTON SI COCODRILO ES PULSADO
-        cocodrilo1show.setOnClickListener(new View.OnClickListener() {
+        //ESCUCHA BOTON SI MONO ES PULSADO
+        Ncero.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                Status1 = 8;
+                Status1 = 1;
+                if (currentSelectedAnchorNode != null) {
+
+                    Session session = arFragment.getArSceneView().getSession();
+                    Anchor currentAnchor = currentSelectedAnchorNode.getAnchor();
+                    Pose oldPose = currentAnchor.getPose();
+                    Pose newPose = oldPose.compose(Pose.makeTranslation(0,0.05f,0));
+                    currentSelectedAnchorNode = moveRenderable(currentSelectedAnchorNode, newPose);
+
+                }
+            }
+        });
+        //ESCUCHA BOTON SI TIGRE ES PULSADO
+        Nuno.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                Status1 = 2;
+                if (currentSelectedAnchorNode != null) {
+
+                    Session session = arFragment.getArSceneView().getSession();
+                    Anchor currentAnchor = currentSelectedAnchorNode.getAnchor();
+                    Pose oldPose = currentAnchor.getPose();
+                    Pose newPose = oldPose.compose(Pose.makeTranslation(0,0.05f,0));
+                    currentSelectedAnchorNode = moveRenderable(currentSelectedAnchorNode, newPose);
+
+                }
+            }
+        });
+        //ESCUCHA BOTON SI TIGRE ES PULSADO
+        Ndos.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                Status1 = 3;
                 if (currentSelectedAnchorNode != null) {
 
                     Session session = arFragment.getArSceneView().getSession();
@@ -279,7 +351,7 @@ public class NumerosA extends AppCompatActivity {
             }
         });
         //ESCUCHA BOTON SI ELEFANTE ES PULSADO
-        elefante1show.setOnClickListener(new View.OnClickListener() {
+        Ntres.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
                 Status1 = 4;
@@ -295,7 +367,23 @@ public class NumerosA extends AppCompatActivity {
             }
         });
         //ESCUCHA BOTON SI JIRAFA ES PULSADO
-        jirafa1show.setOnClickListener(new View.OnClickListener() {
+        Ncuatro.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                Status1 = 5;
+                if (currentSelectedAnchorNode != null) {
+
+                    Session session = arFragment.getArSceneView().getSession();
+                    Anchor currentAnchor = currentSelectedAnchorNode.getAnchor();
+                    Pose oldPose = currentAnchor.getPose();
+                    Pose newPose = oldPose.compose(Pose.makeTranslation(0,0.05f,0));
+                    currentSelectedAnchorNode = moveRenderable(currentSelectedAnchorNode, newPose);
+
+                }
+            }
+        });
+        //ESCUCHA BOTON SI JIRAFA ES PULSADO
+        Ncinco.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
                 Status1 = 6;
@@ -310,11 +398,11 @@ public class NumerosA extends AppCompatActivity {
                 }
             }
         });
-        //ESCUCHA BOTON SI TIGRE ES PULSADO
-        tigre1show.setOnClickListener(new View.OnClickListener() {
+        //ESCUCHA BOTON SI COCODRILO ES PULSADO
+        Nsiete.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                Status1 = 3;
+                Status1 = 8;
                 if (currentSelectedAnchorNode != null) {
 
                     Session session = arFragment.getArSceneView().getSession();
@@ -326,38 +414,8 @@ public class NumerosA extends AppCompatActivity {
                 }
             }
         });
-        //ESCUCHA BOTON SI MONO ES PULSADO
-        mono1show.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-                Status1 = 1;
-                if (currentSelectedAnchorNode != null) {
 
-                    Session session = arFragment.getArSceneView().getSession();
-                    Anchor currentAnchor = currentSelectedAnchorNode.getAnchor();
-                    Pose oldPose = currentAnchor.getPose();
-                    Pose newPose = oldPose.compose(Pose.makeTranslation(0,0.05f,0));
-                    currentSelectedAnchorNode = moveRenderable(currentSelectedAnchorNode, newPose);
 
-                }
-            }
-        });
-        //ESCUCHA BOTON SI HIPOPOTAMO ES PULSADO
-        hipopotamo1show.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-                Status1 = 1;
-                if (currentSelectedAnchorNode != null) {
-
-                    Session session = arFragment.getArSceneView().getSession();
-                    Anchor currentAnchor = currentSelectedAnchorNode.getAnchor();
-                    Pose oldPose = currentAnchor.getPose();
-                    Pose newPose = oldPose.compose(Pose.makeTranslation(0,0.05f,0));
-                    currentSelectedAnchorNode = moveRenderable(currentSelectedAnchorNode, newPose);
-
-                }
-            }
-        });
 
     }
 
@@ -473,7 +531,55 @@ public class NumerosA extends AppCompatActivity {
                     Toast.makeText(this, ""+throwable.getMessage(), Toast.LENGTH_SHORT).show();
                     return null;
                 });
+        //CARGA CERO
+        ModelRenderable.builder()
+                .setSource(this, R.raw.manocero7)
+                .build()
+                .thenAccept(renderable -> cero = renderable)
+                .exceptionally(throwable -> {
+                    Toast.makeText(this, ""+throwable.getMessage(), Toast.LENGTH_SHORT).show();
+                    return null;
+                });
 
+        //CARGA UNO
+        ModelRenderable.builder()
+                .setSource(this, R.raw.manouno5)
+                .build()
+                .thenAccept(renderable -> uno = renderable)
+                .exceptionally(throwable -> {
+                    Toast.makeText(this, ""+throwable.getMessage(), Toast.LENGTH_SHORT).show();
+                    return null;
+                });
+
+        //CARGA DOS
+        ModelRenderable.builder()
+                .setSource(this, R.raw.manodos5)
+                .build()
+                .thenAccept(renderable -> dos = renderable)
+                .exceptionally(throwable -> {
+                    Toast.makeText(this, ""+throwable.getMessage(), Toast.LENGTH_SHORT).show();
+                    return null;
+                });
+
+        //CARGA TRES
+        ModelRenderable.builder()
+                .setSource(this, R.raw.manotres3)
+                .build()
+                .thenAccept(renderable -> tres = renderable)
+                .exceptionally(throwable -> {
+                    Toast.makeText(this, ""+throwable.getMessage(), Toast.LENGTH_SHORT).show();
+                    return null;
+                });
+
+        //CARGA CUATRO
+        ModelRenderable.builder()
+                .setSource(this, R.raw.manocuatro1)
+                .build()
+                .thenAccept(renderable -> cuatro = renderable)
+                .exceptionally(throwable -> {
+                    Toast.makeText(this, ""+throwable.getMessage(), Toast.LENGTH_SHORT).show();
+                    return null;
+                });
     }
 
     private AnchorNode moveRenderable(AnchorNode markAnchorNodeToMove, Pose newPoseToMoveTo) {
@@ -498,35 +604,35 @@ public class NumerosA extends AppCompatActivity {
             case 1:
                 stopSound(choose);
                 choose = "mono";
-                andy.setRenderable(mono);
+                andy.setRenderable(cero);
                 audiogMonkey.start();
                 information = "El mono es proveniente de la familia de los primates, usas sus extremidades para cazar, comer o hacer otras acciones diferentes.";
                 break;
             case 2:
                 stopSound(choose);
                 choose = "leon";
-                //andy.setRenderable(lion1);
+                andy.setRenderable(uno);
                 audiogLion.start();
                 information = "El león es el rey de la selva, es salvaje, fuerte, grande y tiene dientes muy grandes.";
                 break;
             case 3:
                 stopSound(choose);
                 choose = "tigre";
-                andy.setRenderable(tigre);
+                andy.setRenderable(dos);
                 audiogTiger.start();
                 information = "El tigre es un animal grande, corren muy rápido, son solitarios y cazadores.";
                 break;
             case 4:
                 stopSound(choose);
                 choose = "elefante";
-                andy.setRenderable(elefante);
+                andy.setRenderable(tres);
                 audiogElephant.start();
                 information = "El elefante es el animal terrestre más grande, tiene orejas grandes y su trompa muy larga, tienen ojos pequeños.";
                 break;
             case 5:
                 stopSound(choose);
                 choose = "serpiente";
-                //andy.setRenderable(serpiente01);
+                andy.setRenderable(cuatro);
                 audiogSerpent.start();
                 information = "\n" +
                         "La serpiente es un animal que se arrastra por el suelo, no tiene patas, vota veneno por su boca, su cuerpo es muy largo.";
