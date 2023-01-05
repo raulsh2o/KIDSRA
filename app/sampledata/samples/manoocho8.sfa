@@ -1,0 +1,74 @@
+{
+  animations: [
+    {
+      clips: [
+        {
+          name: 'uploads_files_810024_Hand|uploads_files_810024_HandAction',
+        },
+      ],
+      path: 'sampledata/samples/manoocho8.fbx',
+    },
+  ],
+  materials: [
+    {
+      name: 'Material.002',
+      parameters: [
+        {
+          baseColor: [
+            1,
+            1,
+            1,
+            1,
+          ],
+        },
+        {
+          baseColorMap: 'mano',
+        },
+        {
+          normalMap: null,
+        },
+        {
+          interpolatedColor: null,
+        },
+        {
+          metallic: 0,
+        },
+        {
+          metallicMap: null,
+        },
+        {
+          roughness: 1,
+        },
+        {
+          roughnessMap: null,
+        },
+        {
+          opacity: null,
+        },
+      ],
+      source: 'build/sceneform_sdk/default_materials/fbx_material.sfm',
+    },
+  ],
+  model: {
+    attributes: [
+      'Position',
+      'Color',
+      'TexCoord',
+      'Orientation',
+      'BoneIndices',
+      'BoneWeights',
+    ],
+    collision: {},
+    file: 'sampledata/samples/manoocho8.fbx',
+    name: 'manoocho8',
+    recenter: 'root',
+  },
+  samplers: [
+    {
+      file: 'sampledata/samples\\manoocho8.fbm\\mano.jpg',
+      name: 'mano',
+      pipeline_name: 'manoocho8.fbm\\mano.jpg',
+    },
+  ],
+  version: '0.54:2',
+}
