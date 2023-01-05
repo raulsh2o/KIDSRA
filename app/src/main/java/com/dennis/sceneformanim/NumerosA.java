@@ -79,14 +79,6 @@ public class NumerosA extends AppCompatActivity {
         ImageButton informacion = (ImageButton) findViewById(R.id.id_informacion);
 
         //INICIALIZA AUDIOS
-        audioMonkey = MediaPlayer.create(this,R.raw.samono);
-        audioLion = MediaPlayer.create(this,R.raw.saleon);
-        audioTiger = MediaPlayer.create(this,R.raw.satigre);
-        audioElephant = MediaPlayer.create(this,R.raw.saelefante);
-        audioSerpent = MediaPlayer.create(this,R.raw.saserpiente);
-        audioJirafa = MediaPlayer.create(this,R.raw.sajirafa);
-        audioHipopo = MediaPlayer.create(this,R.raw.sahipopotamo);
-        audioCocodrile = MediaPlayer.create(this,R.raw.sacocodrilo);
 
         audio0 = MediaPlayer.create(this,R.raw.nacero);
         audio1 = MediaPlayer.create(this,R.raw.nauno);
@@ -99,17 +91,8 @@ public class NumerosA extends AppCompatActivity {
         audio8 = MediaPlayer.create(this,R.raw.naocho);
         audio9 = MediaPlayer.create(this,R.raw.nanueve);
         audio10 = MediaPlayer.create(this,R.raw.nadiez);
-
-        //INICIALIZA RUGIDOS
-        audiogMonkey = MediaPlayer.create(this,R.raw.sgmono);
-        audiogLion = MediaPlayer.create(this,R.raw.sgleon);
-        audiogTiger = MediaPlayer.create(this,R.raw.sgtigre);
-        audiogElephant = MediaPlayer.create(this,R.raw.sgelefante);
-        audiogSerpent = MediaPlayer.create(this,R.raw.sgserpiente);
-        audiogJirafa = MediaPlayer.create(this,R.raw.sgjirafa);
-        audiogHipopo = MediaPlayer.create(this,R.raw.sghipopotamo);
-        audiogCocodrile = MediaPlayer.create(this,R.raw.sgcocodrilo);
         audioi = MediaPlayer.create(this,R.raw.naintro);
+
         //REPRODUCIR AUDIO DE INTRO
         audioi.start();
         choose = "audioi";
@@ -193,61 +176,34 @@ public class NumerosA extends AppCompatActivity {
             public void onClick(View view) {
                 if(animator == null || !animator.isRunning())
                 {
-                    if (choose == "tigre"){
-                        AnimationData data = tigre.getAnimationData(nextAnimation);
-                        nextAnimation = (nextAnimation+1)%tigre.getAnimationDataCount();
-                        animator = new ModelAnimator(data,tigre);
-                        animator.start();
-                    }else if (choose == "cocodrilo"){
-                        AnimationData data = cocodrilo.getAnimationData(nextAnimation);
-                        nextAnimation = (nextAnimation+1)%cocodrilo.getAnimationDataCount();
-                        animator = new ModelAnimator(data,cocodrilo);
-                        animator.start();
-                    }else if (choose == "elefante"){
-                        AnimationData data = elefante.getAnimationData(nextAnimation);
-                        nextAnimation = (nextAnimation+1)%elefante.getAnimationDataCount();
-                        animator = new ModelAnimator(data,elefante);
-                        animator.start();
-                    }else if (choose == "jirafa"){
-                        AnimationData data = jirafa.getAnimationData(nextAnimation);
-                        nextAnimation = (nextAnimation+1)%jirafa.getAnimationDataCount();
-                        animator = new ModelAnimator(data,jirafa);
-                        animator.start();
-                    }
-                    else if (choose == "mono"){
-                        AnimationData data = cero.getAnimationData(nextAnimation);
-                        nextAnimation = (nextAnimation+1)%cero.getAnimationDataCount();
-                        animator = new ModelAnimator(data,cero);
-                        animator.start();
-                    }
-                    else if (choose == "hipopotamo"){
-                        AnimationData data = hipopotamo.getAnimationData(nextAnimation);
-                        nextAnimation = (nextAnimation+1)%hipopotamo.getAnimationDataCount();
-                        animator = new ModelAnimator(data,hipopotamo);
-                        animator.start();
-                    }
-                    else if (choose == "cero"){
+                    if (choose == "cero"){
                         AnimationData data = cero.getAnimationData(nextAnimation);
                         nextAnimation = (nextAnimation+1)%cero.getAnimationDataCount();
                         animator = new ModelAnimator(data,cero);
                         animator.start();
                     }
                     else if (choose == "uno"){
-                        AnimationData data = cero.getAnimationData(nextAnimation);
-                        nextAnimation = (nextAnimation+1)%cero.getAnimationDataCount();
-                        animator = new ModelAnimator(data,cero);
+                        AnimationData data = uno.getAnimationData(nextAnimation);
+                        nextAnimation = (nextAnimation+1)%uno.getAnimationDataCount();
+                        animator = new ModelAnimator(data,uno);
                         animator.start();
                     }
                     else if (choose == "dos"){
-                        AnimationData data = cero.getAnimationData(nextAnimation);
-                        nextAnimation = (nextAnimation+1)%cero.getAnimationDataCount();
-                        animator = new ModelAnimator(data,cero);
+                        AnimationData data = dos.getAnimationData(nextAnimation);
+                        nextAnimation = (nextAnimation+1)%dos.getAnimationDataCount();
+                        animator = new ModelAnimator(data,dos);
                         animator.start();
                     }
                     else if (choose == "tres"){
-                        AnimationData data = cero.getAnimationData(nextAnimation);
-                        nextAnimation = (nextAnimation+1)%cero.getAnimationDataCount();
-                        animator = new ModelAnimator(data,cero);
+                        AnimationData data = tres.getAnimationData(nextAnimation);
+                        nextAnimation = (nextAnimation+1)%tres.getAnimationDataCount();
+                        animator = new ModelAnimator(data,tres);
+                        animator.start();
+                    }
+                    else if (choose == "cuatro"){
+                        AnimationData data = cuatro.getAnimationData(nextAnimation);
+                        nextAnimation = (nextAnimation+1)%cuatro.getAnimationDataCount();
+                        animator = new ModelAnimator(data,cuatro);
                         animator.start();
                     }
 
@@ -259,39 +215,6 @@ public class NumerosA extends AppCompatActivity {
         informacion.setOnClickListener(new View.OnClickListener(){
             @Override
             public void onClick(View view){
-                if (choose == "mono"){
-                    stopSound(choose);
-                    audioMonkey.start();
-                    choose = "gmono";
-                }else if (choose == "leon"){
-                    stopSound(choose);
-                    audioLion.start();
-                    choose = "gleon";
-                }else if (choose == "tigre"){
-                    stopSound(choose);
-                    audioTiger.start();
-                    choose = "gtigre";
-                }else if (choose == "elefante"){
-                    stopSound(choose);
-                    audioElephant.start();
-                    choose = "gelefante";
-                }else if (choose == "serpiente"){
-                    stopSound(choose);
-                    audioSerpent.start();
-                    choose = "gserpiente";
-                }else if (choose == "jirafa"){
-                    stopSound(choose);
-                    audioJirafa.start();
-                    choose = "gjirafa";
-                }else if (choose == "hipopotamo"){
-                    stopSound(choose);
-                    audioHipopo.start();
-                    choose = "ghipopotamo";
-                }else if (choose == "cocodrilo"){
-                    stopSound(choose);
-                    audioCocodrile.start();
-                    choose = "gcocodrilo";
-                }
 
                 AlertDialog.Builder builder = new AlertDialog.Builder(NumerosA.this);
                 builder.setIcon(R.drawable.info).
@@ -424,38 +347,28 @@ public class NumerosA extends AppCompatActivity {
     /////////////////////////////////////////////////////////////////////////////
 
     private void stopSound(String sound){
-        if (sound == "mono"){
-            audiogMonkey.pause();
-        }else if (sound == "leon"){
-            audiogLion.pause();
-        }else if (sound == "tigre"){
-            audiogTiger.pause();
-        }else if (sound == "elefante"){
-            audiogElephant.pause();
-        }else if (sound == "serpiente"){
-            audiogSerpent.pause();
-        }else if (sound == "jirafa"){
-            audiogJirafa.pause();
-        }else if (sound == "hipopotamo"){
-            audiogHipopo.pause();
-        }else if (sound == "cocodrilo"){
-            audiogCocodrile.pause();
-        }else if (sound == "gmono"){
-            audioMonkey.pause();
-        }else if (sound == "gleon"){
-            audioLion.pause();
-        }else if (sound == "gtigre"){
-            audioTiger.pause();
-        }else if (sound == "gelefante"){
-            audioElephant.pause();
-        }else if (sound == "gserpiente"){
-            audioSerpent.pause();
-        }else if (sound == "gjirafa"){
-            audioJirafa.pause();
-        }else if (sound == "ghipopotamo"){
-            audioHipopo.pause();
-        }else if (sound == "gcocodrilo"){
-            audioCocodrile.pause();
+        if (sound == "cero"){
+            audio0.pause();
+        }else if (sound == "uno"){
+            audio1.pause();
+        }else if (sound == "dos"){
+            audio2.pause();
+        }else if (sound == "tres"){
+            audio3.pause();
+        }else if (sound == "cuatro"){
+            audio4.pause();
+        }else if (sound == "cinco"){
+            audio5.pause();
+        }else if (sound == "seis"){
+            audio6.pause();
+        }else if (sound == "siete"){
+            audio7.pause();
+        }else if (sound == "ocho"){
+            audio8.pause();
+        }else if (sound == "nueve"){
+            audio9.pause();
+        }else if (sound == "diez"){
+            audio10.pause();
         }
     }
 
@@ -603,65 +516,84 @@ public class NumerosA extends AppCompatActivity {
         {
             case 1:
                 stopSound(choose);
-                choose = "mono";
+                choose = "cero";
                 andy.setRenderable(cero);
-                audiogMonkey.start();
-                information = "El mono es proveniente de la familia de los primates, usas sus extremidades para cazar, comer o hacer otras acciones diferentes.";
+                audio0.start();
+                information = "El número cero es la rueda moscovita para pasarlo bien.";
                 break;
+
             case 2:
                 stopSound(choose);
-                choose = "leon";
+                choose = "uno";
                 andy.setRenderable(uno);
-                audiogLion.start();
-                information = "El león es el rey de la selva, es salvaje, fuerte, grande y tiene dientes muy grandes.";
+                audio1.start();
+                information = "El número uno es un soldado haciendo la instrucción.";
                 break;
             case 3:
                 stopSound(choose);
-                choose = "tigre";
+                choose = "dos";
                 andy.setRenderable(dos);
-                audiogTiger.start();
-                information = "El tigre es un animal grande, corren muy rápido, son solitarios y cazadores.";
+                audio2.start();
+                information = "El número dos es un patito que está tomando el sol.";
                 break;
             case 4:
                 stopSound(choose);
-                choose = "elefante";
+                choose = "tres";
                 andy.setRenderable(tres);
-                audiogElephant.start();
-                information = "El elefante es el animal terrestre más grande, tiene orejas grandes y su trompa muy larga, tienen ojos pequeños.";
+                audio3.start();
+                information = "El número tres es una serpiente que baila sin parar.";
                 break;
             case 5:
                 stopSound(choose);
-                choose = "serpiente";
+                choose = "cuatro";
                 andy.setRenderable(cuatro);
-                audiogSerpent.start();
-                information = "\n" +
-                        "La serpiente es un animal que se arrastra por el suelo, no tiene patas, vota veneno por su boca, su cuerpo es muy largo.";
+                audio4.start();
+                information = "El número cuatro es una sillita que invita a descansar.";
                 break;
             case 6:
                 stopSound(choose);
-                choose = "jirafa";
-                andy.setRenderable(jirafa);
-                audiogJirafa.start();
-                information = "Las jirafas son animales de cuello largo, son de color amarillo con manchas negras y tiene dos cuernos pequeños.";
+                choose = "cinco";
+                //andy.setRenderable(cinco);
+                audio5.start();
+                information = "El número cinco tiene orejas, parece un conejito.";
                 break;
 
             case 7:
                 stopSound(choose);
-                choose = "hipopotamo";
-                andy.setRenderable(hipopotamo);
-                audiogHipopo.start();
-                information = "El hipopótamo es un animal de boca enorme con grandes dientes, son grandes y pesados, son muy agresivos y de patas cortas.";
+                choose = "seis";
+                //andy.setRenderable(seis);
+                audio6.start();
+                information = "El número seis es una pera redonda y con rabito.";
                 break;
             case 8:
                 stopSound(choose);
-                choose = "cocodrilo";
-                andy.setRenderable(cocodrilo);
-                audiogCocodrile.start();
-                information = "El cocodrilo   es un animal con 4 patas, se arrastra por el suelo, con una boca enorme y dientes muy grandes, tiene una cola muy larga, y viven en los pantanos, lagos o ríos.";
+                choose = "siete";
+                //andy.setRenderable(siete);
+                audio7.start();
+                information = "El número siete es un sereno con gorra y con bastón.";
                 break;
-            /*case 20:
-                newMarkAnchorNode.setRenderable(jirafa01);
-            break;*/
+            case 9:
+                stopSound(choose);
+                choose = "ocho";
+                //andy.setRenderable(ocho);
+                audio8.start();
+                information = "El número ocho son las gafas que lleva don Ramón.";
+                break;
+            case 10:
+                stopSound(choose);
+                choose = "nueve";
+                //andy.setRenderable(nueve);
+                audio9.start();
+                information = "El número nueve es un globito atado a un cordel.";
+                break;
+
+            case 11:
+                stopSound(choose);
+                choose = "diez";
+                //andy.setRenderable(diez);
+                audio10.start();
+                information = "El número diez es un soldado que lleva un gran melón.";
+                break;
 
             default:
                 break;

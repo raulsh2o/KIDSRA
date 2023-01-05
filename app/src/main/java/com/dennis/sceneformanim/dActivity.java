@@ -181,8 +181,8 @@ public class dActivity extends AppCompatActivity {
                 if(animator == null || !animator.isRunning())
                 {
                     if (choose == "vaca"){
-                        AnimationData data = animationCrab.getAnimationData(nextAnimation);
-                        nextAnimation = (nextAnimation+1)%animationCrab.getAnimationDataCount();
+                        AnimationData data = vaca.getAnimationData(nextAnimation);
+                        nextAnimation = (nextAnimation+1)%vaca.getAnimationDataCount();
                         animator = new ModelAnimator(data,vaca);
                         animator.start();
                     }else if (choose == "caballo"){
