@@ -42,7 +42,7 @@ dependencies {
     implementation 'com.android.support:design:29.0.0'
 }
 
-        sceneform.asset('sampledata/samples/manosiete17.fbx',
+        sceneform.asset('sampledata/samples/vocalu2.fbx',
                 'default',                    // 'Material Path' specified during import.
-                'sampledata/samples/manosiete17.sfa',
-                'src/main/res/raw/manosiete17')      // 'location you want to store the generated .sfb file'
+                'sampledata/samples/vocalu2.sfa',
+                'src/main/res/raw/vocalu2')      // 'location you want to store the generated .sfb file'

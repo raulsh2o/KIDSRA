@@ -3,12 +3,448 @@ package com.dennis.sceneformanim;
 import androidx.appcompat.app.AppCompatActivity;
 
 import android.os.Bundle;
+import androidx.core.content.ContextCompat;
+
+import android.app.AlertDialog;
+import android.content.Context;
+import android.content.res.ColorStateList;
+import android.graphics.Color;
+import android.os.Bundle;
+import android.view.MotionEvent;
+import android.view.View;
+import android.widget.Button;
+import android.widget.ImageButton;
+import android.widget.Toast;
+
+import com.google.android.material.floatingactionbutton.FloatingActionButton;
+import com.google.ar.core.Anchor;
+import com.google.ar.core.Frame;
+import com.google.ar.core.HitResult;
+import com.google.ar.core.Plane;
+import com.google.ar.core.Pose;
+import com.google.ar.core.Session;
+import com.google.ar.sceneform.AnchorNode;
+import com.google.ar.sceneform.FrameTime;
+import com.google.ar.sceneform.Scene;
+import com.google.ar.sceneform.animation.ModelAnimator;
+import com.google.ar.sceneform.rendering.AnimationData;
+import com.google.ar.sceneform.rendering.ModelRenderable;
+import com.google.ar.sceneform.ux.ArFragment;
+import com.google.ar.sceneform.ux.BaseArFragment;
+import com.google.ar.sceneform.ux.TransformableNode;
+
+import android.media.MediaPlayer;
+
+import java.util.ArrayList;
+import java.util.List;
 
 public class VocalesA extends AppCompatActivity {
+    //Variable
+    private ArFragment arFragment;
+    private AnchorNode anchorNode;
+    private ModelAnimator animator;
+    private int nextAnimation;
+    private FloatingActionButton btn_anim;
+    private ModelRenderable tigre, punto, a,  e, i, o, u;
+    private TransformableNode transformableNode;
 
+    private int clickNo = 0;
+    private int Status1 = 0;
+    private String information = "";
+    private String choose = "";
+
+    //DECLARAR AUDIOS
+    MediaPlayer audioa, audioe, audioi, audioo, audiou, audiointro;
+
+    //*************************************************************
+    private List<AnchorNode> anchorNodeList = new ArrayList<>();
+    private AnchorNode currentSelectedAnchorNode = null;
+    //*************************************************************
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_vocales);
+        // DECLARA BOTONES DE CAMBIO DE OBJETO
+        ImageButton Vocala = (ImageButton) findViewById(R.id.id_vocala);
+        ImageButton Vocale = (ImageButton) findViewById(R.id.id_vocale);
+        ImageButton Vocali = (ImageButton) findViewById(R.id.id_vocali);
+        ImageButton Vocalo = (ImageButton) findViewById(R.id.id_vocalo);
+        ImageButton Vocalu = (ImageButton) findViewById(R.id.id_vocalu);
+        ImageButton informacion = (ImageButton) findViewById(R.id.id_informacion);
+
+        //INICIALIZA AUDIOS
+        audioa = MediaPlayer.create(this,R.raw.vaudioa);
+        audioe = MediaPlayer.create(this,R.raw.vaudioe);
+        audioi = MediaPlayer.create(this,R.raw.vaudioi);
+        audioo = MediaPlayer.create(this,R.raw.vaudioo);
+        audiou = MediaPlayer.create(this,R.raw.vaudiou);
+        audiointro = MediaPlayer.create(this,R.raw.vocalsintro);
+
+        //REPRODUCIR AUDIO DE INTRO
+        audiointro.start();
+        choose = "audiointro";
+
+        setupModel();// INICIALIZA LOS OBJETOS
+
+        ///////////////////////////////////////////////////////////////////////////
+        ///////////////////////  CREATE ANCHOR, TAP AND FRAME    ////////////////////////////////
+        //////////////////////////////////////////////////////////////////////////
+
+        arFragment = (ArFragment)getSupportFragmentManager()
+                .findFragmentById(R.id.sceneform_fragment);
+
+        arFragment.setOnTapArPlaneListener(new BaseArFragment.OnTapArPlaneListener() {
+            @Override
+            public void onTapPlane(HitResult hitResult, Plane plane, MotionEvent motionEvent) {
+                if(tigre ==null)
+                    return;
+                //CREA LA ANCLA
+                clickNo++;
+                Anchor anchor = hitResult.createAnchor();
+
+                if(clickNo==1) {
+                    if (anchorNode == null) //SI LA ANIMACIÓN NO SE COLOCA EN EL PLANO
+                    {
+                        anchorNode = new AnchorNode(anchor);
+                        anchorNode.setParent(arFragment.getArSceneView().getScene());
+                        transformableNode = new TransformableNode(arFragment.getTransformationSystem());
+                        transformableNode.setParent(anchorNode);
+                        transformableNode.setRenderable(punto);
+                        currentSelectedAnchorNode=anchorNode;
+                    }
+                }
+
+                if(clickNo==2) {
+                    if (currentSelectedAnchorNode != null) {
+                        //Get the current Pose and transform it then set a new anchor at the new pose
+                        Session session = arFragment.getArSceneView().getSession();
+                        Anchor currentAnchor = currentSelectedAnchorNode.getAnchor();
+                        Pose oldPose = currentAnchor.getPose();
+                        Pose newPose = oldPose.compose(Pose.makeTranslation(0,0.05f,0));
+                        currentSelectedAnchorNode = moveRenderable(currentSelectedAnchorNode, newPose);
+                    }
+                }
+
+            }
+        });
+
+        //AGREGA LA ACTUALIZACIÓN DEL MARCO PARA CONTROLAR EL ESTADO DEL BOTON
+        arFragment.getArSceneView().getScene()
+                .addOnUpdateListener(new Scene.OnUpdateListener(){
+                    public void onUpdate(FrameTime frameTime){
+                        if (anchorNode == null)
+                        {
+                            if (btn_anim.isEnabled())
+                            {
+                                btn_anim.setBackgroundTintList(ColorStateList.valueOf(Color.GRAY));
+                                btn_anim.setEnabled(false);
+                            }
+                        }
+                        else
+                        {
+                            if (!btn_anim.isEnabled())
+                            {
+                                btn_anim.setBackgroundTintList(ContextCompat.getColorStateList(VocalesA.this,R.color.colorAccent));
+                                btn_anim.setEnabled(true);
+                            }
+                        }
+                    }
+                });
+
+        ///////////////////////////////////////////////////////////////////////////
+        ///////////////////////      BOTONES       ////////////////////////////////
+        //////////////////////////////////////////////////////////////////////////
+
+        //DECLARA PRIMER BOTON
+        btn_anim = (FloatingActionButton)findViewById(R.id.btn_anim);
+        btn_anim.setEnabled(false);
+        btn_anim.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                if(animator == null || !animator.isRunning())
+                {
+                    if (choose == "e"){
+                        AnimationData data = e.getAnimationData(nextAnimation);
+                        nextAnimation = (nextAnimation+1)%e.getAnimationDataCount();
+                        animator = new ModelAnimator(data,e);
+                        animator.start();
+                    }else if (choose == "i"){
+                        AnimationData data = i.getAnimationData(nextAnimation);
+                        nextAnimation = (nextAnimation+1)%i.getAnimationDataCount();
+                        animator = new ModelAnimator(data,i);
+                        animator.start();
+                    }else if (choose == "o"){
+                        AnimationData data = o.getAnimationData(nextAnimation);
+                        nextAnimation = (nextAnimation+1)%o.getAnimationDataCount();
+                        animator = new ModelAnimator(data,o);
+                        animator.start();
+                    }else if (choose == "u"){
+                        AnimationData data = u.getAnimationData(nextAnimation);
+                        nextAnimation = (nextAnimation+1)%u.getAnimationDataCount();
+                        animator = new ModelAnimator(data,u);
+                        animator.start();
+                    }
+
+                }
+            }
+        });
+
+        // BOTON DE INFORMACIÓN
+        informacion.setOnClickListener(new View.OnClickListener(){
+            @Override
+            public void onClick(View view){
+                if (choose == "a"){
+                    audioa.start();
+                }else if (choose == "e"){
+                    audioe.start();
+                }else if (choose == "i"){
+                    audioi.start();
+                }else if (choose == "o"){
+                    audioo.start();
+                }else if (choose == "u"){
+                    audiou.start();
+                }
+
+                AlertDialog.Builder builder = new AlertDialog.Builder(VocalesA.this);
+                builder.setIcon(R.drawable.info).
+                        setMessage(information).
+                        setTitle("Información:");
+                AlertDialog alertDialog=builder.create();
+                alertDialog.show();
+            }
+        });
+
+        //ESCUCHA BOTON SI A ES PULSADO
+        Vocala.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                Status1 = 1;
+                if (currentSelectedAnchorNode != null) {
+
+                    Session session = arFragment.getArSceneView().getSession();
+                    Anchor currentAnchor = currentSelectedAnchorNode.getAnchor();
+                    Pose oldPose = currentAnchor.getPose();
+                    Pose newPose = oldPose.compose(Pose.makeTranslation(0,0.05f,0));
+                    currentSelectedAnchorNode = moveRenderable(currentSelectedAnchorNode, newPose);
+
+                }
+            }
+        });
+        //ESCUCHA BOTON SI E ES PULSADO
+        Vocale.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                Status1 = 2;
+                if (currentSelectedAnchorNode != null) {
+
+                    Session session = arFragment.getArSceneView().getSession();
+                    Anchor currentAnchor = currentSelectedAnchorNode.getAnchor();
+                    Pose oldPose = currentAnchor.getPose();
+                    Pose newPose = oldPose.compose(Pose.makeTranslation(0,0.05f,0));
+                    currentSelectedAnchorNode = moveRenderable(currentSelectedAnchorNode, newPose);
+
+                }
+            }
+        });
+        //ESCUCHA BOTON SI I ES PULSADO
+        Vocali.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                Status1 = 3;
+                if (currentSelectedAnchorNode != null) {
+
+                    Session session = arFragment.getArSceneView().getSession();
+                    Anchor currentAnchor = currentSelectedAnchorNode.getAnchor();
+                    Pose oldPose = currentAnchor.getPose();
+                    Pose newPose = oldPose.compose(Pose.makeTranslation(0,0.05f,0));
+                    currentSelectedAnchorNode = moveRenderable(currentSelectedAnchorNode, newPose);
+
+                }
+            }
+        });
+        //ESCUCHA BOTON SI 0 ES PULSADO
+        Vocalo.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                Status1 = 4;
+                if (currentSelectedAnchorNode != null) {
+
+                    Session session = arFragment.getArSceneView().getSession();
+                    Anchor currentAnchor = currentSelectedAnchorNode.getAnchor();
+                    Pose oldPose = currentAnchor.getPose();
+                    Pose newPose = oldPose.compose(Pose.makeTranslation(0,0.05f,0));
+                    currentSelectedAnchorNode = moveRenderable(currentSelectedAnchorNode, newPose);
+
+                }
+            }
+        });
+        //ESCUCHA BOTON SI U ES PULSADO
+        Vocalu.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                Status1 = 5;
+                if (currentSelectedAnchorNode != null) {
+
+                    Session session = arFragment.getArSceneView().getSession();
+                    Anchor currentAnchor = currentSelectedAnchorNode.getAnchor();
+                    Pose oldPose = currentAnchor.getPose();
+                    Pose newPose = oldPose.compose(Pose.makeTranslation(0,0.05f,0));
+                    currentSelectedAnchorNode = moveRenderable(currentSelectedAnchorNode, newPose);
+
+                }
+            }
+        });
+
+    }
+
+    /////////////////////////////////////////////////////////////////////////////
+    ////////////////////////////       FUNCIONES        /////////////////////////
+    /////////////////////////////////////////////////////////////////////////////
+
+    private void stopSound(String sound){
+        if (sound == "a"){
+            audioa.pause();
+        }else if (sound == "e"){
+            audioe.pause();
+        }else if (sound == "i"){
+            audioi.pause();
+        }else if (sound == "o"){
+            audioo.pause();
+        }else if (sound == "u"){
+            audiou.pause();
+        }
+    }
+
+    ///////////////////////////////////////////////////////////////////////////
+    ///////////////////////// INICIALIZA ANIMACIONES //////////////////////////
+    ///////////////////////////////////////////////////////////////////////////
+
+    private void setupModel() {
+
+        //CARGA TIGRE
+        ModelRenderable.builder()
+                .setSource(this, R.raw.tigre31)
+                .build()
+                .thenAccept(renderable -> tigre = renderable)
+                .exceptionally(throwable -> {
+                    Toast.makeText(this, ""+throwable.getMessage(), Toast.LENGTH_SHORT).show();
+                    return null;
+                });
+
+        //CARGA PUNTO
+        ModelRenderable.builder()
+                .setSource(this, R.raw.point13)
+                .build()
+                .thenAccept(renderable -> punto = renderable)
+                .exceptionally(throwable -> {
+                    Toast.makeText(this, ""+throwable.getMessage(), Toast.LENGTH_SHORT).show();
+                    return null;
+                });
+
+        //CARGA E
+        ModelRenderable.builder()
+                .setSource(this, R.raw.vocale)
+                .build()
+                .thenAccept(renderable -> e = renderable)
+                .exceptionally(throwable -> {
+                    Toast.makeText(this, ""+throwable.getMessage(), Toast.LENGTH_SHORT).show();
+                    return null;
+                });
+        //CARGA I
+        ModelRenderable.builder()
+                .setSource(this, R.raw.vocali5)
+                .build()
+                .thenAccept(renderable -> i = renderable)
+                .exceptionally(throwable -> {
+                    Toast.makeText(this, ""+throwable.getMessage(), Toast.LENGTH_SHORT).show();
+                    return null;
+                });
+        //CARGA O
+        ModelRenderable.builder()
+                .setSource(this, R.raw.vocalo4)
+                .build()
+                .thenAccept(renderable -> o = renderable)
+                .exceptionally(throwable -> {
+                    Toast.makeText(this, ""+throwable.getMessage(), Toast.LENGTH_SHORT).show();
+                    return null;
+                });
+        //CARGA U
+        ModelRenderable.builder()
+                .setSource(this, R.raw.vocalu2)
+                .build()
+                .thenAccept(renderable -> u = renderable)
+                .exceptionally(throwable -> {
+                    Toast.makeText(this, ""+throwable.getMessage(), Toast.LENGTH_SHORT).show();
+                    return null;
+                });
+
+    }
+
+    private AnchorNode moveRenderable(AnchorNode markAnchorNodeToMove, Pose newPoseToMoveTo) {
+        //Move a renderable to a new pose
+        if (markAnchorNodeToMove != null) {
+            arFragment.getArSceneView().getScene().removeChild(markAnchorNodeToMove);
+            anchorNodeList.remove(markAnchorNodeToMove);
+        } else {
+            return null;
+        }
+        Frame frame = arFragment.getArSceneView().getArFrame();
+        Session session = arFragment.getArSceneView().getSession();
+        Anchor markAnchor = session.createAnchor(newPoseToMoveTo.extractTranslation());
+        AnchorNode newMarkAnchorNode = new AnchorNode(markAnchor);
+        TransformableNode andy = new TransformableNode(arFragment.getTransformationSystem());
+        andy.setParent(newMarkAnchorNode);
+
+        // AQUI RENDERIZA LOS OBJETOS PARA MOSTRAR EN LA PANTALLA
+
+        switch(Status1)
+        {
+            case 1:
+                stopSound(choose);
+                choose = "a";
+                //andy.setRenderable(a);
+                information = "A de avión.";
+                //audioa.start();
+                break;
+
+            case 2:
+                stopSound(choose);
+                choose = "e";
+                andy.setRenderable(e);
+                //audioe.start();
+                information = "E de escalera.";
+                break;
+            case 3:
+                stopSound(choose);
+                choose = "i";
+                andy.setRenderable(i);
+                //audioi.start();
+                information = "I de iglesia.";
+                break;
+            case 4:
+                stopSound(choose);
+                choose = "o";
+                andy.setRenderable(o);
+                //audioo.start();
+                information = "O de oso.";
+                break;
+            case 5:
+                stopSound(choose);
+                choose = "u";
+                andy.setRenderable(u);
+                //audiou.start();
+                information = "U de uva.";
+                break;
+            default:
+                break;
+        }
+
+
+        newMarkAnchorNode.setParent(arFragment.getArSceneView().getScene());
+        anchorNodeList.add(newMarkAnchorNode);
+        return newMarkAnchorNode;
+
+
+
     }
 }

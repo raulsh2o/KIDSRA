@@ -1,0 +1,66 @@
+{
+  animations: [
+    {
+      clips: [
+        {
+          name: 'Text|TextAction',
+        },
+      ],
+      path: 'sampledata/samples/vocalo4.fbx',
+    },
+  ],
+  materials: [
+    {
+      name: 'Material.001',
+      parameters: [
+        {
+          baseColor: [
+            0.237841,
+            0.31853799999999999,
+            0.078745999999999997,
+            1,
+          ],
+        },
+        {
+          baseColorMap: null,
+        },
+        {
+          normalMap: null,
+        },
+        {
+          interpolatedColor: null,
+        },
+        {
+          metallic: 0,
+        },
+        {
+          metallicMap: null,
+        },
+        {
+          roughness: 1,
+        },
+        {
+          roughnessMap: null,
+        },
+        {
+          opacity: null,
+        },
+      ],
+      source: 'build/sceneform_sdk/default_materials/fbx_material.sfm',
+    },
+  ],
+  model: {
+    attributes: [
+      'Position',
+      'TexCoord',
+      'Orientation',
+      'BoneIndices',
+      'BoneWeights',
+    ],
+    collision: {},
+    file: 'sampledata/samples/vocalo4.fbx',
+    name: 'vocalo4',
+    recenter: 'root',
+  },
+  version: '0.54:2',
+}
