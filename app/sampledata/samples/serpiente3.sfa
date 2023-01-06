@@ -1,0 +1,81 @@
+{
+  animations: [
+    {
+      clips: [
+        {
+          name: 'Armature|ArmatureAction',
+        },
+      ],
+      path: 'sampledata/samples/serpiente3.fbx',
+    },
+  ],
+  materials: [
+    {
+      name: 'Standardmaterial',
+      parameters: [
+        {
+          baseColor: [
+            1,
+            1,
+            1,
+            1,
+          ],
+        },
+        {
+          baseColorMap: 'PM3D_ZSphere_5_TXTR',
+        },
+        {
+          normalMap: 'Normal_Bump_Normal_Bump',
+        },
+        {
+          interpolatedColor: null,
+        },
+        {
+          metallic: 0,
+        },
+        {
+          metallicMap: null,
+        },
+        {
+          roughness: 1,
+        },
+        {
+          roughnessMap: null,
+        },
+        {
+          opacity: null,
+        },
+      ],
+      source: 'build/sceneform_sdk/default_materials/fbx_material.sfm',
+    },
+  ],
+  model: {
+    attributes: [
+      'Position',
+      'TexCoord',
+      'Orientation',
+      'BoneIndices',
+      'BoneWeights',
+    ],
+    collision: {},
+    file: 'sampledata/samples/serpiente3.fbx',
+    name: 'serpiente3',
+    recenter: 'root',
+  },
+  samplers: [
+    {
+      file: 'sampledata/samples\\serpiente3.fbm\\Normal_Bump_Normal_Bump.png',
+      name: 'Normal_Bump_Normal_Bump',
+      params: {
+        usage_type: 'Normal',
+      },
+      pipeline_name: 'serpiente3.fbm\\Normal_Bump_Normal_Bump.png',
+    },
+    {
+      file: 'sampledata/samples\\serpiente3.fbm\\PM3D_ZSphere_5_TXTR.png',
+      name: 'PM3D_ZSphere_5_TXTR',
+      pipeline_name: 'serpiente3.fbm\\PM3D_ZSphere_5_TXTR.png',
+    },
+  ],
+  version: '0.54:2',
+}

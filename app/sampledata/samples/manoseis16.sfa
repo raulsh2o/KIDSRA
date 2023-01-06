@@ -1,0 +1,114 @@
+{
+  animations: [
+    {
+      clips: [
+        {
+          name: 'uploads_files_810024_Hand.001|uploads_files_810024_Hand.001Action',
+        },
+        {
+          name: 'uploads_files_810024_Hand.001|uploads_files_810024_Hand.001Action.001',
+        },
+      ],
+      path: 'sampledata/samples/manoseis16.fbx',
+    },
+  ],
+  materials: [
+    {
+      name: 'Material.002',
+      parameters: [
+        {
+          baseColor: [
+            1,
+            1,
+            1,
+            1,
+          ],
+        },
+        {
+          baseColorMap: 'mano',
+        },
+        {
+          normalMap: null,
+        },
+        {
+          interpolatedColor: null,
+        },
+        {
+          metallic: 0,
+        },
+        {
+          metallicMap: null,
+        },
+        {
+          roughness: 1,
+        },
+        {
+          roughnessMap: null,
+        },
+        {
+          opacity: null,
+        },
+      ],
+      source: 'build/sceneform_sdk/default_materials/fbx_material.sfm',
+    },
+    {
+      name: 'Material.001',
+      parameters: [
+        {
+          baseColor: [
+            1,
+            1,
+            1,
+            1,
+          ],
+        },
+        {
+          baseColorMap: 'mano',
+        },
+        {
+          normalMap: null,
+        },
+        {
+          interpolatedColor: null,
+        },
+        {
+          metallic: 0,
+        },
+        {
+          metallicMap: null,
+        },
+        {
+          roughness: 1,
+        },
+        {
+          roughnessMap: null,
+        },
+        {
+          opacity: null,
+        },
+      ],
+      source: 'build/sceneform_sdk/default_materials/fbx_material.sfm',
+    },
+  ],
+  model: {
+    attributes: [
+      'Position',
+      'TexCoord',
+      'Orientation',
+      'BoneIndices',
+      'BoneWeights',
+    ],
+    collision: {},
+    file: 'sampledata/samples/manoseis16.fbx',
+    name: 'manoseis16',
+    recenter: 'root',
+  },
+  samplers: [
+    {
+      file: 'sampledata/samples\\manoseis16.fbm\\mano.jpg',
+      name: 'mano',
+      pipeline_name: 'manoseis16.fbm\\mano.jpg',
+    },
+  ],
+  version: '0.54:2',
+}

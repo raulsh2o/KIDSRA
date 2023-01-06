@@ -1,0 +1,81 @@
+{
+  animations: [
+    {
+      clips: [
+        {
+          name: 'Armature|ArmatureAction',
+        },
+      ],
+      path: 'sampledata/samples/gato8.fbx',
+    },
+  ],
+  materials: [
+    {
+      name: 'Cat',
+      parameters: [
+        {
+          baseColor: [
+            1,
+            1,
+            1,
+            1,
+          ],
+        },
+        {
+          baseColorMap: 'Cat_diffuse',
+        },
+        {
+          normalMap: 'Cat_bump',
+        },
+        {
+          interpolatedColor: null,
+        },
+        {
+          metallic: 0,
+        },
+        {
+          metallicMap: null,
+        },
+        {
+          roughness: 1,
+        },
+        {
+          roughnessMap: null,
+        },
+        {
+          opacity: null,
+        },
+      ],
+      source: 'build/sceneform_sdk/default_materials/fbx_material.sfm',
+    },
+  ],
+  model: {
+    attributes: [
+      'Position',
+      'TexCoord',
+      'Orientation',
+      'BoneIndices',
+      'BoneWeights',
+    ],
+    collision: {},
+    file: 'sampledata/samples/gato8.fbx',
+    name: 'gato8',
+    recenter: 'root',
+  },
+  samplers: [
+    {
+      file: 'sampledata/samples\\gato8.fbm\\Cat_diffuse.jpg',
+      name: 'Cat_diffuse',
+      pipeline_name: 'gato8.fbm\\Cat_diffuse.jpg',
+    },
+    {
+      file: 'sampledata/samples\\gato8.fbm\\Cat_bump.jpg',
+      name: 'Cat_bump',
+      params: {
+        usage_type: 'Normal',
+      },
+      pipeline_name: 'gato8.fbm\\Cat_bump.jpg',
+    },
+  ],
+  version: '0.54:2',
+}

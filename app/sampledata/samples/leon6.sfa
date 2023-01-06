@@ -1,0 +1,77 @@
+{
+  animations: [
+    {
+      clips: [
+        {
+          name: 'Armature|ArmatureAction',
+        },
+      ],
+      path: 'sampledata/samples/leon6.fbx',
+    },
+  ],
+  materials: [
+    {
+      name: 'Material.001',
+      parameters: [
+        {
+          baseColor: [
+            1,
+            1,
+            1,
+            1,
+          ],
+        },
+        {
+          baseColorMap: 'texture000',
+        },
+        {
+          normalMap: null,
+        },
+        {
+          interpolatedColor: null,
+        },
+        {
+          metallic: 0,
+        },
+        {
+          metallicMap: null,
+        },
+        {
+          roughness: 1,
+        },
+        {
+          roughnessMap: null,
+        },
+        {
+          opacity: null,
+        },
+      ],
+      source: 'build/sceneform_sdk/default_materials/fbx_material.sfm',
+    },
+  ],
+  model: {
+    attributes: [
+      'Position',
+      'TexCoord',
+      'Orientation',
+      'BoneIndices',
+      'BoneWeights',
+    ],
+    collision: {},
+    file: 'sampledata/samples/leon6.fbx',
+    name: 'leon6',
+    recenter: 'root',
+  },
+  samplers: [
+    {
+      file: 'sampledata/samples\\leon6.fbm\\texture000.jpg',
+      name: 'texture000',
+      params: {
+        wrap_s: 'ClampToEdge',
+        wrap_t: 'ClampToEdge',
+      },
+      pipeline_name: 'leon6.fbm\\texture000.jpg',
+    },
+  ],
+  version: '0.54:2',
+}

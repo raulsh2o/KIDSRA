@@ -46,7 +46,7 @@ public class dActivity extends AppCompatActivity {
     private ModelAnimator animator;
     private int nextAnimation;
     private FloatingActionButton btn_anim;
-    private ModelRenderable animationCrab, horse01, punto, vaca, perro, gallina, pato;
+    private ModelRenderable animationCrab, horse01, punto, vaca, perro, gallina, pato, gato;
     private TransformableNode transformableNode;
 
     private int clickNo = 0;
@@ -200,6 +200,16 @@ public class dActivity extends AppCompatActivity {
                         nextAnimation = (nextAnimation+1)%pato.getAnimationDataCount();
                         animator = new ModelAnimator(data,pato);
                         animator.start();
+                    }else if (choose == "gallina"){
+                        AnimationData data = gallina.getAnimationData(nextAnimation);
+                        nextAnimation = (nextAnimation+1)%gallina.getAnimationDataCount();
+                        animator = new ModelAnimator(data,gallina);
+                        animator.start();
+                    }else if (choose == "gato"){
+                        AnimationData data = gato.getAnimationData(nextAnimation);
+                        nextAnimation = (nextAnimation+1)%gato.getAnimationDataCount();
+                        animator = new ModelAnimator(data,gato);
+                        animator.start();
                     }
 
                 }
@@ -304,7 +314,7 @@ public class dActivity extends AppCompatActivity {
         duckshow.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                Status1 = 2;
+                Status1 = 5;
                 if (currentSelectedAnchorNode != null) {
 
                     Session session = arFragment.getArSceneView().getSession();
@@ -316,7 +326,38 @@ public class dActivity extends AppCompatActivity {
                 }
             }
         });
+        //ESCUCHA BOTON SI GALLINA ES PULSADO
+        chickenshow.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                Status1 = 4;
+                if (currentSelectedAnchorNode != null) {
 
+                    Session session = arFragment.getArSceneView().getSession();
+                    Anchor currentAnchor = currentSelectedAnchorNode.getAnchor();
+                    Pose oldPose = currentAnchor.getPose();
+                    Pose newPose = oldPose.compose(Pose.makeTranslation(0,0.05f,0));
+                    currentSelectedAnchorNode = moveRenderable(currentSelectedAnchorNode, newPose);
+
+                }
+            }
+        });
+        //ESCUCHA BOTON SI GATO ES PULSADO
+        catshow.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                Status1 = 1;
+                if (currentSelectedAnchorNode != null) {
+
+                    Session session = arFragment.getArSceneView().getSession();
+                    Anchor currentAnchor = currentSelectedAnchorNode.getAnchor();
+                    Pose oldPose = currentAnchor.getPose();
+                    Pose newPose = oldPose.compose(Pose.makeTranslation(0,0.05f,0));
+                    currentSelectedAnchorNode = moveRenderable(currentSelectedAnchorNode, newPose);
+
+                }
+            }
+        });
     }
 
     /////////////////////////////////////////////////////////////////////////////
@@ -421,6 +462,24 @@ public class dActivity extends AppCompatActivity {
                     Toast.makeText(this, ""+throwable.getMessage(), Toast.LENGTH_SHORT).show();
                     return null;
                 });
+        //CARGA GALLINA
+        ModelRenderable.builder()
+                .setSource(this, R.raw.gallina5)
+                .build()
+                .thenAccept(renderable -> gallina = renderable)
+                .exceptionally(throwable -> {
+                    Toast.makeText(this, ""+throwable.getMessage(), Toast.LENGTH_SHORT).show();
+                    return null;
+                });
+        //CARGA GATO
+        ModelRenderable.builder()
+                .setSource(this, R.raw.gato8)
+                .build()
+                .thenAccept(renderable -> gato = renderable)
+                .exceptionally(throwable -> {
+                    Toast.makeText(this, ""+throwable.getMessage(), Toast.LENGTH_SHORT).show();
+                    return null;
+                });
     }
 
     private AnchorNode moveRenderable(AnchorNode markAnchorNodeToMove, Pose newPoseToMoveTo) {
@@ -445,7 +504,7 @@ public class dActivity extends AppCompatActivity {
             case 1:
                 stopSound(choose);
                 choose = "gato";
-                //andy.setRenderable(animationCrab);
+                andy.setRenderable(gato);
                 audiogCat.start();
                 information = "Mamífero de contextura pequeña, de abundante pelaje y muy suave, son muy cariñoso con los humanos.";
                 break;
@@ -459,7 +518,7 @@ public class dActivity extends AppCompatActivity {
             case 4:
                 stopSound(choose);
                 choose = "gallina";
-                //andy.setRenderable(chicken1);
+                andy.setRenderable(gallina);
                 audiogChicken.start();
                 information = "La gallina es denominado un ave conocida por su cacareo, pone huevos, y está cubierta de plumas de diversos colores";
                 break;

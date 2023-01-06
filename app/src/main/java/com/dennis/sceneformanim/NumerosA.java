@@ -212,6 +212,18 @@ public class NumerosA extends AppCompatActivity {
                         animator = new ModelAnimator(data,cinco);
                         animator.start();
                     }
+                    else if (choose == "seis"){
+                        AnimationData data = seis.getAnimationData(nextAnimation);
+                        nextAnimation = (nextAnimation+1)%seis.getAnimationDataCount();
+                        animator = new ModelAnimator(data,seis);
+                        animator.start();
+                    }
+                    else if (choose == "siete"){
+                        AnimationData data = siete.getAnimationData(nextAnimation);
+                        nextAnimation = (nextAnimation+1)%siete.getAnimationDataCount();
+                        animator = new ModelAnimator(data,siete);
+                        animator.start();
+                    }
                     else if (choose == "ocho"){
                         AnimationData data = ocho.getAnimationData(nextAnimation);
                         nextAnimation = (nextAnimation+1)%ocho.getAnimationDataCount();
@@ -393,6 +405,38 @@ public class NumerosA extends AppCompatActivity {
                 }
             }
         });
+        //ESCUCHA BOTON SI SIES ES PULSADO
+        Nseis.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                Status1 = 7;
+                if (currentSelectedAnchorNode != null) {
+
+                    Session session = arFragment.getArSceneView().getSession();
+                    Anchor currentAnchor = currentSelectedAnchorNode.getAnchor();
+                    Pose oldPose = currentAnchor.getPose();
+                    Pose newPose = oldPose.compose(Pose.makeTranslation(0,0.05f,0));
+                    currentSelectedAnchorNode = moveRenderable(currentSelectedAnchorNode, newPose);
+
+                }
+            }
+        });
+        //ESCUCHA BOTON SI SIETE ES PULSADO
+        Nsiete.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                Status1 = 8;
+                if (currentSelectedAnchorNode != null) {
+
+                    Session session = arFragment.getArSceneView().getSession();
+                    Anchor currentAnchor = currentSelectedAnchorNode.getAnchor();
+                    Pose oldPose = currentAnchor.getPose();
+                    Pose newPose = oldPose.compose(Pose.makeTranslation(0,0.05f,0));
+                    currentSelectedAnchorNode = moveRenderable(currentSelectedAnchorNode, newPose);
+
+                }
+            }
+        });
 
     }
 
@@ -510,6 +554,24 @@ public class NumerosA extends AppCompatActivity {
                     Toast.makeText(this, ""+throwable.getMessage(), Toast.LENGTH_SHORT).show();
                     return null;
                 });
+        //CARGA SEIS
+        ModelRenderable.builder()
+                .setSource(this, R.raw.manoseis16)
+                .build()
+                .thenAccept(renderable -> seis = renderable)
+                .exceptionally(throwable -> {
+                    Toast.makeText(this, ""+throwable.getMessage(), Toast.LENGTH_SHORT).show();
+                    return null;
+                });
+        //CARGA SIETE
+        ModelRenderable.builder()
+                .setSource(this, R.raw.manosiete17)
+                .build()
+                .thenAccept(renderable -> siete = renderable)
+                .exceptionally(throwable -> {
+                    Toast.makeText(this, ""+throwable.getMessage(), Toast.LENGTH_SHORT).show();
+                    return null;
+                });
         //CARGA OCHO
         ModelRenderable.builder()
                 .setSource(this, R.raw.manoocho8)
@@ -605,14 +667,14 @@ public class NumerosA extends AppCompatActivity {
             case 7:
                 stopSound(choose);
                 choose = "seis";
-                //andy.setRenderable(seis);
+                andy.setRenderable(seis);
                 audio6.start();
                 information = "El número seis es una pera redonda y con rabito.";
                 break;
             case 8:
                 stopSound(choose);
                 choose = "siete";
-                //andy.setRenderable(siete);
+                andy.setRenderable(siete);
                 audio7.start();
                 information = "El número siete es un sereno con gorra y con bastón.";
                 break;

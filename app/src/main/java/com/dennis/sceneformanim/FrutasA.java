@@ -45,7 +45,7 @@ public class FrutasA extends AppCompatActivity {
     private ModelAnimator animator;
     private int nextAnimation;
     private FloatingActionButton btn_anim;
-    private ModelRenderable tigre, punto, manzana, uva, melon, pera, pina;
+    private ModelRenderable tigre, punto, manzana, uva, melon, pera, pina, sandia;
     private TransformableNode transformableNode;
 
     private int clickNo = 0;
@@ -195,6 +195,12 @@ public class FrutasA extends AppCompatActivity {
                         animator = new ModelAnimator(data,pina);
                         animator.start();
                     }
+                    else if (choose == "sandia"){
+                        AnimationData data = sandia.getAnimationData(nextAnimation);
+                        nextAnimation = (nextAnimation+1)%sandia.getAnimationDataCount();
+                        animator = new ModelAnimator(data,sandia);
+                        animator.start();
+                    }
 
 
                 }
@@ -333,6 +339,22 @@ public class FrutasA extends AppCompatActivity {
                 }
             }
         });
+        //ESCUCHA BOTON SI SANDIA ES PULSADO
+        Sandia.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                Status1 = 5;
+                if (currentSelectedAnchorNode != null) {
+
+                    Session session = arFragment.getArSceneView().getSession();
+                    Anchor currentAnchor = currentSelectedAnchorNode.getAnchor();
+                    Pose oldPose = currentAnchor.getPose();
+                    Pose newPose = oldPose.compose(Pose.makeTranslation(0,0.05f,0));
+                    currentSelectedAnchorNode = moveRenderable(currentSelectedAnchorNode, newPose);
+
+                }
+            }
+        });
 
 
     }
@@ -429,6 +451,15 @@ public class FrutasA extends AppCompatActivity {
                     Toast.makeText(this, ""+throwable.getMessage(), Toast.LENGTH_SHORT).show();
                     return null;
                 });
+        //CARGA SANDIA
+        ModelRenderable.builder()
+                .setSource(this, R.raw.sandia2)
+                .build()
+                .thenAccept(renderable -> sandia = renderable)
+                .exceptionally(throwable -> {
+                    Toast.makeText(this, ""+throwable.getMessage(), Toast.LENGTH_SHORT).show();
+                    return null;
+                });
     }
 
     private AnchorNode moveRenderable(AnchorNode markAnchorNodeToMove, Pose newPoseToMoveTo) {
@@ -482,7 +513,7 @@ public class FrutasA extends AppCompatActivity {
             case 5:
                 stopSound(choose);
                 choose = "sandia";
-                //andy.setRenderable(sandia);
+                andy.setRenderable(sandia);
                 //audiosandia.start();
                 information = "La sandía es una fruta verde por fuera y roja por dentro, tiene semillitas las cuales no hay que comer, es muy jugosa, rica y dulce.";
                 break;

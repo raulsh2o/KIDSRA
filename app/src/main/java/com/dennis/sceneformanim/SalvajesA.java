@@ -210,6 +210,18 @@ public class SalvajesA extends AppCompatActivity {
                         animator = new ModelAnimator(data,hipopotamo);
                         animator.start();
                     }
+                    else if (choose == "leon"){
+                        AnimationData data = leon.getAnimationData(nextAnimation);
+                        nextAnimation = (nextAnimation+1)%leon.getAnimationDataCount();
+                        animator = new ModelAnimator(data,leon);
+                        animator.start();
+                    }
+                    else if (choose == "serpiente"){
+                        AnimationData data = serpiente.getAnimationData(nextAnimation);
+                        nextAnimation = (nextAnimation+1)%serpiente.getAnimationDataCount();
+                        animator = new ModelAnimator(data,serpiente);
+                        animator.start();
+                    }
 
                 }
             }
@@ -358,6 +370,38 @@ public class SalvajesA extends AppCompatActivity {
                 }
             }
         });
+        //ESCUCHA BOTON SI LEON ES PULSADO
+        leon1show.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                Status1 = 2;
+                if (currentSelectedAnchorNode != null) {
+
+                    Session session = arFragment.getArSceneView().getSession();
+                    Anchor currentAnchor = currentSelectedAnchorNode.getAnchor();
+                    Pose oldPose = currentAnchor.getPose();
+                    Pose newPose = oldPose.compose(Pose.makeTranslation(0,0.05f,0));
+                    currentSelectedAnchorNode = moveRenderable(currentSelectedAnchorNode, newPose);
+
+                }
+            }
+        });
+        //ESCUCHA BOTON SI SERPIENTE ES PULSADO
+        serpiente1show.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                Status1 = 5;
+                if (currentSelectedAnchorNode != null) {
+
+                    Session session = arFragment.getArSceneView().getSession();
+                    Anchor currentAnchor = currentSelectedAnchorNode.getAnchor();
+                    Pose oldPose = currentAnchor.getPose();
+                    Pose newPose = oldPose.compose(Pose.makeTranslation(0,0.05f,0));
+                    currentSelectedAnchorNode = moveRenderable(currentSelectedAnchorNode, newPose);
+
+                }
+            }
+        });
 
     }
 
@@ -473,6 +517,24 @@ public class SalvajesA extends AppCompatActivity {
                     Toast.makeText(this, ""+throwable.getMessage(), Toast.LENGTH_SHORT).show();
                     return null;
                 });
+        //CARGA LEON
+        ModelRenderable.builder()
+                .setSource(this, R.raw.leon6)
+                .build()
+                .thenAccept(renderable -> leon = renderable)
+                .exceptionally(throwable -> {
+                    Toast.makeText(this, ""+throwable.getMessage(), Toast.LENGTH_SHORT).show();
+                    return null;
+                });
+        //CARGA SERPIENTE
+        ModelRenderable.builder()
+                .setSource(this, R.raw.serpiente3)
+                .build()
+                .thenAccept(renderable -> serpiente = renderable)
+                .exceptionally(throwable -> {
+                    Toast.makeText(this, ""+throwable.getMessage(), Toast.LENGTH_SHORT).show();
+                    return null;
+                });
 
     }
 
@@ -505,7 +567,7 @@ public class SalvajesA extends AppCompatActivity {
             case 2:
                 stopSound(choose);
                 choose = "leon";
-                //andy.setRenderable(lion1);
+                andy.setRenderable(leon);
                 audiogLion.start();
                 information = "El león es el rey de la selva, es salvaje, fuerte, grande y tiene dientes muy grandes.";
                 break;
@@ -526,7 +588,7 @@ public class SalvajesA extends AppCompatActivity {
             case 5:
                 stopSound(choose);
                 choose = "serpiente";
-                //andy.setRenderable(serpiente01);
+                andy.setRenderable(serpiente);
                 audiogSerpent.start();
                 information = "\n" +
                         "La serpiente es un animal que se arrastra por el suelo, no tiene patas, vota veneno por su boca, su cuerpo es muy largo.";
