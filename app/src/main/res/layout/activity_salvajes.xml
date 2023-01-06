@@ -125,7 +125,8 @@
         app:layout_constraintHorizontal_chainStyle="spread"
         app:layout_constraintStart_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:srcCompat="@drawable/ic_baseline_play_arrow_24" />
+        app:srcCompat="@drawable/ic_baseline_play_arrow_24"
+        android:visibility="invisible"/>
 
     <ImageButton
         android:id="@+id/id_informacion"

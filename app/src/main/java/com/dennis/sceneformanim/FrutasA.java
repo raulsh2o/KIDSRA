@@ -161,49 +161,13 @@ public class FrutasA extends AppCompatActivity {
         //////////////////////////////////////////////////////////////////////////
 
         //DECLARA PRIMER BOTON
+
         btn_anim = (FloatingActionButton)findViewById(R.id.btn_anim);
         btn_anim.setEnabled(false);
         btn_anim.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                if(animator == null || !animator.isRunning())
-                {
-                    if (choose == "pera"){
-                        AnimationData data = pera.getAnimationData(nextAnimation);
-                        nextAnimation = (nextAnimation+1)%pera.getAnimationDataCount();
-                        animator = new ModelAnimator(data,pera);
-                        animator.start();
-                    }else if (choose == "manzana"){
-                        AnimationData data = manzana.getAnimationData(nextAnimation);
-                        nextAnimation = (nextAnimation+1)%manzana.getAnimationDataCount();
-                        animator = new ModelAnimator(data,manzana);
-                        animator.start();
-                    }else if (choose == "uva"){
-                        AnimationData data = uva.getAnimationData(nextAnimation);
-                        nextAnimation = (nextAnimation+1)%uva.getAnimationDataCount();
-                        animator = new ModelAnimator(data,uva);
-                        animator.start();
-                    }else if (choose == "melon"){
-                        AnimationData data = melon.getAnimationData(nextAnimation);
-                        nextAnimation = (nextAnimation+1)%melon.getAnimationDataCount();
-                        animator = new ModelAnimator(data,melon);
-                        animator.start();
-                    }
-                    else if (choose == "pina"){
-                        AnimationData data = pina.getAnimationData(nextAnimation);
-                        nextAnimation = (nextAnimation+1)%pina.getAnimationDataCount();
-                        animator = new ModelAnimator(data,pina);
-                        animator.start();
-                    }
-                    else if (choose == "sandia"){
-                        AnimationData data = sandia.getAnimationData(nextAnimation);
-                        nextAnimation = (nextAnimation+1)%sandia.getAnimationDataCount();
-                        animator = new ModelAnimator(data,sandia);
-                        animator.start();
-                    }
-
-
-                }
+                playAnimation();
             }
         });
 
@@ -362,6 +326,45 @@ public class FrutasA extends AppCompatActivity {
     /////////////////////////////////////////////////////////////////////////////
     ////////////////////////////       FUNCIONES        /////////////////////////
     /////////////////////////////////////////////////////////////////////////////
+    private  void playAnimation(){
+        if(animator == null || !animator.isRunning())
+        {
+            if (choose == "pera"){
+                AnimationData data = pera.getAnimationData(nextAnimation);
+                nextAnimation = (nextAnimation+1)%pera.getAnimationDataCount();
+                animator = new ModelAnimator(data,pera);
+                animator.start();
+            }else if (choose == "manzana"){
+                AnimationData data = manzana.getAnimationData(nextAnimation);
+                nextAnimation = (nextAnimation+1)%manzana.getAnimationDataCount();
+                animator = new ModelAnimator(data,manzana);
+                animator.start();
+            }else if (choose == "uva"){
+                AnimationData data = uva.getAnimationData(nextAnimation);
+                nextAnimation = (nextAnimation+1)%uva.getAnimationDataCount();
+                animator = new ModelAnimator(data,uva);
+                animator.start();
+            }else if (choose == "melon"){
+                AnimationData data = melon.getAnimationData(nextAnimation);
+                nextAnimation = (nextAnimation+1)%melon.getAnimationDataCount();
+                animator = new ModelAnimator(data,melon);
+                animator.start();
+            }
+            else if (choose == "pina"){
+                AnimationData data = pina.getAnimationData(nextAnimation);
+                nextAnimation = (nextAnimation+1)%pina.getAnimationDataCount();
+                animator = new ModelAnimator(data,pina);
+                animator.start();
+            }
+            else if (choose == "sandia"){
+                AnimationData data = sandia.getAnimationData(nextAnimation);
+                nextAnimation = (nextAnimation+1)%sandia.getAnimationDataCount();
+                animator = new ModelAnimator(data,sandia);
+                animator.start();
+            }
+
+        }
+    }
 
     private void stopSound(String sound){
         if (sound == "pera"){
@@ -487,6 +490,7 @@ public class FrutasA extends AppCompatActivity {
                 andy.setRenderable(pera);
                 //audiopera.start();
                 information = "La pera tiene forma como una guitarra, es rica y da mucha energía.";
+                playAnimation();
                 break;
 
             case 2:
@@ -495,6 +499,7 @@ public class FrutasA extends AppCompatActivity {
                 andy.setRenderable(manzana);
                 //audiomanzana.start();
                 information = "La manzana es roja, amarilla, verde, es dulces , una fruta muy rica para hacernos fuertes.";
+                playAnimation();
                 break;
             case 3:
                 stopSound(choose);
@@ -502,6 +507,7 @@ public class FrutasA extends AppCompatActivity {
                 //andy.setRenderable(banana);
                 //audiobanana.start();
                 information = "La banana es de color amarillo por fuera pero blanco por dentro, es muy dulce y muy rico en vitaminas.";
+                playAnimation();
                 break;
             case 4:
                 stopSound(choose);
@@ -509,6 +515,7 @@ public class FrutasA extends AppCompatActivity {
                 andy.setRenderable(uva);
                 //audiouva.start();
                 information = "La uva tiene forma de pequeños círculos, hay una semillita en el centro, tiene colores verde y morado, es dulce y muy rica.";
+                playAnimation();
                 break;
             case 5:
                 stopSound(choose);
@@ -516,6 +523,7 @@ public class FrutasA extends AppCompatActivity {
                 andy.setRenderable(sandia);
                 //audiosandia.start();
                 information = "La sandía es una fruta verde por fuera y roja por dentro, tiene semillitas las cuales no hay que comer, es muy jugosa, rica y dulce.";
+                playAnimation();
                 break;
             case 6:
                 stopSound(choose);
@@ -523,6 +531,7 @@ public class FrutasA extends AppCompatActivity {
                 andy.setRenderable(melon);
                 //audiomelon.start();
                 information = "El melón es una fruta muy dulce, pero para probarla, hay que pelar, hay de varios colores, tiene semillita, pero no se pueden comer.";
+                playAnimation();
                 break;
             case 7:
                 stopSound(choose);
@@ -530,6 +539,7 @@ public class FrutasA extends AppCompatActivity {
                 andy.setRenderable(pina);
                 //audiopina.start();
                 information = "La piña es una fruta que tiene una forma muy particular, es grande y por dentro es muy dulces y huele muy rico, sirve también para jugos.";
+                playAnimation();
                 break;
             default:
                 break;

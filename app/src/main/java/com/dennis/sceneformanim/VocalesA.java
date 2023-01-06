@@ -156,36 +156,13 @@ public class VocalesA extends AppCompatActivity {
         //////////////////////////////////////////////////////////////////////////
 
         //DECLARA PRIMER BOTON
+
         btn_anim = (FloatingActionButton)findViewById(R.id.btn_anim);
         btn_anim.setEnabled(false);
         btn_anim.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                if(animator == null || !animator.isRunning())
-                {
-                    if (choose == "e"){
-                        AnimationData data = e.getAnimationData(nextAnimation);
-                        nextAnimation = (nextAnimation+1)%e.getAnimationDataCount();
-                        animator = new ModelAnimator(data,e);
-                        animator.start();
-                    }else if (choose == "i"){
-                        AnimationData data = i.getAnimationData(nextAnimation);
-                        nextAnimation = (nextAnimation+1)%i.getAnimationDataCount();
-                        animator = new ModelAnimator(data,i);
-                        animator.start();
-                    }else if (choose == "o"){
-                        AnimationData data = o.getAnimationData(nextAnimation);
-                        nextAnimation = (nextAnimation+1)%o.getAnimationDataCount();
-                        animator = new ModelAnimator(data,o);
-                        animator.start();
-                    }else if (choose == "u"){
-                        AnimationData data = u.getAnimationData(nextAnimation);
-                        nextAnimation = (nextAnimation+1)%u.getAnimationDataCount();
-                        animator = new ModelAnimator(data,u);
-                        animator.start();
-                    }
-
-                }
+                playAnimation();
             }
         });
 
@@ -315,6 +292,34 @@ public class VocalesA extends AppCompatActivity {
         }
     }
 
+    private  void playAnimation(){
+        if(animator == null || !animator.isRunning())
+        {
+            if (choose == "e"){
+                AnimationData data = e.getAnimationData(nextAnimation);
+                nextAnimation = (nextAnimation+1)%e.getAnimationDataCount();
+                animator = new ModelAnimator(data,e);
+                animator.start();
+            }else if (choose == "i"){
+                AnimationData data = i.getAnimationData(nextAnimation);
+                nextAnimation = (nextAnimation+1)%i.getAnimationDataCount();
+                animator = new ModelAnimator(data,i);
+                animator.start();
+            }else if (choose == "o"){
+                AnimationData data = o.getAnimationData(nextAnimation);
+                nextAnimation = (nextAnimation+1)%o.getAnimationDataCount();
+                animator = new ModelAnimator(data,o);
+                animator.start();
+            }else if (choose == "u"){
+                AnimationData data = u.getAnimationData(nextAnimation);
+                nextAnimation = (nextAnimation+1)%u.getAnimationDataCount();
+                animator = new ModelAnimator(data,u);
+                animator.start();
+            }
+
+        }
+    }
+
     ///////////////////////////////////////////////////////////////////////////
     ///////////////////////// INICIALIZA ANIMACIONES //////////////////////////
     ///////////////////////////////////////////////////////////////////////////
@@ -405,6 +410,7 @@ public class VocalesA extends AppCompatActivity {
                 //andy.setRenderable(a);
                 information = "A de avión.";
                 //audioa.start();
+                playAnimation();
                 break;
 
             case 2:
@@ -413,6 +419,7 @@ public class VocalesA extends AppCompatActivity {
                 andy.setRenderable(e);
                 //audioe.start();
                 information = "E de escalera.";
+                playAnimation();
                 break;
             case 3:
                 stopSound(choose);
@@ -420,6 +427,7 @@ public class VocalesA extends AppCompatActivity {
                 andy.setRenderable(i);
                 //audioi.start();
                 information = "I de iglesia.";
+                playAnimation();
                 break;
             case 4:
                 stopSound(choose);
@@ -427,6 +435,7 @@ public class VocalesA extends AppCompatActivity {
                 andy.setRenderable(o);
                 //audioo.start();
                 information = "O de oso.";
+                playAnimation();
                 break;
             case 5:
                 stopSound(choose);
@@ -434,6 +443,7 @@ public class VocalesA extends AppCompatActivity {
                 andy.setRenderable(u);
                 //audiou.start();
                 information = "U de uva.";
+                playAnimation();
                 break;
             default:
                 break;

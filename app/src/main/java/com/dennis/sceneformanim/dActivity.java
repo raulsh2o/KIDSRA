@@ -173,46 +173,13 @@ public class dActivity extends AppCompatActivity {
         //////////////////////////////////////////////////////////////////////////
 
         //DECLARA PRIMER BOTON
+
         btn_anim = (FloatingActionButton)findViewById(R.id.btn_anim);
         btn_anim.setEnabled(false);
         btn_anim.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                if(animator == null || !animator.isRunning())
-                {
-                    if (choose == "vaca"){
-                        AnimationData data = vaca.getAnimationData(nextAnimation);
-                        nextAnimation = (nextAnimation+1)%vaca.getAnimationDataCount();
-                        animator = new ModelAnimator(data,vaca);
-                        animator.start();
-                    }else if (choose == "caballo"){
-                    AnimationData data = horse01.getAnimationData(nextAnimation);
-                    nextAnimation = (nextAnimation+1)%horse01.getAnimationDataCount();
-                    animator = new ModelAnimator(data,horse01);
-                    animator.start();
-                    }else if (choose == "perro"){
-                        AnimationData data = perro.getAnimationData(nextAnimation);
-                        nextAnimation = (nextAnimation+1)%perro.getAnimationDataCount();
-                        animator = new ModelAnimator(data,perro);
-                        animator.start();
-                    }else if (choose == "pato"){
-                        AnimationData data = pato.getAnimationData(nextAnimation);
-                        nextAnimation = (nextAnimation+1)%pato.getAnimationDataCount();
-                        animator = new ModelAnimator(data,pato);
-                        animator.start();
-                    }else if (choose == "gallina"){
-                        AnimationData data = gallina.getAnimationData(nextAnimation);
-                        nextAnimation = (nextAnimation+1)%gallina.getAnimationDataCount();
-                        animator = new ModelAnimator(data,gallina);
-                        animator.start();
-                    }else if (choose == "gato"){
-                        AnimationData data = gato.getAnimationData(nextAnimation);
-                        nextAnimation = (nextAnimation+1)%gato.getAnimationDataCount();
-                        animator = new ModelAnimator(data,gato);
-                        animator.start();
-                    }
-
-                }
+                playAnimation();
             }
         });
 
@@ -364,6 +331,44 @@ public class dActivity extends AppCompatActivity {
     ////////////////////////////       FUNCIONES        /////////////////////////
     /////////////////////////////////////////////////////////////////////////////
 
+    private void playAnimation(){
+        if(animator == null || !animator.isRunning())
+        {
+            if (choose == "vaca"){
+                AnimationData data = vaca.getAnimationData(nextAnimation);
+                nextAnimation = (nextAnimation+1)%vaca.getAnimationDataCount();
+                animator = new ModelAnimator(data,vaca);
+                animator.start();
+            }else if (choose == "caballo"){
+                AnimationData data = horse01.getAnimationData(nextAnimation);
+                nextAnimation = (nextAnimation+1)%horse01.getAnimationDataCount();
+                animator = new ModelAnimator(data,horse01);
+                animator.start();
+            }else if (choose == "perro"){
+                AnimationData data = perro.getAnimationData(nextAnimation);
+                nextAnimation = (nextAnimation+1)%perro.getAnimationDataCount();
+                animator = new ModelAnimator(data,perro);
+                animator.start();
+            }else if (choose == "pato"){
+                AnimationData data = pato.getAnimationData(nextAnimation);
+                nextAnimation = (nextAnimation+1)%pato.getAnimationDataCount();
+                animator = new ModelAnimator(data,pato);
+                animator.start();
+            }else if (choose == "gallina"){
+                AnimationData data = gallina.getAnimationData(nextAnimation);
+                nextAnimation = (nextAnimation+1)%gallina.getAnimationDataCount();
+                animator = new ModelAnimator(data,gallina);
+                animator.start();
+            }else if (choose == "gato"){
+                AnimationData data = gato.getAnimationData(nextAnimation);
+                nextAnimation = (nextAnimation+1)%gato.getAnimationDataCount();
+                animator = new ModelAnimator(data,gato);
+                animator.start();
+            }
+
+        }
+    }
+
     private void stopSound(String sound){
         if (sound == "gato"){
             audiogCat.pause();
@@ -507,6 +512,7 @@ public class dActivity extends AppCompatActivity {
                 andy.setRenderable(gato);
                 audiogCat.start();
                 information = "Mamífero de contextura pequeña, de abundante pelaje y muy suave, son muy cariñoso con los humanos.";
+                playAnimation();
                 break;
             case 6:
                 stopSound(choose);
@@ -514,6 +520,7 @@ public class dActivity extends AppCompatActivity {
                 //andy.setRenderable(horse01);
                 audiogBird.start();
                 information = "Las aves son seres extraordinarios y fascinantes: muchas de ellas poseen un plumaje colorido, producen sonidos extraordinarios o pueden volar.";
+                playAnimation();
                 break;
             case 4:
                 stopSound(choose);
@@ -521,6 +528,7 @@ public class dActivity extends AppCompatActivity {
                 andy.setRenderable(gallina);
                 audiogChicken.start();
                 information = "La gallina es denominado un ave conocida por su cacareo, pone huevos, y está cubierta de plumas de diversos colores";
+                playAnimation();
                 break;
             case 7:
                 stopSound(choose);
@@ -528,6 +536,7 @@ public class dActivity extends AppCompatActivity {
                 andy.setRenderable(vaca);
                 audiogCow.start();
                 information = "La vaca es un animal mamífero, se alimenta del pasto, hierbas, tallos, hojas, semillas y raíces.";
+                playAnimation();
                 break;
             case 2:
                 stopSound(choose);
@@ -535,6 +544,7 @@ public class dActivity extends AppCompatActivity {
                 andy.setRenderable(perro);
                 audiogDog.start();
                 information = "El perro doméstico es un mamífero carnívoro, Su tamaño, forma y pelaje varían en función de la raza de perro, ven bien, usan mayormente su oído y su olfato, sentidos que tienen muy desarrollados y que son muy prácticos para el humano.";
+                playAnimation();
                 break;
             case 5:
                 stopSound(choose);
@@ -542,6 +552,7 @@ public class dActivity extends AppCompatActivity {
                 andy.setRenderable(pato);
                 audiogDuck.start();
                 information = "El pato es un ave, vive cerca del agua y nadan.";
+                playAnimation();
                 break;
             case 8:
                 stopSound(choose);
@@ -549,6 +560,7 @@ public class dActivity extends AppCompatActivity {
                 andy.setRenderable(horse01);
                 audiogHorse.start();
                 information = "Un Caballo es un animal cuadrúpedo perteneciente a la especie de los mamíferos, se caracteriza por su gran tamaño, son animales que galopan y relinchan";
+                playAnimation();
                 break;
             case 3:
                 stopSound(choose);
@@ -556,6 +568,7 @@ public class dActivity extends AppCompatActivity {
                 //andy.setRenderable(rabbit1);
                 audiogRabbit.start();
                 information = "Son animales que tienen muy buena relación con los humanos, ya que son muy amistosos y agradables.";
+                playAnimation();
                 break;
             default:
                 break;

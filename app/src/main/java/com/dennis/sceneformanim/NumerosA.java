@@ -169,81 +169,13 @@ public class NumerosA extends AppCompatActivity {
         //////////////////////////////////////////////////////////////////////////
 
         //DECLARA PRIMER BOTON
+
         btn_anim = (FloatingActionButton)findViewById(R.id.btn_anim);
         btn_anim.setEnabled(false);
         btn_anim.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                if(animator == null || !animator.isRunning())
-                {
-                    if (choose == "cero"){
-                        AnimationData data = cero.getAnimationData(nextAnimation);
-                        nextAnimation = (nextAnimation+1)%cero.getAnimationDataCount();
-                        animator = new ModelAnimator(data,cero);
-                        animator.start();
-                    }
-                    else if (choose == "uno"){
-                        AnimationData data = uno.getAnimationData(nextAnimation);
-                        nextAnimation = (nextAnimation+1)%uno.getAnimationDataCount();
-                        animator = new ModelAnimator(data,uno);
-                        animator.start();
-                    }
-                    else if (choose == "dos"){
-                        AnimationData data = dos.getAnimationData(nextAnimation);
-                        nextAnimation = (nextAnimation+1)%dos.getAnimationDataCount();
-                        animator = new ModelAnimator(data,dos);
-                        animator.start();
-                    }
-                    else if (choose == "tres"){
-                        AnimationData data = tres.getAnimationData(nextAnimation);
-                        nextAnimation = (nextAnimation+1)%tres.getAnimationDataCount();
-                        animator = new ModelAnimator(data,tres);
-                        animator.start();
-                    }
-                    else if (choose == "cuatro"){
-                        AnimationData data = cuatro.getAnimationData(nextAnimation);
-                        nextAnimation = (nextAnimation+1)%cuatro.getAnimationDataCount();
-                        animator = new ModelAnimator(data,cuatro);
-                        animator.start();
-                    }
-                    else if (choose == "cinco"){
-                        AnimationData data = cinco.getAnimationData(nextAnimation);
-                        nextAnimation = (nextAnimation+1)%cinco.getAnimationDataCount();
-                        animator = new ModelAnimator(data,cinco);
-                        animator.start();
-                    }
-                    else if (choose == "seis"){
-                        AnimationData data = seis.getAnimationData(nextAnimation);
-                        nextAnimation = (nextAnimation+1)%seis.getAnimationDataCount();
-                        animator = new ModelAnimator(data,seis);
-                        animator.start();
-                    }
-                    else if (choose == "siete"){
-                        AnimationData data = siete.getAnimationData(nextAnimation);
-                        nextAnimation = (nextAnimation+1)%siete.getAnimationDataCount();
-                        animator = new ModelAnimator(data,siete);
-                        animator.start();
-                    }
-                    else if (choose == "ocho"){
-                        AnimationData data = ocho.getAnimationData(nextAnimation);
-                        nextAnimation = (nextAnimation+1)%ocho.getAnimationDataCount();
-                        animator = new ModelAnimator(data,ocho);
-                        animator.start();
-                    }
-                    else if (choose == "nueve"){
-                        AnimationData data = nueve.getAnimationData(nextAnimation);
-                        nextAnimation = (nextAnimation+1)%nueve.getAnimationDataCount();
-                        animator = new ModelAnimator(data,nueve);
-                        animator.start();
-                    }
-                    else if (choose == "diez"){
-                        AnimationData data = diez.getAnimationData(nextAnimation);
-                        nextAnimation = (nextAnimation+1)%diez.getAnimationDataCount();
-                        animator = new ModelAnimator(data,diez);
-                        animator.start();
-                    }
-
-                }
+                playAnimation();
             }
         });
 
@@ -443,6 +375,78 @@ public class NumerosA extends AppCompatActivity {
     /////////////////////////////////////////////////////////////////////////////
     ////////////////////////////       FUNCIONES        /////////////////////////
     /////////////////////////////////////////////////////////////////////////////
+    private void playAnimation(){
+        if(animator == null || !animator.isRunning())
+        {
+            if (choose == "cero"){
+                AnimationData data = cero.getAnimationData(nextAnimation);
+                nextAnimation = (nextAnimation+1)%cero.getAnimationDataCount();
+                animator = new ModelAnimator(data,cero);
+                animator.start();
+            }
+            else if (choose == "uno"){
+                AnimationData data = uno.getAnimationData(nextAnimation);
+                nextAnimation = (nextAnimation+1)%uno.getAnimationDataCount();
+                animator = new ModelAnimator(data,uno);
+                animator.start();
+            }
+            else if (choose == "dos"){
+                AnimationData data = dos.getAnimationData(nextAnimation);
+                nextAnimation = (nextAnimation+1)%dos.getAnimationDataCount();
+                animator = new ModelAnimator(data,dos);
+                animator.start();
+            }
+            else if (choose == "tres"){
+                AnimationData data = tres.getAnimationData(nextAnimation);
+                nextAnimation = (nextAnimation+1)%tres.getAnimationDataCount();
+                animator = new ModelAnimator(data,tres);
+                animator.start();
+            }
+            else if (choose == "cuatro"){
+                AnimationData data = cuatro.getAnimationData(nextAnimation);
+                nextAnimation = (nextAnimation+1)%cuatro.getAnimationDataCount();
+                animator = new ModelAnimator(data,cuatro);
+                animator.start();
+            }
+            else if (choose == "cinco"){
+                AnimationData data = cinco.getAnimationData(nextAnimation);
+                nextAnimation = (nextAnimation+1)%cinco.getAnimationDataCount();
+                animator = new ModelAnimator(data,cinco);
+                animator.start();
+            }
+            else if (choose == "seis"){
+                AnimationData data = seis.getAnimationData(nextAnimation);
+                nextAnimation = (nextAnimation+1)%seis.getAnimationDataCount();
+                animator = new ModelAnimator(data,seis);
+                animator.start();
+            }
+            else if (choose == "siete"){
+                AnimationData data = siete.getAnimationData(nextAnimation);
+                nextAnimation = (nextAnimation+1)%siete.getAnimationDataCount();
+                animator = new ModelAnimator(data,siete);
+                animator.start();
+            }
+            else if (choose == "ocho"){
+                AnimationData data = ocho.getAnimationData(nextAnimation);
+                nextAnimation = (nextAnimation+1)%ocho.getAnimationDataCount();
+                animator = new ModelAnimator(data,ocho);
+                animator.start();
+            }
+            else if (choose == "nueve"){
+                AnimationData data = nueve.getAnimationData(nextAnimation);
+                nextAnimation = (nextAnimation+1)%nueve.getAnimationDataCount();
+                animator = new ModelAnimator(data,nueve);
+                animator.start();
+            }
+            else if (choose == "diez"){
+                AnimationData data = diez.getAnimationData(nextAnimation);
+                nextAnimation = (nextAnimation+1)%diez.getAnimationDataCount();
+                animator = new ModelAnimator(data,diez);
+                animator.start();
+            }
+
+        }
+    }
 
     private void stopSound(String sound){
         if (sound == "cero"){
@@ -626,6 +630,7 @@ public class NumerosA extends AppCompatActivity {
                 andy.setRenderable(cero);
                 audio0.start();
                 information = "El número cero es la rueda moscovita para pasarlo bien.";
+                playAnimation();
                 break;
 
             case 2:
@@ -634,6 +639,7 @@ public class NumerosA extends AppCompatActivity {
                 andy.setRenderable(uno);
                 audio1.start();
                 information = "El número uno es un soldado haciendo la instrucción.";
+                playAnimation();
                 break;
             case 3:
                 stopSound(choose);
@@ -641,6 +647,7 @@ public class NumerosA extends AppCompatActivity {
                 andy.setRenderable(dos);
                 audio2.start();
                 information = "El número dos es un patito que está tomando el sol.";
+                playAnimation();
                 break;
             case 4:
                 stopSound(choose);
@@ -648,6 +655,7 @@ public class NumerosA extends AppCompatActivity {
                 andy.setRenderable(tres);
                 audio3.start();
                 information = "El número tres es una serpiente que baila sin parar.";
+                playAnimation();
                 break;
             case 5:
                 stopSound(choose);
@@ -655,6 +663,7 @@ public class NumerosA extends AppCompatActivity {
                 andy.setRenderable(cuatro);
                 audio4.start();
                 information = "El número cuatro es una sillita que invita a descansar.";
+                playAnimation();
                 break;
             case 6:
                 stopSound(choose);
@@ -662,6 +671,7 @@ public class NumerosA extends AppCompatActivity {
                 andy.setRenderable(cinco);
                 audio5.start();
                 information = "El número cinco tiene orejas, parece un conejito.";
+                playAnimation();
                 break;
 
             case 7:
@@ -670,6 +680,7 @@ public class NumerosA extends AppCompatActivity {
                 andy.setRenderable(seis);
                 audio6.start();
                 information = "El número seis es una pera redonda y con rabito.";
+                playAnimation();
                 break;
             case 8:
                 stopSound(choose);
@@ -677,6 +688,7 @@ public class NumerosA extends AppCompatActivity {
                 andy.setRenderable(siete);
                 audio7.start();
                 information = "El número siete es un sereno con gorra y con bastón.";
+                playAnimation();
                 break;
             case 9:
                 stopSound(choose);
@@ -684,6 +696,7 @@ public class NumerosA extends AppCompatActivity {
                 andy.setRenderable(ocho);
                 audio8.start();
                 information = "El número ocho son las gafas que lleva don Ramón.";
+                playAnimation();
                 break;
             case 10:
                 stopSound(choose);
@@ -691,6 +704,7 @@ public class NumerosA extends AppCompatActivity {
                 andy.setRenderable(nueve);
                 audio9.start();
                 information = "El número nueve es un globito atado a un cordel.";
+                playAnimation();
                 break;
 
             case 11:
@@ -699,6 +713,7 @@ public class NumerosA extends AppCompatActivity {
                 andy.setRenderable(diez);
                 audio10.start();
                 information = "El número diez es un soldado que lleva un gran melón.";
+                playAnimation();
                 break;
 
             default:
