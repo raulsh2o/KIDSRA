@@ -65,17 +65,17 @@ public class NumerosA extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_numeros);
         // DECLARA BOTONES DE CAMBIO DE OBJETO
-        Button Ncero = (Button) findViewById(R.id.id_cero);
-        Button Nuno = (Button) findViewById(R.id.id_uno);
-        Button Ndos = (Button) findViewById(R.id.id_dos);
-        Button Ntres = (Button) findViewById(R.id.id_tres);
-        Button Ncuatro = (Button) findViewById(R.id.id_cuatro);
-        Button Ncinco = (Button) findViewById(R.id.id_cinco);
-        Button Nseis = (Button) findViewById(R.id.id_seis);
-        Button Nsiete = (Button) findViewById(R.id.id_siete);
-        Button Nocho = (Button) findViewById(R.id.id_ocho);
-        Button Nnueve = (Button) findViewById(R.id.id_nueve);
-        Button Ndiez = (Button) findViewById(R.id.id_diez);
+        ImageButton Ncero = (ImageButton) findViewById(R.id.id_cero);
+        ImageButton Nuno = (ImageButton) findViewById(R.id.id_uno);
+        ImageButton Ndos = (ImageButton) findViewById(R.id.id_dos);
+        ImageButton Ntres = (ImageButton) findViewById(R.id.id_tres);
+        ImageButton Ncuatro = (ImageButton) findViewById(R.id.id_cuatro);
+        ImageButton Ncinco = (ImageButton) findViewById(R.id.id_cinco);
+        ImageButton Nseis = (ImageButton) findViewById(R.id.id_seis);
+        ImageButton Nsiete = (ImageButton) findViewById(R.id.id_siete);
+        ImageButton Nocho = (ImageButton) findViewById(R.id.id_ocho);
+        ImageButton Nnueve = (ImageButton) findViewById(R.id.id_nueve);
+        ImageButton Ndiez = (ImageButton) findViewById(R.id.id_diez);
         ImageButton informacion = (ImageButton) findViewById(R.id.id_informacion);
 
         //INICIALIZA AUDIOS

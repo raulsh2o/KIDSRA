@@ -65,13 +65,13 @@ public class FrutasA extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_frutas);
         // DECLARA BOTONES DE CAMBIO DE OBJETO
-        Button Pera = (Button) findViewById(R.id.id_Pera);
-        Button Manzana = (Button) findViewById(R.id.id_Manzana);
-        Button Banana = (Button) findViewById(R.id.id_Banana);
-        Button Uva = (Button) findViewById(R.id.id_Uva);
-        Button Sandia = (Button) findViewById(R.id.id_Sandia);
-        Button Melon = (Button) findViewById(R.id.id_Melon);
-        Button Pina = (Button) findViewById(R.id.id_Piña);
+        ImageButton Pera = (ImageButton) findViewById(R.id.id_Pera);
+        ImageButton Manzana = (ImageButton) findViewById(R.id.id_Manzana);
+        ImageButton Banana = (ImageButton) findViewById(R.id.id_Banana);
+        ImageButton Uva = (ImageButton) findViewById(R.id.id_Uva);
+        ImageButton Sandia = (ImageButton) findViewById(R.id.id_Sandia);
+        ImageButton Melon = (ImageButton) findViewById(R.id.id_Melon);
+        ImageButton Pina = (ImageButton) findViewById(R.id.id_Piña);
         ImageButton informacion = (ImageButton) findViewById(R.id.id_informacion);
 
         //INICIALIZA AUDIOS

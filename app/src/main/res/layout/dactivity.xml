@@ -34,72 +34,80 @@
             <LinearLayout
                 android:id="@+id/preview_control_panel"
                 android:layout_width="match_parent"
-                android:layout_height="80dp"
+                android:layout_height="120dp"
                 android:background="#82212121"
                 android:orientation="horizontal"
                 android:padding="10dp"
                 android:layout_alignParentBottom="true">
 
-                <Button
+                <ImageButton
                     android:id="@+id/id_gato1"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_margin="5dp"
                     android:text="Gato"
+                    android:src="@drawable/gato"
                     tools:layout_editor_absoluteX="130dp"
                     tools:layout_editor_absoluteY="667dp" />
-                <Button
+                <ImageButton
                     android:id="@+id/id_perro1"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_margin="5dp"
                     android:text="Perro"
+                    android:src="@drawable/perro"
                     tools:layout_editor_absoluteX="18dp"
                     tools:layout_editor_absoluteY="667dp" />
-                <Button
+                <ImageButton
                     android:id="@+id/id_conejo1"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_margin="5dp"
                     android:text="Conejo"
+                    android:src="@drawable/conejo"
                     tools:layout_editor_absoluteX="231dp"
                     tools:layout_editor_absoluteY="667dp" />
-                <Button
+                <ImageButton
                     android:id="@+id/id_gallina1"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_margin="5dp"
                     android:layout_weight="1"
-                    android:text="Gallina" />
+                    android:text="Gallina"
+                    android:src="@drawable/gallina"/>
 
-                <Button
+                <ImageButton
                     android:id="@+id/id_pato1"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_margin="5dp"
                     android:layout_weight="1"
-                    android:text="Pato" />
-                <Button
+                    android:text="Pato"
+                    android:src="@drawable/pato"/>
+                <ImageButton
                     android:id="@+id/id_pajaro1"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_margin="5dp"
                     android:layout_weight="1"
-                    android:text="Pájaro" />
-                <Button
+                    android:text="Pájaro"
+                    android:src="@drawable/pajaro"/>
+                <ImageButton
                     android:id="@+id/id_vaca1"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_margin="5dp"
                     android:layout_weight="1"
-                    android:text="Vaca" />
-                <Button
+                    android:text="Vaca"
+                    android:src="@drawable/vaca"/>
+                <ImageButton
                     android:id="@+id/id_caballo1"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_margin="5dp"
                     android:layout_weight="1"
-                    android:text="Caballo" />
+                    android:text="Caballo"
+                    android:src="@drawable/caballo"/>
 
             </LinearLayout>
         </HorizontalScrollView>

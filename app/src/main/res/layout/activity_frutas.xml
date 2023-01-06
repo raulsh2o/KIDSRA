@@ -35,64 +35,71 @@
             <LinearLayout
                 android:id="@+id/preview_control_panel"
                 android:layout_width="match_parent"
-                android:layout_height="80dp"
+                android:layout_height="120dp"
                 android:background="#82212121"
                 android:orientation="horizontal"
                 android:padding="10dp"
                 android:layout_alignParentBottom="true">
-                <Button
+                <ImageButton
                     android:id="@+id/id_Pera"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_margin="5dp"
                     android:text="Pera"
+                    android:src="@drawable/pera"
                     tools:layout_editor_absoluteX="130dp"
                     tools:layout_editor_absoluteY="667dp" />
 
-                <Button
+                <ImageButton
                     android:id="@+id/id_Manzana"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_margin="5dp"
                     android:layout_weight="1"
-                    android:text="Manzana" />
+                    android:text="Manzana"
+                    android:src="@drawable/manzana"/>
 
-                <Button
+                <ImageButton
                     android:id="@+id/id_Banana"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_margin="5dp"
                     android:layout_weight="1"
-                    android:text="Banana" />
-                <Button
+                    android:text="Banana"
+                    android:src="@drawable/banana"/>
+                <ImageButton
                     android:id="@+id/id_Uva"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_margin="5dp"
                     android:layout_weight="1"
-                    android:text="Uva" />
-                <Button
+                    android:text="Uva"
+                    android:src="@drawable/uva"/>
+                <ImageButton
                     android:id="@+id/id_Sandia"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_margin="5dp"
                     android:layout_weight="1"
-                    android:text="Sandia" />
+                    android:text="Sandia"
+                    android:src="@drawable/sandia"/>
 
-                <Button
+                <ImageButton
                     android:id="@+id/id_Melon"
                     android:layout_width="101dp"
                     android:layout_height="wrap_content"
                     android:layout_margin="5dp"
                     android:layout_weight="1"
-                    android:text="Melon" />
-                <Button
+                    android:text="Melon"
+                    android:src="@drawable/melon"/>
+                <ImageButton
                     android:id="@+id/id_Piña"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_margin="5dp"
                     android:layout_weight="1"
-                    android:text="Piña" />
+                    android:text="Piña"
+                    android:src="@drawable/pina"/>
 
 
             </LinearLayout>

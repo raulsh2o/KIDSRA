@@ -68,14 +68,14 @@ public class dActivity extends AppCompatActivity {
         setContentView(R.layout.dactivity);
 
         // DECLARA BOTONES DE CAMBIO DE OBJETO
-        Button catshow = (Button) findViewById(R.id.id_gato1);
-        Button birdshow = (Button) findViewById(R.id.id_pajaro1);
-        Button chickenshow= (Button) findViewById(R.id.id_gallina1);
-        Button cowshow=(Button) findViewById(R.id.id_vaca1);
-        Button dogshow=(Button) findViewById(R.id.id_perro1);
-        Button duckshow=(Button) findViewById(R.id.id_pato1);
-        Button horseshow=(Button) findViewById(R.id.id_caballo1);
-        Button rabbitshow=(Button) findViewById(R.id.id_conejo1);
+        ImageButton catshow = (ImageButton) findViewById(R.id.id_gato1);
+        ImageButton birdshow = (ImageButton) findViewById(R.id.id_pajaro1);
+        ImageButton chickenshow= (ImageButton) findViewById(R.id.id_gallina1);
+        ImageButton cowshow=(ImageButton) findViewById(R.id.id_vaca1);
+        ImageButton dogshow=(ImageButton) findViewById(R.id.id_perro1);
+        ImageButton duckshow=(ImageButton) findViewById(R.id.id_pato1);
+        ImageButton horseshow=(ImageButton) findViewById(R.id.id_caballo1);
+        ImageButton rabbitshow=(ImageButton) findViewById(R.id.id_conejo1);
         ImageButton informacion = (ImageButton) findViewById(R.id.id_informacion);
 
         //INICIALIZA AUDIOS

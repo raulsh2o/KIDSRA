@@ -65,14 +65,14 @@ public class SalvajesA extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_salvajes);
         // DECLARA BOTONES DE CAMBIO DE OBJETO
-        Button mono1show = (Button) findViewById(R.id.id_Mono1);
-        Button leon1show = (Button) findViewById(R.id.id_leon1);
-        Button tigre1show = (Button) findViewById(R.id.id_tigre1);
-        Button elefante1show = (Button) findViewById(R.id.id_elefante1);
-        Button serpiente1show = (Button) findViewById(R.id.id_serpiente1);
-        Button jirafa1show = (Button) findViewById(R.id.id_jirafa1);
-        Button hipopotamo1show = (Button) findViewById(R.id.id_hipopotamo1);
-        Button cocodrilo1show = (Button) findViewById(R.id.id_cocodrilo1);
+        ImageButton mono1show = (ImageButton) findViewById(R.id.id_Mono1);
+        ImageButton leon1show = (ImageButton) findViewById(R.id.id_leon1);
+        ImageButton tigre1show = (ImageButton) findViewById(R.id.id_tigre1);
+        ImageButton elefante1show = (ImageButton) findViewById(R.id.id_elefante1);
+        ImageButton serpiente1show = (ImageButton) findViewById(R.id.id_serpiente1);
+        ImageButton jirafa1show = (ImageButton) findViewById(R.id.id_jirafa1);
+        ImageButton hipopotamo1show = (ImageButton) findViewById(R.id.id_hipopotamo1);
+        ImageButton cocodrilo1show = (ImageButton) findViewById(R.id.id_cocodrilo1);
         ImageButton informacion = (ImageButton) findViewById(R.id.id_informacion);
 
         //INICIALIZA AUDIOS

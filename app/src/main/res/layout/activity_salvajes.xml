@@ -11,7 +11,7 @@
         android:id="@+id/sceneform_fragment"
         class="com.google.ar.sceneform.ux.ArFragment"
         android:layout_width="match_parent"
-        android:layout_height="match_parent"/>
+        android:layout_height="match_parent" />
 
     <LinearLayout
         android:id="@+id/preview_control_panel1"
@@ -35,70 +35,78 @@
             <LinearLayout
                 android:id="@+id/preview_control_panel"
                 android:layout_width="match_parent"
-                android:layout_height="80dp"
+                android:layout_height="120dp"
                 android:background="#82212121"
                 android:orientation="horizontal"
                 android:padding="10dp"
                 android:layout_alignParentBottom="true">
-                <Button
+                <ImageButton
                     android:id="@+id/id_Mono1"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_margin="5dp"
                     android:layout_weight="1"
-                    android:text="Mono" />
-                <Button
+                    android:text="Mono"
+                    android:src="@drawable/mono"/>
+                <ImageButton
                     android:id="@+id/id_leon1"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_margin="5dp"
                     android:layout_weight="1"
-                    android:text="León" />
-                <Button
+                    android:text="León"
+                    android:src="@drawable/leon"/>
+                <ImageButton
                     android:id="@+id/id_tigre1"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_margin="5dp"
                     android:layout_weight="1"
-                    android:text="Tigre" />
-                <Button
+                    android:text="Tigre"
+                    android:src="@drawable/tigre"/>
+                <ImageButton
                     android:id="@+id/id_elefante1"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_margin="5dp"
                     android:layout_weight="1"
-                    android:text="Elefante" />
-                <Button
+                    android:text="Elefante"
+                    android:src="@drawable/elefante"/>
+                <ImageButton
                     android:id="@+id/id_serpiente1"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_margin="5dp"
                     android:text="Serpiente"
+                    android:src="@drawable/serpiente"
                     tools:layout_editor_absoluteX="130dp"
                     tools:layout_editor_absoluteY="667dp" />
 
-                <Button
+                <ImageButton
                     android:id="@+id/id_jirafa1"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_margin="5dp"
                     android:layout_weight="1"
-                    android:text="Jirafa" />
+                    android:text="Jirafa"
+                    android:src="@drawable/jirafa"/>
 
-                <Button
+                <ImageButton
                     android:id="@+id/id_hipopotamo1"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_margin="5dp"
                     android:layout_weight="1"
-                    android:text="Hipopotamo" />
-                <Button
+                    android:text="Hipopotamo"
+                    android:src="@drawable/hipopotamo"/>
+                <ImageButton
                     android:id="@+id/id_cocodrilo1"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_margin="5dp"
                     android:layout_weight="1"
-                    android:text="Cocodrilo" />
+                    android:text="Cocodrilo"
+                    android:src="@drawable/cocodrilo"/>
 
 
             </LinearLayout>
