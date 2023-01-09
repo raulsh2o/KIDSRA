@@ -10,6 +10,7 @@ import android.content.Context;
 import android.content.res.ColorStateList;
 import android.graphics.Color;
 import android.os.Bundle;
+import android.view.KeyEvent;
 import android.view.MotionEvent;
 import android.view.View;
 import android.widget.Button;
@@ -38,6 +39,8 @@ import android.media.MediaPlayer;
 import java.util.ArrayList;
 import java.util.List;
 
+import android.os.Handler;
+
 public class SalvajesA extends AppCompatActivity {
     //Variable
     private ArFragment arFragment;
@@ -52,6 +55,10 @@ public class SalvajesA extends AppCompatActivity {
     private int Status1 = 0;
     private String information = "";
     private String choose = "";
+    private Boolean empyAnimation = false;
+    private  Boolean pushButton = false;
+
+    Handler handler = new Handler();
 
     //DECLARAR AUDIOS
     MediaPlayer audioMonkey, audioLion, audioTiger, audioElephant, audioSerpent,audioJirafa, audioHipopo, audioCocodrile, audioi, audiogMonkey, audiogLion, audiogTiger, audiogElephant, audiogSerpent,audiogJirafa, audiogHipopo, audiogCocodrile;
@@ -60,6 +67,15 @@ public class SalvajesA extends AppCompatActivity {
     private List<AnchorNode> anchorNodeList = new ArrayList<>();
     private AnchorNode currentSelectedAnchorNode = null;
     //*************************************************************
+    @Override
+    public boolean onKeyDown(int keyCode, KeyEvent event) {
+        // TODO Auto-generated method stub
+        if (keyCode == event.KEYCODE_BACK) {
+            pushButton=false;
+        }
+        return super.onKeyDown(keyCode, event);
+    }
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -355,60 +371,88 @@ public class SalvajesA extends AppCompatActivity {
                 }
             }
         });
-
+        ejecutarTarea();
     }
 
     /////////////////////////////////////////////////////////////////////////////
     ////////////////////////////       FUNCIONES        /////////////////////////
     /////////////////////////////////////////////////////////////////////////////
+    private void validationBug(){
+        if (empyAnimation == false){
+            playAnimation();
+            empyAnimation = true;
+        }else {
+            animator.cancel();
+            playAnimation();
+        }
+    }
+    public void ejecutarTarea() {
+        handler.postDelayed(new Runnable() {
+            public void run() {
+                if (pushButton == true){
+                    validationBug();
+                }
+                handler.postDelayed(this, 5000);
+            }
+        }, 5000);
+
+    }
     private void playAnimation(){
-        if(animator == null || !animator.isRunning())
-        {
-            if (choose == "tigre"){
-                AnimationData data = tigre.getAnimationData(nextAnimation);
-                nextAnimation = (nextAnimation+1)%tigre.getAnimationDataCount();
-                animator = new ModelAnimator(data,tigre);
-                animator.start();
-            }else if (choose == "cocodrilo"){
-                AnimationData data = cocodrilo.getAnimationData(nextAnimation);
-                nextAnimation = (nextAnimation+1)%cocodrilo.getAnimationDataCount();
-                animator = new ModelAnimator(data,cocodrilo);
-                animator.start();
-            }else if (choose == "elefante"){
-                AnimationData data = elefante.getAnimationData(nextAnimation);
-                nextAnimation = (nextAnimation+1)%elefante.getAnimationDataCount();
-                animator = new ModelAnimator(data,elefante);
-                animator.start();
-            }else if (choose == "jirafa"){
-                AnimationData data = jirafa.getAnimationData(nextAnimation);
-                nextAnimation = (nextAnimation+1)%jirafa.getAnimationDataCount();
-                animator = new ModelAnimator(data,jirafa);
-                animator.start();
+        try {
+
+            if (animator == null || !animator.isRunning()) {
+                if (choose == "tigre") {
+                    audiogTiger.start();
+                    AnimationData data = tigre.getAnimationData(nextAnimation);
+                    nextAnimation = (nextAnimation + 1) % tigre.getAnimationDataCount();
+                    animator = new ModelAnimator(data, tigre);
+                    animator.start();
+                } else if (choose == "cocodrilo") {
+                    audiogCocodrile.start();
+                    AnimationData data = cocodrilo.getAnimationData(nextAnimation);
+                    nextAnimation = (nextAnimation + 1) % cocodrilo.getAnimationDataCount();
+                    animator = new ModelAnimator(data, cocodrilo);
+                    animator.start();
+                } else if (choose == "elefante") {
+                    audiogElephant.start();
+                    AnimationData data = elefante.getAnimationData(nextAnimation);
+                    nextAnimation = (nextAnimation + 1) % elefante.getAnimationDataCount();
+                    animator = new ModelAnimator(data, elefante);
+                    animator.start();
+                } else if (choose == "jirafa") {
+                    audiogJirafa.start();
+                    AnimationData data = jirafa.getAnimationData(nextAnimation);
+                    nextAnimation = (nextAnimation + 1) % jirafa.getAnimationDataCount();
+                    animator = new ModelAnimator(data, jirafa);
+                    animator.start();
+                } else if (choose == "mono") {
+                    audiogMonkey.start();
+                    AnimationData data = mono.getAnimationData(nextAnimation);
+                    nextAnimation = (nextAnimation + 1) % mono.getAnimationDataCount();
+                    animator = new ModelAnimator(data, mono);
+                    animator.start();
+                } else if (choose == "hipopotamo") {
+                    audiogHipopo.start();
+                    AnimationData data = hipopotamo.getAnimationData(nextAnimation);
+                    nextAnimation = (nextAnimation + 1) % hipopotamo.getAnimationDataCount();
+                    animator = new ModelAnimator(data, hipopotamo);
+                    animator.start();
+                } else if (choose == "leon") {
+                    audiogLion.start();
+                    AnimationData data = leon.getAnimationData(nextAnimation);
+                    nextAnimation = (nextAnimation + 1) % leon.getAnimationDataCount();
+                    animator = new ModelAnimator(data, leon);
+                    animator.start();
+                } else if (choose == "serpiente") {
+                    audiogSerpent.start();
+                    AnimationData data = serpiente.getAnimationData(nextAnimation);
+                    nextAnimation = (nextAnimation + 1) % serpiente.getAnimationDataCount();
+                    animator = new ModelAnimator(data, serpiente);
+                    animator.start();
+                }
+
             }
-            else if (choose == "mono"){
-                AnimationData data = mono.getAnimationData(nextAnimation);
-                nextAnimation = (nextAnimation+1)%mono.getAnimationDataCount();
-                animator = new ModelAnimator(data,mono);
-                animator.start();
-            }
-            else if (choose == "hipopotamo"){
-                AnimationData data = hipopotamo.getAnimationData(nextAnimation);
-                nextAnimation = (nextAnimation+1)%hipopotamo.getAnimationDataCount();
-                animator = new ModelAnimator(data,hipopotamo);
-                animator.start();
-            }
-            else if (choose == "leon"){
-                AnimationData data = leon.getAnimationData(nextAnimation);
-                nextAnimation = (nextAnimation+1)%leon.getAnimationDataCount();
-                animator = new ModelAnimator(data,leon);
-                animator.start();
-            }
-            else if (choose == "serpiente"){
-                AnimationData data = serpiente.getAnimationData(nextAnimation);
-                nextAnimation = (nextAnimation+1)%serpiente.getAnimationDataCount();
-                animator = new ModelAnimator(data,serpiente);
-                animator.start();
-            }
+        }catch (Exception e){
 
         }
     }
@@ -457,7 +501,7 @@ public class SalvajesA extends AppCompatActivity {
 
         //CARGA TIGRE
         ModelRenderable.builder()
-                .setSource(this, R.raw.tigre31)
+                .setSource(this, R.raw.tigre63)
                 .build()
                 .thenAccept(renderable -> tigre = renderable)
                 .exceptionally(throwable -> {
@@ -562,69 +606,77 @@ public class SalvajesA extends AppCompatActivity {
         switch(Status1)
         {
             case 1:
+                pushButton = true;
                 stopSound(choose);
                 choose = "mono";
                 andy.setRenderable(mono);
-                audiogMonkey.start();
+                //audiogMonkey.start();
                 information = "El mono es proveniente de la familia de los primates, usas sus extremidades para cazar, comer o hacer otras acciones diferentes.";
-                playAnimation();
+                validationBug();
                 break;
             case 2:
+                pushButton = true;
                 stopSound(choose);
                 choose = "leon";
                 andy.setRenderable(leon);
-                audiogLion.start();
+                //audiogLion.start();
                 information = "El león es el rey de la selva, es salvaje, fuerte, grande y tiene dientes muy grandes.";
-                playAnimation();
+                validationBug();
                 break;
             case 3:
+                pushButton = true;
                 stopSound(choose);
                 choose = "tigre";
                 andy.setRenderable(tigre);
-                audiogTiger.start();
+                //audiogTiger.start();
                 information = "El tigre es un animal grande, corren muy rápido, son solitarios y cazadores.";
-                playAnimation();
+                validationBug();
                 break;
             case 4:
+                pushButton = true;
                 stopSound(choose);
                 choose = "elefante";
                 andy.setRenderable(elefante);
-                audiogElephant.start();
+                //audiogElephant.start();
                 information = "El elefante es el animal terrestre más grande, tiene orejas grandes y su trompa muy larga, tienen ojos pequeños.";
-                playAnimation();
+                validationBug();
                 break;
             case 5:
+                pushButton = true;
                 stopSound(choose);
                 choose = "serpiente";
                 andy.setRenderable(serpiente);
-                audiogSerpent.start();
+                //audiogSerpent.start();
                 information = "La serpiente es un animal que se arrastra por el suelo, no tiene patas, vota veneno por su boca, su cuerpo es muy largo.";
-                playAnimation();
+                validationBug();
                 break;
             case 6:
+                pushButton = true;
                 stopSound(choose);
                 choose = "jirafa";
                 andy.setRenderable(jirafa);
-                audiogJirafa.start();
+                //audiogJirafa.start();
                 information = "Las jirafas son animales de cuello largo, son de color amarillo con manchas negras y tiene dos cuernos pequeños.";
-                playAnimation();
+                validationBug();
                 break;
 
             case 7:
+                pushButton = true;
                 stopSound(choose);
                 choose = "hipopotamo";
                 andy.setRenderable(hipopotamo);
-                audiogHipopo.start();
+                //audiogHipopo.start();
                 information = "El hipopótamo es un animal de boca enorme con grandes dientes, son grandes y pesados, son muy agresivos y de patas cortas.";
-                playAnimation();
+                validationBug();
                 break;
             case 8:
+                pushButton = true;
                 stopSound(choose);
                 choose = "cocodrilo";
                 andy.setRenderable(cocodrilo);
-                audiogCocodrile.start();
+                //audiogCocodrile.start();
                 information = "El cocodrilo   es un animal con 4 patas, se arrastra por el suelo, con una boca enorme y dientes muy grandes, tiene una cola muy larga, y viven en los pantanos, lagos o ríos.";
-                playAnimation();
+                validationBug();
                 break;
             /*case 20:
                 newMarkAnchorNode.setRenderable(jirafa01);

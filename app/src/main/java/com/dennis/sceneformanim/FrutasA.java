@@ -10,6 +10,7 @@ import android.content.Context;
 import android.content.res.ColorStateList;
 import android.graphics.Color;
 import android.os.Bundle;
+import android.view.KeyEvent;
 import android.view.MotionEvent;
 import android.view.View;
 import android.widget.Button;
@@ -38,6 +39,8 @@ import android.media.MediaPlayer;
 import java.util.ArrayList;
 import java.util.List;
 
+import android.os.Handler;
+
 public class FrutasA extends AppCompatActivity {
     //Variable
     private ArFragment arFragment;
@@ -52,6 +55,10 @@ public class FrutasA extends AppCompatActivity {
     private int Status1 = 0;
     private String information = "";
     private String choose = "";
+    private Boolean empyAnimation = false;
+    private  Boolean pushButton = false;
+
+    Handler handler = new Handler();
 
     //DECLARAR AUDIOS
     MediaPlayer  audioi, audiomanzana, audiopera, audiobanana, audiouva, audiosandia, audiomelon, audiopina;
@@ -60,6 +67,15 @@ public class FrutasA extends AppCompatActivity {
     private List<AnchorNode> anchorNodeList = new ArrayList<>();
     private AnchorNode currentSelectedAnchorNode = null;
     //*************************************************************
+    @Override
+    public boolean onKeyDown(int keyCode, KeyEvent event) {
+        // TODO Auto-generated method stub
+        if (keyCode == event.KEYCODE_BACK) {
+            pushButton=false;
+        }
+        return super.onKeyDown(keyCode, event);
+    }
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -319,49 +335,72 @@ public class FrutasA extends AppCompatActivity {
                 }
             }
         });
-
+        ejecutarTarea();
 
     }
 
     /////////////////////////////////////////////////////////////////////////////
     ////////////////////////////       FUNCIONES        /////////////////////////
     /////////////////////////////////////////////////////////////////////////////
+    private void validationBug(){
+        if (empyAnimation == false){
+            playAnimation();
+            empyAnimation = true;
+        }else {
+            animator.cancel();
+            playAnimation();
+        }
+    }
+    public void ejecutarTarea() {
+        handler.postDelayed(new Runnable() {
+            public void run() {
+                if (pushButton == true){
+                    validationBug();
+                }
+                handler.postDelayed(this, 5000);
+            }
+        }, 5000);
+
+    }
     private  void playAnimation(){
-        if(animator == null || !animator.isRunning())
-        {
-            if (choose == "pera"){
-                AnimationData data = pera.getAnimationData(nextAnimation);
-                nextAnimation = (nextAnimation+1)%pera.getAnimationDataCount();
-                animator = new ModelAnimator(data,pera);
-                animator.start();
-            }else if (choose == "manzana"){
-                AnimationData data = manzana.getAnimationData(nextAnimation);
-                nextAnimation = (nextAnimation+1)%manzana.getAnimationDataCount();
-                animator = new ModelAnimator(data,manzana);
-                animator.start();
-            }else if (choose == "uva"){
-                AnimationData data = uva.getAnimationData(nextAnimation);
-                nextAnimation = (nextAnimation+1)%uva.getAnimationDataCount();
-                animator = new ModelAnimator(data,uva);
-                animator.start();
-            }else if (choose == "melon"){
-                AnimationData data = melon.getAnimationData(nextAnimation);
-                nextAnimation = (nextAnimation+1)%melon.getAnimationDataCount();
-                animator = new ModelAnimator(data,melon);
-                animator.start();
+        try {
+
+
+            if (animator == null || !animator.isRunning()) {
+                if (choose == "pera") {
+                    AnimationData data = pera.getAnimationData(nextAnimation);
+                    nextAnimation = (nextAnimation + 1) % pera.getAnimationDataCount();
+                    animator = new ModelAnimator(data, pera);
+                    animator.start();
+                } else if (choose == "manzana") {
+                    AnimationData data = manzana.getAnimationData(nextAnimation);
+                    nextAnimation = (nextAnimation + 1) % manzana.getAnimationDataCount();
+                    animator = new ModelAnimator(data, manzana);
+                    animator.start();
+                } else if (choose == "uva") {
+                    AnimationData data = uva.getAnimationData(nextAnimation);
+                    nextAnimation = (nextAnimation + 1) % uva.getAnimationDataCount();
+                    animator = new ModelAnimator(data, uva);
+                    animator.start();
+                } else if (choose == "melon") {
+                    AnimationData data = melon.getAnimationData(nextAnimation);
+                    nextAnimation = (nextAnimation + 1) % melon.getAnimationDataCount();
+                    animator = new ModelAnimator(data, melon);
+                    animator.start();
+                } else if (choose == "pina") {
+                    AnimationData data = pina.getAnimationData(nextAnimation);
+                    nextAnimation = (nextAnimation + 1) % pina.getAnimationDataCount();
+                    animator = new ModelAnimator(data, pina);
+                    animator.start();
+                } else if (choose == "sandia") {
+                    AnimationData data = sandia.getAnimationData(nextAnimation);
+                    nextAnimation = (nextAnimation + 1) % sandia.getAnimationDataCount();
+                    animator = new ModelAnimator(data, sandia);
+                    animator.start();
+                }
+
             }
-            else if (choose == "pina"){
-                AnimationData data = pina.getAnimationData(nextAnimation);
-                nextAnimation = (nextAnimation+1)%pina.getAnimationDataCount();
-                animator = new ModelAnimator(data,pina);
-                animator.start();
-            }
-            else if (choose == "sandia"){
-                AnimationData data = sandia.getAnimationData(nextAnimation);
-                nextAnimation = (nextAnimation+1)%sandia.getAnimationDataCount();
-                animator = new ModelAnimator(data,sandia);
-                animator.start();
-            }
+        }catch (Exception e){
 
         }
     }
@@ -485,61 +524,68 @@ public class FrutasA extends AppCompatActivity {
         switch(Status1)
         {
             case 1:
+                pushButton = true;
                 stopSound(choose);
                 choose = "pera";
                 andy.setRenderable(pera);
                 //audiopera.start();
                 information = "La pera tiene forma como una guitarra, es rica y da mucha energía.";
-                playAnimation();
+                validationBug();
                 break;
 
             case 2:
+                pushButton = true;
                 stopSound(choose);
                 choose = "manzana";
                 andy.setRenderable(manzana);
                 //audiomanzana.start();
                 information = "La manzana es roja, amarilla, verde, es dulces , una fruta muy rica para hacernos fuertes.";
-                playAnimation();
+                validationBug();
                 break;
             case 3:
+                pushButton = true;
                 stopSound(choose);
                 choose = "banana";
                 //andy.setRenderable(banana);
                 //audiobanana.start();
                 information = "La banana es de color amarillo por fuera pero blanco por dentro, es muy dulce y muy rico en vitaminas.";
-                playAnimation();
+                validationBug();
                 break;
             case 4:
+                pushButton = true;
                 stopSound(choose);
                 choose = "uva";
                 andy.setRenderable(uva);
                 //audiouva.start();
                 information = "La uva tiene forma de pequeños círculos, hay una semillita en el centro, tiene colores verde y morado, es dulce y muy rica.";
-                playAnimation();
+                validationBug();
                 break;
             case 5:
+                pushButton = true;
                 stopSound(choose);
                 choose = "sandia";
                 andy.setRenderable(sandia);
                 //audiosandia.start();
                 information = "La sandía es una fruta verde por fuera y roja por dentro, tiene semillitas las cuales no hay que comer, es muy jugosa, rica y dulce.";
-                playAnimation();
+                validationBug();
                 break;
             case 6:
+                pushButton = true;
                 stopSound(choose);
                 choose = "melon";
                 andy.setRenderable(melon);
                 //audiomelon.start();
                 information = "El melón es una fruta muy dulce, pero para probarla, hay que pelar, hay de varios colores, tiene semillita, pero no se pueden comer.";
-                playAnimation();
+                validationBug();
                 break;
             case 7:
+                pushButton = true;
                 stopSound(choose);
                 choose = "pina";
                 andy.setRenderable(pina);
                 //audiopina.start();
                 information = "La piña es una fruta que tiene una forma muy particular, es grande y por dentro es muy dulces y huele muy rico, sirve también para jugos.";
-                playAnimation();
+                validationBug();
                 break;
             default:
                 break;

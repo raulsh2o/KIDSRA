@@ -1,5 +1,6 @@
 package com.dennis.sceneformanim;
 
+import androidx.activity.OnBackPressedCallback;
 import androidx.appcompat.app.AppCompatActivity;
 
 import android.os.Bundle;
@@ -11,6 +12,7 @@ import android.content.Context;
 import android.content.res.ColorStateList;
 import android.graphics.Color;
 import android.os.Bundle;
+import android.view.KeyEvent;
 import android.view.MotionEvent;
 import android.view.View;
 import android.widget.Button;
@@ -39,6 +41,8 @@ import android.media.MediaPlayer;
 import java.util.ArrayList;
 import java.util.List;
 
+import android.os.Handler;
+
 public class dActivity extends AppCompatActivity {
     //Variable
     private ArFragment arFragment;
@@ -53,6 +57,10 @@ public class dActivity extends AppCompatActivity {
     private int Status1 = 0;
     private String information = "";
     private String choose = "";
+    private Boolean empyAnimation = false;
+    private  Boolean pushButton = false;
+
+    Handler handler = new Handler();
 
     //DECLARAR AUDIOS
     MediaPlayer audioDog, audioCat, audioRabbit, audioChicken, audioHorse,audioBird, audioDuck, audioCow, audioi, audiogDog, audiogCat, audiogRabbit, audiogChicken, audiogHorse,audiogBird, audiogDuck, audiogCow;
@@ -61,6 +69,15 @@ public class dActivity extends AppCompatActivity {
     private List<AnchorNode> anchorNodeList = new ArrayList<>();
     private AnchorNode currentSelectedAnchorNode = null;
     //*************************************************************
+
+    @Override
+    public boolean onKeyDown(int keyCode, KeyEvent event) {
+        // TODO Auto-generated method stub
+        if (keyCode == event.KEYCODE_BACK) {
+            pushButton=false;
+        }
+        return super.onKeyDown(keyCode, event);
+    }
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -325,46 +342,80 @@ public class dActivity extends AppCompatActivity {
                 }
             }
         });
+        ejecutarTarea();
     }
 
     /////////////////////////////////////////////////////////////////////////////
     ////////////////////////////       FUNCIONES        /////////////////////////
     /////////////////////////////////////////////////////////////////////////////
+    private void validationBug(){
+
+        if (empyAnimation == false){
+            playAnimation();
+            empyAnimation = true;
+        }else {
+            animator.cancel();
+            playAnimation();
+        }
+
+    }
+
+    public void ejecutarTarea() {
+        handler.postDelayed(new Runnable() {
+            public void run() {
+                if (pushButton == true){
+                    validationBug();
+                }
+                handler.postDelayed(this, 5000);
+            }
+        }, 5000);
+
+    }
 
     private void playAnimation(){
-        if(animator == null || !animator.isRunning())
-        {
-            if (choose == "vaca"){
-                AnimationData data = vaca.getAnimationData(nextAnimation);
-                nextAnimation = (nextAnimation+1)%vaca.getAnimationDataCount();
-                animator = new ModelAnimator(data,vaca);
-                animator.start();
-            }else if (choose == "caballo"){
-                AnimationData data = horse01.getAnimationData(nextAnimation);
-                nextAnimation = (nextAnimation+1)%horse01.getAnimationDataCount();
-                animator = new ModelAnimator(data,horse01);
-                animator.start();
-            }else if (choose == "perro"){
-                AnimationData data = perro.getAnimationData(nextAnimation);
-                nextAnimation = (nextAnimation+1)%perro.getAnimationDataCount();
-                animator = new ModelAnimator(data,perro);
-                animator.start();
-            }else if (choose == "pato"){
-                AnimationData data = pato.getAnimationData(nextAnimation);
-                nextAnimation = (nextAnimation+1)%pato.getAnimationDataCount();
-                animator = new ModelAnimator(data,pato);
-                animator.start();
-            }else if (choose == "gallina"){
-                AnimationData data = gallina.getAnimationData(nextAnimation);
-                nextAnimation = (nextAnimation+1)%gallina.getAnimationDataCount();
-                animator = new ModelAnimator(data,gallina);
-                animator.start();
-            }else if (choose == "gato"){
-                AnimationData data = gato.getAnimationData(nextAnimation);
-                nextAnimation = (nextAnimation+1)%gato.getAnimationDataCount();
-                animator = new ModelAnimator(data,gato);
-                animator.start();
+        try {
+
+            if (animator == null || !animator.isRunning()) {
+                if (choose == "vaca") {
+                    audiogCow.start();
+                    AnimationData data = vaca.getAnimationData(nextAnimation);
+                    nextAnimation = (nextAnimation + 1) % vaca.getAnimationDataCount();
+                    animator = new ModelAnimator(data, vaca);
+                    animator.start();
+                } else if (choose == "caballo") {
+                    audiogHorse.start();
+                    AnimationData data = horse01.getAnimationData(nextAnimation);
+                    nextAnimation = (nextAnimation + 1) % horse01.getAnimationDataCount();
+                    animator = new ModelAnimator(data, horse01);
+                    animator.start();
+                } else if (choose == "perro") {
+                    audiogDog.start();
+                    AnimationData data = perro.getAnimationData(nextAnimation);
+                    nextAnimation = (nextAnimation + 1) % perro.getAnimationDataCount();
+                    animator = new ModelAnimator(data, perro);
+                    animator.start();
+                } else if (choose == "pato") {
+                    audiogDuck.start();
+                    AnimationData data = pato.getAnimationData(nextAnimation);
+                    nextAnimation = (nextAnimation + 1) % pato.getAnimationDataCount();
+                    animator = new ModelAnimator(data, pato);
+                    animator.start();
+                } else if (choose == "gallina") {
+                    audiogChicken.start();
+                    AnimationData data = gallina.getAnimationData(nextAnimation);
+                    nextAnimation = (nextAnimation + 1) % gallina.getAnimationDataCount();
+                    animator = new ModelAnimator(data, gallina);
+                    animator.start();
+                } else if (choose == "gato") {
+                    audiogCat.start();
+                    AnimationData data = gato.getAnimationData(nextAnimation);
+                    nextAnimation = (nextAnimation + 1) % gato.getAnimationDataCount();
+                    animator = new ModelAnimator(data, gato);
+                    animator.start();
+                }
+
             }
+        }catch (Exception e){
 
         }
     }
@@ -412,7 +463,7 @@ public class dActivity extends AppCompatActivity {
     private void setupModel() {
         //CARGA CABALLO
         ModelRenderable.builder()
-                .setSource(this, R.raw.horseflx18)
+                .setSource(this, R.raw.caballo21)
                 .build()
                 .thenAccept(renderable -> horse01 = renderable)
                 .exceptionally(throwable -> {
@@ -507,68 +558,77 @@ public class dActivity extends AppCompatActivity {
         switch(Status1)
         {
             case 1:
+                pushButton = true;
                 stopSound(choose);
                 choose = "gato";
                 andy.setRenderable(gato);
-                audiogCat.start();
+                //audiogCat.start();
                 information = "Mamífero de contextura pequeña, de abundante pelaje y muy suave, son muy cariñoso con los humanos.";
-                playAnimation();
+                validationBug();
+
                 break;
             case 6:
+                pushButton = true;
                 stopSound(choose);
                 choose = "pajaro";
                 //andy.setRenderable(horse01);
-                audiogBird.start();
+                //audiogBird.start();
                 information = "Las aves son seres extraordinarios y fascinantes: muchas de ellas poseen un plumaje colorido, producen sonidos extraordinarios o pueden volar.";
-                playAnimation();
+                validationBug();
                 break;
             case 4:
+                pushButton = true;
                 stopSound(choose);
                 choose = "gallina";
                 andy.setRenderable(gallina);
-                audiogChicken.start();
+                //audiogChicken.start();
                 information = "La gallina es denominado un ave conocida por su cacareo, pone huevos, y está cubierta de plumas de diversos colores";
-                playAnimation();
+                validationBug();
                 break;
             case 7:
+                pushButton = true;
                 stopSound(choose);
                 choose = "vaca";
                 andy.setRenderable(vaca);
-                audiogCow.start();
+                //audiogCow.start();
                 information = "La vaca es un animal mamífero, se alimenta del pasto, hierbas, tallos, hojas, semillas y raíces.";
-                playAnimation();
+                validationBug();
                 break;
             case 2:
+                pushButton = true;
                 stopSound(choose);
                 choose = "perro";
                 andy.setRenderable(perro);
-                audiogDog.start();
+                //audiogDog.start();
                 information = "El perro doméstico es un mamífero carnívoro, Su tamaño, forma y pelaje varían en función de la raza de perro, ven bien, usan mayormente su oído y su olfato, sentidos que tienen muy desarrollados y que son muy prácticos para el humano.";
-                playAnimation();
+                validationBug();
                 break;
             case 5:
+                pushButton = true;
                 stopSound(choose);
                 choose = "pato";
                 andy.setRenderable(pato);
-                audiogDuck.start();
+                //audiogDuck.start();
                 information = "El pato es un ave, vive cerca del agua y nadan.";
-                playAnimation();
+                validationBug();
                 break;
             case 8:
+                pushButton = true;
                 stopSound(choose);
                 choose = "caballo";
                 andy.setRenderable(horse01);
-                audiogHorse.start();
+                //audiogHorse.start();
                 information = "Un Caballo es un animal cuadrúpedo perteneciente a la especie de los mamíferos, se caracteriza por su gran tamaño, son animales que galopan y relinchan";
-                playAnimation();
+                validationBug();
                 break;
             case 3:
+                pushButton = true;
                 stopSound(choose);
                 choose = "conejo";
                 //andy.setRenderable(rabbit1);
-                audiogRabbit.start();
+                //audiogRabbit.start();
                 information = "Son animales que tienen muy buena relación con los humanos, ya que son muy amistosos y agradables.";
-                playAnimation();
+                validationBug();
                 break;
             default:
                 break;

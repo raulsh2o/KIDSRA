@@ -10,6 +10,7 @@ import android.content.Context;
 import android.content.res.ColorStateList;
 import android.graphics.Color;
 import android.os.Bundle;
+import android.view.KeyEvent;
 import android.view.MotionEvent;
 import android.view.View;
 import android.widget.Button;
@@ -38,6 +39,8 @@ import android.media.MediaPlayer;
 import java.util.ArrayList;
 import java.util.List;
 
+import android.os.Handler;
+
 public class VocalesA extends AppCompatActivity {
     //Variable
     private ArFragment arFragment;
@@ -52,6 +55,10 @@ public class VocalesA extends AppCompatActivity {
     private int Status1 = 0;
     private String information = "";
     private String choose = "";
+    private Boolean empyAnimation = false;
+    private  Boolean pushButton = false;
+
+    Handler handler = new Handler();
 
     //DECLARAR AUDIOS
     MediaPlayer audioa, audioe, audioi, audioo, audiou, audiointro;
@@ -60,6 +67,15 @@ public class VocalesA extends AppCompatActivity {
     private List<AnchorNode> anchorNodeList = new ArrayList<>();
     private AnchorNode currentSelectedAnchorNode = null;
     //*************************************************************
+    @Override
+    public boolean onKeyDown(int keyCode, KeyEvent event) {
+        // TODO Auto-generated method stub
+        if (keyCode == event.KEYCODE_BACK) {
+            pushButton=false;
+        }
+        return super.onKeyDown(keyCode, event);
+    }
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -271,12 +287,33 @@ public class VocalesA extends AppCompatActivity {
                 }
             }
         });
-
+        ejecutarTarea();
     }
 
     /////////////////////////////////////////////////////////////////////////////
     ////////////////////////////       FUNCIONES        /////////////////////////
     /////////////////////////////////////////////////////////////////////////////
+    private void validationBug(){
+        if (empyAnimation == false){
+            playAnimation();
+            empyAnimation = true;
+        }else {
+            animator.cancel();
+            playAnimation();
+        }
+    }
+
+    public void ejecutarTarea() {
+        handler.postDelayed(new Runnable() {
+            public void run() {
+                if (pushButton == true){
+                    validationBug();
+                }
+                handler.postDelayed(this, 5000);
+            }
+        }, 5000);
+
+    }
 
     private void stopSound(String sound){
         if (sound == "a"){
@@ -293,29 +330,33 @@ public class VocalesA extends AppCompatActivity {
     }
 
     private  void playAnimation(){
-        if(animator == null || !animator.isRunning())
-        {
-            if (choose == "e"){
-                AnimationData data = e.getAnimationData(nextAnimation);
-                nextAnimation = (nextAnimation+1)%e.getAnimationDataCount();
-                animator = new ModelAnimator(data,e);
-                animator.start();
-            }else if (choose == "i"){
-                AnimationData data = i.getAnimationData(nextAnimation);
-                nextAnimation = (nextAnimation+1)%i.getAnimationDataCount();
-                animator = new ModelAnimator(data,i);
-                animator.start();
-            }else if (choose == "o"){
-                AnimationData data = o.getAnimationData(nextAnimation);
-                nextAnimation = (nextAnimation+1)%o.getAnimationDataCount();
-                animator = new ModelAnimator(data,o);
-                animator.start();
-            }else if (choose == "u"){
-                AnimationData data = u.getAnimationData(nextAnimation);
-                nextAnimation = (nextAnimation+1)%u.getAnimationDataCount();
-                animator = new ModelAnimator(data,u);
-                animator.start();
+        try {
+
+            if (animator == null || !animator.isRunning()) {
+                if (choose == "e") {
+                    AnimationData data = e.getAnimationData(nextAnimation);
+                    nextAnimation = (nextAnimation + 1) % e.getAnimationDataCount();
+                    animator = new ModelAnimator(data, e);
+                    animator.start();
+                } else if (choose == "i") {
+                    AnimationData data = i.getAnimationData(nextAnimation);
+                    nextAnimation = (nextAnimation + 1) % i.getAnimationDataCount();
+                    animator = new ModelAnimator(data, i);
+                    animator.start();
+                } else if (choose == "o") {
+                    AnimationData data = o.getAnimationData(nextAnimation);
+                    nextAnimation = (nextAnimation + 1) % o.getAnimationDataCount();
+                    animator = new ModelAnimator(data, o);
+                    animator.start();
+                } else if (choose == "u") {
+                    AnimationData data = u.getAnimationData(nextAnimation);
+                    nextAnimation = (nextAnimation + 1) % u.getAnimationDataCount();
+                    animator = new ModelAnimator(data, u);
+                    animator.start();
+                }
+
             }
+        }catch (Exception e){
 
         }
     }
@@ -405,45 +446,50 @@ public class VocalesA extends AppCompatActivity {
         switch(Status1)
         {
             case 1:
+                pushButton = true;
                 stopSound(choose);
                 choose = "a";
                 //andy.setRenderable(a);
                 information = "A de avión.";
                 //audioa.start();
-                playAnimation();
+                validationBug();
                 break;
 
             case 2:
+                pushButton = true;
                 stopSound(choose);
                 choose = "e";
                 andy.setRenderable(e);
                 //audioe.start();
                 information = "E de escalera.";
-                playAnimation();
+                validationBug();
                 break;
             case 3:
+                pushButton = true;
                 stopSound(choose);
                 choose = "i";
                 andy.setRenderable(i);
                 //audioi.start();
                 information = "I de iglesia.";
-                playAnimation();
+                validationBug();
                 break;
             case 4:
+                pushButton = true;
                 stopSound(choose);
                 choose = "o";
                 andy.setRenderable(o);
                 //audioo.start();
                 information = "O de oso.";
-                playAnimation();
+                validationBug();
                 break;
             case 5:
+                pushButton = true;
                 stopSound(choose);
                 choose = "u";
                 andy.setRenderable(u);
                 //audiou.start();
                 information = "U de uva.";
-                playAnimation();
+                validationBug();
                 break;
             default:
                 break;

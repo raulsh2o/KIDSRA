@@ -10,6 +10,7 @@ import android.content.Context;
 import android.content.res.ColorStateList;
 import android.graphics.Color;
 import android.os.Bundle;
+import android.view.KeyEvent;
 import android.view.MotionEvent;
 import android.view.View;
 import android.widget.Button;
@@ -38,6 +39,8 @@ import android.media.MediaPlayer;
 import java.util.ArrayList;
 import java.util.List;
 
+import android.os.Handler;
+
 public class NumerosA extends AppCompatActivity {
     //Variable
     private ArFragment arFragment;
@@ -52,6 +55,10 @@ public class NumerosA extends AppCompatActivity {
     private int Status1 = 0;
     private String information = "";
     private String choose = "";
+    private Boolean empyAnimation = false;
+    private  Boolean pushButton = false;
+
+    Handler handler = new Handler();
 
     //DECLARAR AUDIOS
     MediaPlayer  audioi, audio0, audio1, audio2, audio3, audio4,audio5,audio6,audio7,audio8,audio9,audio10;
@@ -60,6 +67,15 @@ public class NumerosA extends AppCompatActivity {
     private List<AnchorNode> anchorNodeList = new ArrayList<>();
     private AnchorNode currentSelectedAnchorNode = null;
     //*************************************************************
+    @Override
+    public boolean onKeyDown(int keyCode, KeyEvent event) {
+        // TODO Auto-generated method stub
+        if (keyCode == event.KEYCODE_BACK) {
+            pushButton=false;
+        }
+        return super.onKeyDown(keyCode, event);
+    }
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -369,81 +385,106 @@ public class NumerosA extends AppCompatActivity {
                 }
             }
         });
-
+        ejecutarTarea();
     }
 
     /////////////////////////////////////////////////////////////////////////////
     ////////////////////////////       FUNCIONES        /////////////////////////
     /////////////////////////////////////////////////////////////////////////////
+    private void validationBug(){
+        if (empyAnimation == false){
+            playAnimation();
+            empyAnimation = true;
+        }else {
+            animator.cancel();
+            playAnimation();
+        }
+    }
+    public void ejecutarTarea() {
+        handler.postDelayed(new Runnable() {
+            public void run() {
+                if (pushButton == true){
+                    validationBug();
+                }
+                handler.postDelayed(this, 5000);
+            }
+        }, 5000);
+
+    }
     private void playAnimation(){
-        if(animator == null || !animator.isRunning())
-        {
-            if (choose == "cero"){
-                AnimationData data = cero.getAnimationData(nextAnimation);
-                nextAnimation = (nextAnimation+1)%cero.getAnimationDataCount();
-                animator = new ModelAnimator(data,cero);
-                animator.start();
+        try {
+
+            if (animator == null || !animator.isRunning()) {
+                if (choose == "cero") {
+                    audio0.start();
+                    AnimationData data = cero.getAnimationData(nextAnimation);
+                    nextAnimation = (nextAnimation + 1) % cero.getAnimationDataCount();
+                    animator = new ModelAnimator(data, cero);
+                    animator.start();
+                } else if (choose == "uno") {
+                    audio1.start();
+                    AnimationData data = uno.getAnimationData(nextAnimation);
+                    nextAnimation = (nextAnimation + 1) % uno.getAnimationDataCount();
+                    animator = new ModelAnimator(data, uno);
+                    animator.start();
+                } else if (choose == "dos") {
+                    audio2.start();
+                    AnimationData data = dos.getAnimationData(nextAnimation);
+                    nextAnimation = (nextAnimation + 1) % dos.getAnimationDataCount();
+                    animator = new ModelAnimator(data, dos);
+                    animator.start();
+                } else if (choose == "tres") {
+                    audio3.start();
+                    AnimationData data = tres.getAnimationData(nextAnimation);
+                    nextAnimation = (nextAnimation + 1) % tres.getAnimationDataCount();
+                    animator = new ModelAnimator(data, tres);
+                    animator.start();
+                } else if (choose == "cuatro") {
+                    audio4.start();
+                    AnimationData data = cuatro.getAnimationData(nextAnimation);
+                    nextAnimation = (nextAnimation + 1) % cuatro.getAnimationDataCount();
+                    animator = new ModelAnimator(data, cuatro);
+                    animator.start();
+                } else if (choose == "cinco") {
+                    audio5.start();
+                    AnimationData data = cinco.getAnimationData(nextAnimation);
+                    nextAnimation = (nextAnimation + 1) % cinco.getAnimationDataCount();
+                    animator = new ModelAnimator(data, cinco);
+                    animator.start();
+                } else if (choose == "seis") {
+                    audio6.start();
+                    AnimationData data = seis.getAnimationData(nextAnimation);
+                    nextAnimation = (nextAnimation + 1) % seis.getAnimationDataCount();
+                    animator = new ModelAnimator(data, seis);
+                    animator.start();
+                } else if (choose == "siete") {
+                    audio7.start();
+                    AnimationData data = siete.getAnimationData(nextAnimation);
+                    nextAnimation = (nextAnimation + 1) % siete.getAnimationDataCount();
+                    animator = new ModelAnimator(data, siete);
+                    animator.start();
+                } else if (choose == "ocho") {
+                    audio8.start();
+                    AnimationData data = ocho.getAnimationData(nextAnimation);
+                    nextAnimation = (nextAnimation + 1) % ocho.getAnimationDataCount();
+                    animator = new ModelAnimator(data, ocho);
+                    animator.start();
+                } else if (choose == "nueve") {
+                    audio9.start();
+                    AnimationData data = nueve.getAnimationData(nextAnimation);
+                    nextAnimation = (nextAnimation + 1) % nueve.getAnimationDataCount();
+                    animator = new ModelAnimator(data, nueve);
+                    animator.start();
+                } else if (choose == "diez") {
+                    audio10.start();
+                    AnimationData data = diez.getAnimationData(nextAnimation);
+                    nextAnimation = (nextAnimation + 1) % diez.getAnimationDataCount();
+                    animator = new ModelAnimator(data, diez);
+                    animator.start();
+                }
+
             }
-            else if (choose == "uno"){
-                AnimationData data = uno.getAnimationData(nextAnimation);
-                nextAnimation = (nextAnimation+1)%uno.getAnimationDataCount();
-                animator = new ModelAnimator(data,uno);
-                animator.start();
-            }
-            else if (choose == "dos"){
-                AnimationData data = dos.getAnimationData(nextAnimation);
-                nextAnimation = (nextAnimation+1)%dos.getAnimationDataCount();
-                animator = new ModelAnimator(data,dos);
-                animator.start();
-            }
-            else if (choose == "tres"){
-                AnimationData data = tres.getAnimationData(nextAnimation);
-                nextAnimation = (nextAnimation+1)%tres.getAnimationDataCount();
-                animator = new ModelAnimator(data,tres);
-                animator.start();
-            }
-            else if (choose == "cuatro"){
-                AnimationData data = cuatro.getAnimationData(nextAnimation);
-                nextAnimation = (nextAnimation+1)%cuatro.getAnimationDataCount();
-                animator = new ModelAnimator(data,cuatro);
-                animator.start();
-            }
-            else if (choose == "cinco"){
-                AnimationData data = cinco.getAnimationData(nextAnimation);
-                nextAnimation = (nextAnimation+1)%cinco.getAnimationDataCount();
-                animator = new ModelAnimator(data,cinco);
-                animator.start();
-            }
-            else if (choose == "seis"){
-                AnimationData data = seis.getAnimationData(nextAnimation);
-                nextAnimation = (nextAnimation+1)%seis.getAnimationDataCount();
-                animator = new ModelAnimator(data,seis);
-                animator.start();
-            }
-            else if (choose == "siete"){
-                AnimationData data = siete.getAnimationData(nextAnimation);
-                nextAnimation = (nextAnimation+1)%siete.getAnimationDataCount();
-                animator = new ModelAnimator(data,siete);
-                animator.start();
-            }
-            else if (choose == "ocho"){
-                AnimationData data = ocho.getAnimationData(nextAnimation);
-                nextAnimation = (nextAnimation+1)%ocho.getAnimationDataCount();
-                animator = new ModelAnimator(data,ocho);
-                animator.start();
-            }
-            else if (choose == "nueve"){
-                AnimationData data = nueve.getAnimationData(nextAnimation);
-                nextAnimation = (nextAnimation+1)%nueve.getAnimationDataCount();
-                animator = new ModelAnimator(data,nueve);
-                animator.start();
-            }
-            else if (choose == "diez"){
-                AnimationData data = diez.getAnimationData(nextAnimation);
-                nextAnimation = (nextAnimation+1)%diez.getAnimationDataCount();
-                animator = new ModelAnimator(data,diez);
-                animator.start();
-            }
+        }catch (Exception e){
 
         }
     }
@@ -625,95 +666,106 @@ public class NumerosA extends AppCompatActivity {
         switch(Status1)
         {
             case 1:
+                pushButton = true;
                 stopSound(choose);
                 choose = "cero";
                 andy.setRenderable(cero);
-                audio0.start();
+                //audio0.start();
                 information = "El número cero es la rueda moscovita para pasarlo bien.";
-                playAnimation();
+                validationBug();
                 break;
 
             case 2:
+                pushButton = true;
                 stopSound(choose);
                 choose = "uno";
                 andy.setRenderable(uno);
-                audio1.start();
+                //audio1.start();
                 information = "El número uno es un soldado haciendo la instrucción.";
-                playAnimation();
+                validationBug();
                 break;
             case 3:
+                pushButton = true;
                 stopSound(choose);
                 choose = "dos";
                 andy.setRenderable(dos);
-                audio2.start();
+                //audio2.start();
                 information = "El número dos es un patito que está tomando el sol.";
-                playAnimation();
+                validationBug();
                 break;
             case 4:
+                pushButton = true;
                 stopSound(choose);
                 choose = "tres";
                 andy.setRenderable(tres);
-                audio3.start();
+                //audio3.start();
                 information = "El número tres es una serpiente que baila sin parar.";
-                playAnimation();
+                validationBug();
                 break;
             case 5:
+                pushButton = true;
                 stopSound(choose);
                 choose = "cuatro";
                 andy.setRenderable(cuatro);
-                audio4.start();
+                //audio4.start();
                 information = "El número cuatro es una sillita que invita a descansar.";
-                playAnimation();
+                validationBug();
                 break;
             case 6:
+                pushButton = true;
                 stopSound(choose);
                 choose = "cinco";
                 andy.setRenderable(cinco);
-                audio5.start();
+                //audio5.start();
                 information = "El número cinco tiene orejas, parece un conejito.";
-                playAnimation();
+                validationBug();
                 break;
 
             case 7:
+                pushButton = true;
                 stopSound(choose);
                 choose = "seis";
                 andy.setRenderable(seis);
-                audio6.start();
+                //audio6.start();
                 information = "El número seis es una pera redonda y con rabito.";
-                playAnimation();
+                validationBug();
                 break;
             case 8:
+                pushButton = true;
                 stopSound(choose);
                 choose = "siete";
                 andy.setRenderable(siete);
-                audio7.start();
+                //audio7.start();
                 information = "El número siete es un sereno con gorra y con bastón.";
-                playAnimation();
+                validationBug();
                 break;
             case 9:
+                pushButton = true;
                 stopSound(choose);
                 choose = "ocho";
                 andy.setRenderable(ocho);
-                audio8.start();
+                //audio8.start();
                 information = "El número ocho son las gafas que lleva don Ramón.";
-                playAnimation();
+                validationBug();
                 break;
             case 10:
+                pushButton = true;
                 stopSound(choose);
                 choose = "nueve";
                 andy.setRenderable(nueve);
-                audio9.start();
+                //audio9.start();
                 information = "El número nueve es un globito atado a un cordel.";
-                playAnimation();
+                validationBug();
                 break;
 
             case 11:
+                pushButton = true;
                 stopSound(choose);
                 choose = "diez";
                 andy.setRenderable(diez);
-                audio10.start();
+                //audio10.start();
                 information = "El número diez es un soldado que lleva un gran melón.";
-                playAnimation();
+                validationBug();
                 break;
 
             default:
