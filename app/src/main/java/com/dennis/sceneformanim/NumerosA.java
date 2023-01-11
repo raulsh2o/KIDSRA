@@ -493,26 +493,37 @@ public class NumerosA extends AppCompatActivity {
     private void stopSound(String sound){
         if (sound == "cero"){
             audio0.pause();
+            audio0.seekTo(0);
         }else if (sound == "uno"){
             audio1.pause();
+            audio1.seekTo(0);
         }else if (sound == "dos"){
             audio2.pause();
+            audio2.seekTo(0);
         }else if (sound == "tres"){
             audio3.pause();
+            audio3.seekTo(0);
         }else if (sound == "cuatro"){
             audio4.pause();
+            audio4.seekTo(0);
         }else if (sound == "cinco"){
             audio5.pause();
+            audio5.seekTo(0);
         }else if (sound == "seis"){
             audio6.pause();
+            audio6.seekTo(0);
         }else if (sound == "siete"){
             audio7.pause();
+            audio7.seekTo(0);
         }else if (sound == "ocho"){
             audio8.pause();
+            audio8.seekTo(0);
         }else if (sound == "nueve"){
             audio9.pause();
+            audio9.seekTo(0);
         }else if (sound == "diez"){
             audio10.pause();
+            audio10.seekTo(0);
         }
     }
 

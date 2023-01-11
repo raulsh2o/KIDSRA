@@ -468,36 +468,52 @@ public class dActivity extends AppCompatActivity {
     private void stopSound(String sound){
         if (sound == "gato"){
             audiogCat.pause();
+            audioCat.seekTo(0);
         }else if (sound == "pajaro"){
             audiogBird.pause();
+            audiogBird.seekTo(0);
         }else if (sound == "gallina"){
             audiogChicken.pause();
+            audiogChicken.seekTo(0);
         }else if (sound == "vaca"){
             audiogCow.pause();
+            audiogCow.seekTo(0);
         }else if (sound == "perro"){
             audiogDog.pause();
+            audiogDog.seekTo(0);
         }else if (sound == "pato"){
             audiogDuck.pause();
+            audiogDuck.seekTo(0);
         }else if (sound == "caballo"){
             audiogHorse.pause();
+            audiogHorse.seekTo(0);
         }else if (sound == "conejo"){
             audiogRabbit.pause();
+            audiogRabbit.seekTo(0);
         }else if (sound == "ggato"){
             audioCat.pause();
+            audioCat.seekTo(0);
         }else if (sound == "gpajaro"){
             audioBird.pause();
+            audioBird.seekTo(0);
         }else if (sound == "ggallina"){
             audioChicken.pause();
+            audioChicken.seekTo(0);
         }else if (sound == "gvaca"){
             audioCow.pause();
+            audioCow.seekTo(0);
         }else if (sound == "gperro"){
             audioDog.pause();
+            audioDog.seekTo(0);
         }else if (sound == "gpato"){
             audioDuck.pause();
+            audioDuck.seekTo(0);
         }else if (sound == "gcaballo"){
             audioHorse.pause();
+            audioHorse.seekTo(0);
         }else if (sound == "gconejo"){
             audioRabbit.pause();
+            audioRabbit.seekTo(0);
         }
     }
 

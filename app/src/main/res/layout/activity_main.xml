@@ -13,13 +13,24 @@
     <ImageView
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:paddingTop="150dp"
         android:layout_marginBottom="308dp"
-        android:src="@drawable/logo"
+        android:paddingTop="150dp"
+        android:src="@drawable/logo2"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="1.0"
         app:layout_constraintStart_toStartOf="parent" />
+
+    <TextView
+        android:id="@+id/textView2"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignParentBottom="true"
+        android:layout_centerHorizontal="true"
+        android:layout_marginBottom="250dp"
+        android:text="Cargando ..."
+        android:textSize="30dp"
+        android:textStyle="italic"/>
 
 </RelativeLayout>
 

@@ -461,36 +461,52 @@ public class SalvajesA extends AppCompatActivity {
     private void stopSound(String sound){
         if (sound == "mono"){
             audiogMonkey.pause();
+            audiogMonkey.seekTo(0);
         }else if (sound == "leon"){
             audiogLion.pause();
+            audiogLion.seekTo(0);
         }else if (sound == "tigre"){
             audiogTiger.pause();
+            audiogTiger.seekTo(0);
         }else if (sound == "elefante"){
             audiogElephant.pause();
+            audiogElephant.seekTo(0);
         }else if (sound == "serpiente"){
             audiogSerpent.pause();
+            audiogSerpent.seekTo(0);
         }else if (sound == "jirafa"){
             audiogJirafa.pause();
+            audiogJirafa.seekTo(0);
         }else if (sound == "hipopotamo"){
             audiogHipopo.pause();
+            audiogHipopo.seekTo(0);
         }else if (sound == "cocodrilo"){
             audiogCocodrile.pause();
+            audiogCocodrile.seekTo(0);
         }else if (sound == "gmono"){
             audioMonkey.pause();
+            audioMonkey.seekTo(0);
         }else if (sound == "gleon"){
             audioLion.pause();
+            audioLion.seekTo(0);
         }else if (sound == "gtigre"){
             audioTiger.pause();
+            audioTiger.seekTo(0);
         }else if (sound == "gelefante"){
             audioElephant.pause();
+            audioElephant.seekTo(0);
         }else if (sound == "gserpiente"){
             audioSerpent.pause();
+            audioSerpent.seekTo(0);
         }else if (sound == "gjirafa"){
             audioJirafa.pause();
+            audioJirafa.seekTo(0);
         }else if (sound == "ghipopotamo"){
             audioHipopo.pause();
+            audioHipopo.seekTo(0);
         }else if (sound == "gcocodrilo"){
             audioCocodrile.pause();
+            audioCocodrile.seekTo(0);
         }
     }
 

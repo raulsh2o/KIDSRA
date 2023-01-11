@@ -339,24 +339,34 @@ public class VocalesA extends AppCompatActivity {
     private void stopSound(String sound){
         if (sound == "a"){
             audioga.pause();
+            audioga.seekTo(0);
         }else if (sound == "e"){
             audioge.pause();
+            audioge.seekTo(0);
         }else if (sound == "i"){
             audiogi.pause();
+            audiogi.seekTo(0);
         }else if (sound == "o"){
             audiogo.pause();
+            audiogo.seekTo(0);
         }else if (sound == "u"){
             audiogu.pause();
+            audiogu.seekTo(0);
         }else if (sound == "ga"){
             audioa.pause();
+            audioa.seekTo(0);
         }else if (sound == "ge"){
             audioe.pause();
+            audioe.seekTo(0);
         }else if (sound == "gi"){
             audioi.pause();
+            audioi.seekTo(0);
         }else if (sound == "go"){
             audioo.pause();
+            audioo.seekTo(0);
         }else if (sound == "gu"){
             audiou.pause();
+            audiou.seekTo(0);
         }
     }
 

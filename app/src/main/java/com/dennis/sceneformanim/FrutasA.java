@@ -454,32 +454,46 @@ public class FrutasA extends AppCompatActivity {
     private void stopSound(String sound){
         if (sound == "pera"){
             audiogpera.pause();
+            audiogpera.seekTo(0);
         }else if (sound == "manzana"){
             audiogmanzana.pause();
+            audiogmanzana.seekTo(0);
         }else if (sound == "banana"){
             audiogbanana.pause();
+            audiogbanana.seekTo(0);
         }else if (sound == "uva"){
             audioguva.pause();
+            audioguva.seekTo(0);
         }else if (sound == "sandia"){
             audiogsandia.pause();
+            audiogsandia.seekTo(0);
         }else if (sound == "melon"){
             audiogmelon.pause();
+            audiogmelon.seekTo(0);
         }else if (sound == "pina"){
             audiogpina.pause();
+            audiogpina.seekTo(0);
         }else if (sound == "gpera"){
             audiopera.pause();
+            audiopera.seekTo(0);
         }else if (sound == "gmanzana"){
             audiomanzana.pause();
+            audiomanzana.seekTo(0);
         }else if (sound == "gbanana"){
             audiobanana.pause();
+            audiobanana.seekTo(0);
         }else if (sound == "guva"){
             audiouva.pause();
+            audiouva.seekTo(0);
         }else if (sound == "gsandia"){
             audiosandia.pause();
+            audiosandia.seekTo(0);
         }else if (sound == "gmelon"){
             audiomelon.pause();
+            audiomelon.seekTo(0);
         }else if (sound == "gpina"){
             audiopina.pause();
+            audiopina.seekTo(0);
         }
     }
 

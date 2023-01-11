@@ -14,7 +14,7 @@
         android:layout_width="match_parent"
         android:layout_height="120dp"
         android:paddingTop="10dp"
-        android:src="@drawable/logo"></ImageView>
+        android:src="@drawable/logo2"></ImageView>
     <androidx.gridlayout.widget.GridLayout
         android:layout_width="match_parent"
         android:layout_height="match_parent"
@@ -73,7 +73,7 @@
                 android:layout_height="wrap_content"
 
                 android:backgroundTint="@color/turquoise"
-                android:drawableLeft="@drawable/domesticanimals2"
+                android:drawableLeft="@drawable/domesticos2023"
                 android:drawablePadding="15dp"
 
                 android:scaleType="center"
@@ -89,7 +89,7 @@
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:backgroundTint="@color/grey"
-                android:drawableLeft="@drawable/jungleanimals"
+                android:drawableLeft="@drawable/salvajes2024"
 
                 android:text="Animales Salvajes" />
 
@@ -98,7 +98,7 @@
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:backgroundTint="@color/green"
-                android:drawableLeft="@drawable/vocals"
+                android:drawableLeft="@drawable/vocales2024"
                 android:text="Vocales" />
 
             <Button
@@ -106,7 +106,7 @@
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:backgroundTint="@color/blue"
-                android:drawableLeft="@drawable/fruits"
+                android:drawableLeft="@drawable/fruits3"
                 android:text="Frutas" />
 
             <Button
@@ -114,7 +114,7 @@
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:backgroundTint="@color/orange"
-                android:drawableLeft="@drawable/numbers"
+                android:drawableLeft="@drawable/numeros2023"
                 android:text="Números" />
 
         </LinearLayout>
