@@ -13,4 +13,4 @@
 
 .Recuerda descargar el último Google_Play_Services_for_AR_apk del sitio oficial https://developers.google.com/ar/develop/java/emulator#update-arcore.
 
-.Manual de usuario en el siguiente enlace: https://drive.google.com/file/d/1KprCxcgWe76HMqUWULw48F_DRjZPu4n7/view?usp=share_link
+.Manual de técnico en el siguiente enlace: https://drive.google.com/file/d/1KprCxcgWe76HMqUWULw48F_DRjZPu4n7/view?usp=share_link
