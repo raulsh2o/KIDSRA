@@ -583,7 +583,7 @@ public class dActivity extends AppCompatActivity {
                 });
         //CARGA PAJARO
         ModelRenderable.builder()
-                .setSource(this, R.raw.birdblue01)
+                .setSource(this, R.raw.birdblue02)
                 .build()
                 .thenAccept(renderable -> pajaro = renderable)
                 .exceptionally(throwable -> {

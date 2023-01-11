@@ -62,7 +62,7 @@ public class VocalesA extends AppCompatActivity {
     Handler handler = new Handler();
 
     //DECLARAR AUDIOS
-    MediaPlayer audioa, audioe, audioi, audioo, audiou, audiointro;
+    MediaPlayer audioa, audioe, audioi, audioo, audiou, audiointro, audioga, audioge, audiogi, audiogo, audiogu;
 
     //*************************************************************
     private List<AnchorNode> anchorNodeList = new ArrayList<>();
@@ -97,6 +97,14 @@ public class VocalesA extends AppCompatActivity {
         audioi = MediaPlayer.create(this,R.raw.vaudioi);
         audioo = MediaPlayer.create(this,R.raw.vaudioo);
         audiou = MediaPlayer.create(this,R.raw.vaudiou);
+
+        //SONIDOS DE LAS VOCALES
+        audioga = MediaPlayer.create(this,R.raw.a);
+        audioge = MediaPlayer.create(this,R.raw.e);
+        audiogi = MediaPlayer.create(this,R.raw.i);
+        audiogo = MediaPlayer.create(this,R.raw.o);
+        audiogu = MediaPlayer.create(this,R.raw.u);
+
         audiointro = MediaPlayer.create(this,R.raw.vocalsintro);
 
         //REPRODUCIR AUDIO DE INTRO
@@ -190,15 +198,25 @@ public class VocalesA extends AppCompatActivity {
             @Override
             public void onClick(View view){
                 if (choose == "a"){
+                    stopSound(choose);
                     audioa.start();
+                    choose = "ga";
                 }else if (choose == "e"){
+                    stopSound(choose);
                     audioe.start();
+                    choose = "ge";
                 }else if (choose == "i"){
+                    stopSound(choose);
                     audioi.start();
+                    choose = "gi";
                 }else if (choose == "o"){
+                    stopSound(choose);
                     audioo.start();
+                    choose = "go";
                 }else if (choose == "u"){
+                    stopSound(choose);
                     audiou.start();
+                    choose = "gu";
                 }
 
                 AlertDialog.Builder builder = new AlertDialog.Builder(VocalesA.this);
@@ -320,14 +338,24 @@ public class VocalesA extends AppCompatActivity {
 
     private void stopSound(String sound){
         if (sound == "a"){
-            audioa.pause();
+            audioga.pause();
         }else if (sound == "e"){
-            audioe.pause();
+            audioge.pause();
         }else if (sound == "i"){
-            audioi.pause();
+            audiogi.pause();
         }else if (sound == "o"){
-            audioo.pause();
+            audiogo.pause();
         }else if (sound == "u"){
+            audiogu.pause();
+        }else if (sound == "ga"){
+            audioa.pause();
+        }else if (sound == "ge"){
+            audioe.pause();
+        }else if (sound == "gi"){
+            audioi.pause();
+        }else if (sound == "go"){
+            audioo.pause();
+        }else if (sound == "gu"){
             audiou.pause();
         }
     }
@@ -337,26 +365,31 @@ public class VocalesA extends AppCompatActivity {
 
             if (animator == null || !animator.isRunning()) {
                 if (choose == "e") {
+                    audioge.start();
                     AnimationData data = e.getAnimationData(nextAnimation);
                     nextAnimation = (nextAnimation + 1) % e.getAnimationDataCount();
                     animator = new ModelAnimator(data, e);
                     animator.start();
                 } else if (choose == "i") {
+                    audiogi.start();
                     AnimationData data = i.getAnimationData(nextAnimation);
                     nextAnimation = (nextAnimation + 1) % i.getAnimationDataCount();
                     animator = new ModelAnimator(data, i);
                     animator.start();
                 } else if (choose == "o") {
+                    audiogo.start();
                     AnimationData data = o.getAnimationData(nextAnimation);
                     nextAnimation = (nextAnimation + 1) % o.getAnimationDataCount();
                     animator = new ModelAnimator(data, o);
                     animator.start();
                 } else if (choose == "u") {
+                    audiogu.start();
                     AnimationData data = u.getAnimationData(nextAnimation);
                     nextAnimation = (nextAnimation + 1) % u.getAnimationDataCount();
                     animator = new ModelAnimator(data, u);
                     animator.start();
                 }else if (choose == "a") {
+                    audioga.start();
                     AnimationData data = a.getAnimationData(nextAnimation);
                     nextAnimation = (nextAnimation + 1) % a.getAnimationDataCount();
                     animator = new ModelAnimator(data, a);
@@ -468,7 +501,7 @@ public class VocalesA extends AppCompatActivity {
                 choose = "a";
                 andy.setRenderable(a);
                 information = "A de avión.";
-                //audioa.start();
+                audioga.start();
                 validationBug();
                 break;
 
@@ -477,7 +510,7 @@ public class VocalesA extends AppCompatActivity {
                 stopSound(choose);
                 choose = "e";
                 andy.setRenderable(e);
-                //audioe.start();
+                audioge.start();
                 information = "E de escalera.";
                 validationBug();
                 break;
@@ -486,7 +519,7 @@ public class VocalesA extends AppCompatActivity {
                 stopSound(choose);
                 choose = "i";
                 andy.setRenderable(i);
-                //audioi.start();
+                audiogi.start();
                 information = "I de iglesia.";
                 validationBug();
                 break;
@@ -495,7 +528,7 @@ public class VocalesA extends AppCompatActivity {
                 stopSound(choose);
                 choose = "o";
                 andy.setRenderable(o);
-                //audioo.start();
+                audiogo.start();
                 information = "O de oso.";
                 validationBug();
                 break;
@@ -504,7 +537,7 @@ public class VocalesA extends AppCompatActivity {
                 stopSound(choose);
                 choose = "u";
                 andy.setRenderable(u);
-                //audiou.start();
+                audiogu.start();
                 information = "U de uva.";
                 validationBug();
                 break;

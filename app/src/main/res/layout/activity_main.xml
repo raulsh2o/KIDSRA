@@ -15,7 +15,7 @@
         android:layout_height="wrap_content"
         android:paddingTop="150dp"
         android:layout_marginBottom="308dp"
-        android:src="@drawable/icon_head"
+        android:src="@drawable/logo"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="1.0"

@@ -61,7 +61,7 @@ public class FrutasA extends AppCompatActivity {
     Handler handler = new Handler();
 
     //DECLARAR AUDIOS
-    MediaPlayer  audioi, audiomanzana, audiopera, audiobanana, audiouva, audiosandia, audiomelon, audiopina;
+    MediaPlayer  audioi, audiomanzana, audiopera, audiobanana, audiouva, audiosandia, audiomelon, audiopina, audiogmanzana, audiogpera, audiogbanana, audioguva, audiogsandia, audiogmelon, audiogpina;
 
     //*************************************************************
     private List<AnchorNode> anchorNodeList = new ArrayList<>();
@@ -100,6 +100,16 @@ public class FrutasA extends AppCompatActivity {
         audiosandia = MediaPlayer.create(this,R.raw.fasandia);
         audiomelon = MediaPlayer.create(this,R.raw.famelon);
         audiopina = MediaPlayer.create(this,R.raw.fapina);
+
+        //SONIDO FRUTA
+        audiogmanzana = MediaPlayer.create(this,R.raw.manzana);
+        audiogpera = MediaPlayer.create(this,R.raw.pera);
+        audiogbanana = MediaPlayer.create(this,R.raw.banana);
+        audioguva = MediaPlayer.create(this,R.raw.uva);
+        audiogsandia = MediaPlayer.create(this,R.raw.sandia);
+        audiogmelon = MediaPlayer.create(this,R.raw.melon);
+        audiogpina = MediaPlayer.create(this,R.raw.pina);
+
         audioi = MediaPlayer.create(this,R.raw.naintro);
 
         //REPRODUCIR AUDIO DE INTRO
@@ -193,26 +203,33 @@ public class FrutasA extends AppCompatActivity {
             @Override
             public void onClick(View view){
                 if (choose == "pera"){
-                    //stopSound(choose);
+                    stopSound(choose);
                     audiopera.start();
+                    choose = "gpera";
                 }else if (choose == "manzana"){
-                    //stopSound(choose);
+                    stopSound(choose);
                     audiomanzana.start();
+                    choose = "gmanzana";
                 }else if (choose == "banana"){
-                    //stopSound(choose);
+                    stopSound(choose);
                     audiobanana.start();
+                    choose = "gbanana";
                 }else if (choose == "uva"){
-                    //stopSound(choose);
+                    stopSound(choose);
                     audiouva.start();
+                    choose = "guva";
                 }else if (choose == "sandia"){
-                    //stopSound(choose);
+                    stopSound(choose);
                     audiosandia.start();
+                    choose = "gsandia";
                 }else if (choose == "melon"){
-                    //stopSound(choose);
+                    stopSound(choose);
                     audiomelon.start();
+                    choose = "gmelon";
                 }else if (choose == "pina"){
-                    //stopSound(choose);
+                    stopSound(choose);
                     audiopina.start();
+                    choose = "gpina";
                 }
 
                 AlertDialog.Builder builder = new AlertDialog.Builder(FrutasA.this);
@@ -336,7 +353,7 @@ public class FrutasA extends AppCompatActivity {
                 }
             }
         });
-        //ESCUCHA BOTON SI SANDIA ES PULSADO
+        //ESCUCHA BOTON SI BANANA ES PULSADO
         Banana.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
@@ -385,36 +402,43 @@ public class FrutasA extends AppCompatActivity {
 
             if (animator == null || !animator.isRunning()) {
                 if (choose == "pera") {
+                    audiogpera.start();
                     AnimationData data = pera.getAnimationData(nextAnimation);
                     nextAnimation = (nextAnimation + 1) % pera.getAnimationDataCount();
                     animator = new ModelAnimator(data, pera);
                     animator.start();
                 } else if (choose == "manzana") {
+                    audiogmanzana.start();
                     AnimationData data = manzana.getAnimationData(nextAnimation);
                     nextAnimation = (nextAnimation + 1) % manzana.getAnimationDataCount();
                     animator = new ModelAnimator(data, manzana);
                     animator.start();
                 } else if (choose == "uva") {
+                    audioguva.start();
                     AnimationData data = uva.getAnimationData(nextAnimation);
                     nextAnimation = (nextAnimation + 1) % uva.getAnimationDataCount();
                     animator = new ModelAnimator(data, uva);
                     animator.start();
                 } else if (choose == "melon") {
+                    audiogmelon.start();
                     AnimationData data = melon.getAnimationData(nextAnimation);
                     nextAnimation = (nextAnimation + 1) % melon.getAnimationDataCount();
                     animator = new ModelAnimator(data, melon);
                     animator.start();
                 } else if (choose == "pina") {
+                    audiogpina.start();
                     AnimationData data = pina.getAnimationData(nextAnimation);
                     nextAnimation = (nextAnimation + 1) % pina.getAnimationDataCount();
                     animator = new ModelAnimator(data, pina);
                     animator.start();
                 } else if (choose == "sandia") {
+                    audiogsandia.start();
                     AnimationData data = sandia.getAnimationData(nextAnimation);
                     nextAnimation = (nextAnimation + 1) % sandia.getAnimationDataCount();
                     animator = new ModelAnimator(data, sandia);
                     animator.start();
                 } else if (choose == "banana") {
+                    audiogbanana.start();
                     AnimationData data = banana.getAnimationData(nextAnimation);
                     nextAnimation = (nextAnimation + 1) % banana.getAnimationDataCount();
                     animator = new ModelAnimator(data, banana);
@@ -429,18 +453,32 @@ public class FrutasA extends AppCompatActivity {
 
     private void stopSound(String sound){
         if (sound == "pera"){
-            audiopera.pause();
+            audiogpera.pause();
         }else if (sound == "manzana"){
-            audiomanzana.pause();
+            audiogmanzana.pause();
         }else if (sound == "banana"){
-            audiobanana.pause();
+            audiogbanana.pause();
         }else if (sound == "uva"){
-            audiouva.pause();
+            audioguva.pause();
         }else if (sound == "sandia"){
-            audiosandia.pause();
+            audiogsandia.pause();
         }else if (sound == "melon"){
-            audiomelon.pause();
+            audiogmelon.pause();
         }else if (sound == "pina"){
+            audiogpina.pause();
+        }else if (sound == "gpera"){
+            audiopera.pause();
+        }else if (sound == "gmanzana"){
+            audiomanzana.pause();
+        }else if (sound == "gbanana"){
+            audiobanana.pause();
+        }else if (sound == "guva"){
+            audiouva.pause();
+        }else if (sound == "gsandia"){
+            audiosandia.pause();
+        }else if (sound == "gmelon"){
+            audiomelon.pause();
+        }else if (sound == "gpina"){
             audiopina.pause();
         }
     }
@@ -524,9 +562,9 @@ public class FrutasA extends AppCompatActivity {
                     Toast.makeText(this, ""+throwable.getMessage(), Toast.LENGTH_SHORT).show();
                     return null;
                 });
-        //CARGA SANDIA
+        //CARGA BANANA
         ModelRenderable.builder()
-                .setSource(this, R.raw.banana1)
+                .setSource(this, R.raw.banana2)
                 .build()
                 .thenAccept(renderable -> banana = renderable)
                 .exceptionally(throwable -> {
@@ -559,7 +597,7 @@ public class FrutasA extends AppCompatActivity {
                 stopSound(choose);
                 choose = "pera";
                 andy.setRenderable(pera);
-                //audiopera.start();
+                audiogpera.start();
                 information = "La pera tiene forma como una guitarra, es rica y da mucha energía.";
                 validationBug();
                 break;
@@ -569,8 +607,8 @@ public class FrutasA extends AppCompatActivity {
                 stopSound(choose);
                 choose = "manzana";
                 andy.setRenderable(manzana);
-                //audiomanzana.start();
-                information = "La manzana es roja, amarilla, verde, es dulces , una fruta muy rica para hacernos fuertes.";
+                audiogmanzana.start();
+                information = "La manzana es roja, amarilla, verde, es dulce, una fruta muy rica para hacernos fuertes.";
                 validationBug();
                 break;
             case 3:
@@ -578,7 +616,7 @@ public class FrutasA extends AppCompatActivity {
                 stopSound(choose);
                 choose = "banana";
                 andy.setRenderable(banana);
-                //audiobanana.start();
+                audiogbanana.start();
                 information = "La banana es de color amarillo por fuera pero blanco por dentro, es muy dulce y muy rico en vitaminas.";
                 validationBug();
                 break;
@@ -587,7 +625,7 @@ public class FrutasA extends AppCompatActivity {
                 stopSound(choose);
                 choose = "uva";
                 andy.setRenderable(uva);
-                //audiouva.start();
+                audioguva.start();
                 information = "La uva tiene forma de pequeños círculos, hay una semillita en el centro, tiene colores verde y morado, es dulce y muy rica.";
                 validationBug();
                 break;
@@ -596,7 +634,7 @@ public class FrutasA extends AppCompatActivity {
                 stopSound(choose);
                 choose = "sandia";
                 andy.setRenderable(sandia);
-                //audiosandia.start();
+                audiogsandia.start();
                 information = "La sandía es una fruta verde por fuera y roja por dentro, tiene semillitas las cuales no hay que comer, es muy jugosa, rica y dulce.";
                 validationBug();
                 break;
@@ -605,7 +643,7 @@ public class FrutasA extends AppCompatActivity {
                 stopSound(choose);
                 choose = "melon";
                 andy.setRenderable(melon);
-                //audiomelon.start();
+                audiogmelon.start();
                 information = "El melón es una fruta muy dulce, pero para probarla, hay que pelar, hay de varios colores, tiene semillita, pero no se pueden comer.";
                 validationBug();
                 break;
@@ -614,7 +652,7 @@ public class FrutasA extends AppCompatActivity {
                 stopSound(choose);
                 choose = "pina";
                 andy.setRenderable(pina);
-                //audiopina.start();
+                audiogpina.start();
                 information = "La piña es una fruta que tiene una forma muy particular, es grande y por dentro es muy dulces y huele muy rico, sirve también para jugos.";
                 validationBug();
                 break;
