@@ -42,7 +42,7 @@ dependencies {
     implementation 'com.android.support:design:29.0.0'
 }
 
-        sceneform.asset('sampledata/samples/caballo21.fbx',
+        sceneform.asset('sampledata/samples/birdblue02.fbx',
                 'default',                    // 'Material Path' specified during import.
-                'sampledata/samples/caballo21.sfa',
-                'src/main/res/raw/caballo21')      // 'location you want to store the generated .sfb file'
+                'sampledata/samples/birdblue02.sfa',
+                'src/main/res/raw/birdblue02')      // 'location you want to store the generated .sfb file'

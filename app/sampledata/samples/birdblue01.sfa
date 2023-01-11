@@ -1,0 +1,81 @@
+{
+  animations: [
+    {
+      clips: [
+        {
+          name: 'Armature|ArmatureAction',
+        },
+      ],
+      path: 'sampledata/samples/birdblue01.fbx',
+    },
+  ],
+  materials: [
+    {
+      name: '12213_bird',
+      parameters: [
+        {
+          baseColor: [
+            1,
+            1,
+            1,
+            1,
+          ],
+        },
+        {
+          baseColorMap: '12213_bird_diffuse',
+        },
+        {
+          normalMap: 'Map__7_Normal Bump',
+        },
+        {
+          interpolatedColor: null,
+        },
+        {
+          metallic: 0,
+        },
+        {
+          metallicMap: null,
+        },
+        {
+          roughness: 1,
+        },
+        {
+          roughnessMap: null,
+        },
+        {
+          opacity: null,
+        },
+      ],
+      source: 'build/sceneform_sdk/default_materials/fbx_material.sfm',
+    },
+  ],
+  model: {
+    attributes: [
+      'Position',
+      'TexCoord',
+      'Orientation',
+      'BoneIndices',
+      'BoneWeights',
+    ],
+    collision: {},
+    file: 'sampledata/samples/birdblue01.fbx',
+    name: 'birdblue01',
+    recenter: 'root',
+  },
+  samplers: [
+    {
+      file: 'sampledata/samples\\birdblue01.fbm\\12213_bird_diffuse.jpg',
+      name: '12213_bird_diffuse',
+      pipeline_name: 'birdblue01.fbm\\12213_bird_diffuse.jpg',
+    },
+    {
+      file: 'sampledata/samples\\birdblue01.fbm\\Map__7_Normal Bump.jpg',
+      name: 'Map__7_Normal Bump',
+      params: {
+        usage_type: 'Normal',
+      },
+      pipeline_name: 'birdblue01.fbm\\Map__7_Normal Bump.jpg',
+    },
+  ],
+  version: '0.54:2',
+}

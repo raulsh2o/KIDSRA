@@ -50,7 +50,7 @@ public class dActivity extends AppCompatActivity {
     private ModelAnimator animator;
     private int nextAnimation;
     private FloatingActionButton btn_anim;
-    private ModelRenderable animationCrab, horse01, punto, vaca, perro, gallina, pato, gato;
+    private ModelRenderable animationCrab, horse01, punto, vaca, perro, gallina, pato, gato, pajaro, conejo;
     private TransformableNode transformableNode;
 
     private int clickNo = 0;
@@ -75,6 +75,7 @@ public class dActivity extends AppCompatActivity {
         // TODO Auto-generated method stub
         if (keyCode == event.KEYCODE_BACK) {
             pushButton=false;
+            audioi.stop();
         }
         return super.onKeyDown(keyCode, event);
     }
@@ -342,6 +343,38 @@ public class dActivity extends AppCompatActivity {
                 }
             }
         });
+        //ESCUCHA BOTON SI PAJARO ES PULSADO
+        birdshow.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                Status1 = 6;
+                if (currentSelectedAnchorNode != null) {
+
+                    Session session = arFragment.getArSceneView().getSession();
+                    Anchor currentAnchor = currentSelectedAnchorNode.getAnchor();
+                    Pose oldPose = currentAnchor.getPose();
+                    Pose newPose = oldPose.compose(Pose.makeTranslation(0,0.05f,0));
+                    currentSelectedAnchorNode = moveRenderable(currentSelectedAnchorNode, newPose);
+
+                }
+            }
+        });
+        //ESCUCHA BOTON SI CONEJO ES PULSADO
+        rabbitshow.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                Status1 = 3;
+                if (currentSelectedAnchorNode != null) {
+
+                    Session session = arFragment.getArSceneView().getSession();
+                    Anchor currentAnchor = currentSelectedAnchorNode.getAnchor();
+                    Pose oldPose = currentAnchor.getPose();
+                    Pose newPose = oldPose.compose(Pose.makeTranslation(0,0.05f,0));
+                    currentSelectedAnchorNode = moveRenderable(currentSelectedAnchorNode, newPose);
+
+                }
+            }
+        });
         ejecutarTarea();
     }
 
@@ -411,6 +444,18 @@ public class dActivity extends AppCompatActivity {
                     AnimationData data = gato.getAnimationData(nextAnimation);
                     nextAnimation = (nextAnimation + 1) % gato.getAnimationDataCount();
                     animator = new ModelAnimator(data, gato);
+                    animator.start();
+                }else if (choose == "pajaro") {
+                    audiogBird.start();
+                    AnimationData data = pajaro.getAnimationData(nextAnimation);
+                    nextAnimation = (nextAnimation + 1) % pajaro.getAnimationDataCount();
+                    animator = new ModelAnimator(data, pajaro);
+                    animator.start();
+                }else if (choose == "conejo") {
+                    audiogRabbit.start();
+                    AnimationData data = conejo.getAnimationData(nextAnimation);
+                    nextAnimation = (nextAnimation + 1) % conejo.getAnimationDataCount();
+                    animator = new ModelAnimator(data, conejo);
                     animator.start();
                 }
 
@@ -536,6 +581,24 @@ public class dActivity extends AppCompatActivity {
                     Toast.makeText(this, ""+throwable.getMessage(), Toast.LENGTH_SHORT).show();
                     return null;
                 });
+        //CARGA PAJARO
+        ModelRenderable.builder()
+                .setSource(this, R.raw.birdblue01)
+                .build()
+                .thenAccept(renderable -> pajaro = renderable)
+                .exceptionally(throwable -> {
+                    Toast.makeText(this, ""+throwable.getMessage(), Toast.LENGTH_SHORT).show();
+                    return null;
+                });
+        //CARGA CONEJO
+        ModelRenderable.builder()
+                .setSource(this, R.raw.rabbit02)
+                .build()
+                .thenAccept(renderable -> conejo = renderable)
+                .exceptionally(throwable -> {
+                    Toast.makeText(this, ""+throwable.getMessage(), Toast.LENGTH_SHORT).show();
+                    return null;
+                });
     }
 
     private AnchorNode moveRenderable(AnchorNode markAnchorNodeToMove, Pose newPoseToMoveTo) {
@@ -553,6 +616,7 @@ public class dActivity extends AppCompatActivity {
         TransformableNode andy = new TransformableNode(arFragment.getTransformationSystem());
         andy.setParent(newMarkAnchorNode);
 
+
         // AQUI RENDERIZA LOS OBJETOS PARA MOSTRAR EN LA PANTALLA
 
         switch(Status1)
@@ -562,6 +626,8 @@ public class dActivity extends AppCompatActivity {
                 stopSound(choose);
                 choose = "gato";
                 andy.setRenderable(gato);
+                andy.getScaleController().setMinScale(0.1f);
+                andy.getScaleController().setMaxScale(0.3f);
                 //audiogCat.start();
                 information = "Mamífero de contextura pequeña, de abundante pelaje y muy suave, son muy cariñoso con los humanos.";
                 validationBug();
@@ -571,7 +637,7 @@ public class dActivity extends AppCompatActivity {
                 pushButton = true;
                 stopSound(choose);
                 choose = "pajaro";
-                //andy.setRenderable(horse01);
+                andy.setRenderable(pajaro);
                 //audiogBird.start();
                 information = "Las aves son seres extraordinarios y fascinantes: muchas de ellas poseen un plumaje colorido, producen sonidos extraordinarios o pueden volar.";
                 validationBug();
@@ -625,7 +691,7 @@ public class dActivity extends AppCompatActivity {
                 pushButton = true;
                 stopSound(choose);
                 choose = "conejo";
-                //andy.setRenderable(rabbit1);
+                andy.setRenderable(conejo);
                 //audiogRabbit.start();
                 information = "Son animales que tienen muy buena relación con los humanos, ya que son muy amistosos y agradables.";
                 validationBug();

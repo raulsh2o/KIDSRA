@@ -1,0 +1,74 @@
+{
+  animations: [
+    {
+      clips: [
+        {
+          name: 'Armature|ArmatureAction',
+        },
+      ],
+      path: 'sampledata/samples/rabbit02.fbx',
+    },
+  ],
+  materials: [
+    {
+      name: '_20424_Sitting_inside_an_eggorig_20424_Sitting_inside_an_egg',
+      parameters: [
+        {
+          baseColor: [
+            1,
+            1,
+            1,
+            1,
+          ],
+        },
+        {
+          baseColorMap: '20424_Sitting_inside_an_egg_v1_diff',
+        },
+        {
+          normalMap: null,
+        },
+        {
+          interpolatedColor: null,
+        },
+        {
+          metallic: 0,
+        },
+        {
+          metallicMap: null,
+        },
+        {
+          roughness: 1,
+        },
+        {
+          roughnessMap: null,
+        },
+        {
+          opacity: null,
+        },
+      ],
+      source: 'build/sceneform_sdk/default_materials/fbx_material.sfm',
+    },
+  ],
+  model: {
+    attributes: [
+      'Position',
+      'TexCoord',
+      'Orientation',
+      'BoneIndices',
+      'BoneWeights',
+    ],
+    collision: {},
+    file: 'sampledata/samples/rabbit02.fbx',
+    name: 'rabbit02',
+    recenter: 'root',
+    scale: 0.65259800000000001,
+  },
+  samplers: [
+    {
+      file: 'sampledata/samples\\rabbit02.fbm\\20424_Sitting_inside_an_egg_v1_diff.jpg',
+      name: '20424_Sitting_inside_an_egg_v1_diff',
+      pipeline_name: 'rabbit02.fbm\\20424_Sitting_inside_an_egg_v1_diff.jpg',
+    },
+  ],
+  version: '0.54:2',
+}

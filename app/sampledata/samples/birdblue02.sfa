@@ -1,0 +1,74 @@
+{
+  animations: [
+    {
+      clips: [
+        {
+          name: 'Armature|ArmatureAction',
+        },
+      ],
+      path: 'sampledata/samples/birdblue02.fbx',
+    },
+  ],
+  materials: [
+    {
+      name: 'mat_0-chest.jpg',
+      parameters: [
+        {
+          baseColor: [
+            1,
+            1,
+            1,
+            1,
+          ],
+        },
+        {
+          baseColorMap: 'chest',
+        },
+        {
+          normalMap: null,
+        },
+        {
+          interpolatedColor: null,
+        },
+        {
+          metallic: 0,
+        },
+        {
+          metallicMap: null,
+        },
+        {
+          roughness: 1,
+        },
+        {
+          roughnessMap: null,
+        },
+        {
+          opacity: null,
+        },
+      ],
+      source: 'build/sceneform_sdk/default_materials/fbx_material.sfm',
+    },
+  ],
+  model: {
+    attributes: [
+      'Position',
+      'TexCoord',
+      'Orientation',
+      'BoneIndices',
+      'BoneWeights',
+    ],
+    collision: {},
+    file: 'sampledata/samples/birdblue02.fbx',
+    name: 'birdblue02',
+    recenter: 'root',
+    scale: 0.57825499999999996,
+  },
+  samplers: [
+    {
+      file: 'sampledata/samples\\birdblue02.fbm\\chest.jpg',
+      name: 'chest',
+      pipeline_name: 'birdblue02.fbm\\chest.jpg',
+    },
+  ],
+  version: '0.54:2',
+}

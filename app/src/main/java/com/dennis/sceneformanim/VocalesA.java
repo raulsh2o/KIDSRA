@@ -58,6 +58,7 @@ public class VocalesA extends AppCompatActivity {
     private Boolean empyAnimation = false;
     private  Boolean pushButton = false;
 
+    //PARA CREAR DELAYS
     Handler handler = new Handler();
 
     //DECLARAR AUDIOS
@@ -68,10 +69,12 @@ public class VocalesA extends AppCompatActivity {
     private AnchorNode currentSelectedAnchorNode = null;
     //*************************************************************
     @Override
+    //FUNCION PARA CUANDO PULSE TECLA ATRAS MATE TODOS LOS PROCESOS
     public boolean onKeyDown(int keyCode, KeyEvent event) {
         // TODO Auto-generated method stub
         if (keyCode == event.KEYCODE_BACK) {
             pushButton=false;
+            audiointro.stop();
         }
         return super.onKeyDown(keyCode, event);
     }
@@ -353,6 +356,11 @@ public class VocalesA extends AppCompatActivity {
                     nextAnimation = (nextAnimation + 1) % u.getAnimationDataCount();
                     animator = new ModelAnimator(data, u);
                     animator.start();
+                }else if (choose == "a") {
+                    AnimationData data = a.getAnimationData(nextAnimation);
+                    nextAnimation = (nextAnimation + 1) % a.getAnimationDataCount();
+                    animator = new ModelAnimator(data, a);
+                    animator.start();
                 }
 
             }
@@ -423,6 +431,15 @@ public class VocalesA extends AppCompatActivity {
                     Toast.makeText(this, ""+throwable.getMessage(), Toast.LENGTH_SHORT).show();
                     return null;
                 });
+        //CARGA A
+        ModelRenderable.builder()
+                .setSource(this, R.raw.a5)
+                .build()
+                .thenAccept(renderable -> a = renderable)
+                .exceptionally(throwable -> {
+                    Toast.makeText(this, ""+throwable.getMessage(), Toast.LENGTH_SHORT).show();
+                    return null;
+                });
 
     }
 
@@ -449,7 +466,7 @@ public class VocalesA extends AppCompatActivity {
                 pushButton = true;
                 stopSound(choose);
                 choose = "a";
-                //andy.setRenderable(a);
+                andy.setRenderable(a);
                 information = "A de avión.";
                 //audioa.start();
                 validationBug();

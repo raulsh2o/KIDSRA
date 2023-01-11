@@ -72,6 +72,7 @@ public class SalvajesA extends AppCompatActivity {
         // TODO Auto-generated method stub
         if (keyCode == event.KEYCODE_BACK) {
             pushButton=false;
+            audioi.stop();
         }
         return super.onKeyDown(keyCode, event);
     }

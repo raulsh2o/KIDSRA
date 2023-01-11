@@ -72,6 +72,7 @@ public class NumerosA extends AppCompatActivity {
         // TODO Auto-generated method stub
         if (keyCode == event.KEYCODE_BACK) {
             pushButton=false;
+            audioi.stop();
         }
         return super.onKeyDown(keyCode, event);
     }
@@ -660,6 +661,8 @@ public class NumerosA extends AppCompatActivity {
         AnchorNode newMarkAnchorNode = new AnchorNode(markAnchor);
         TransformableNode andy = new TransformableNode(arFragment.getTransformationSystem());
         andy.setParent(newMarkAnchorNode);
+        andy.getScaleController().setMinScale(0.09f);
+        andy.getScaleController().setMaxScale(0.1f);
 
         // AQUI RENDERIZA LOS OBJETOS PARA MOSTRAR EN LA PANTALLA
 

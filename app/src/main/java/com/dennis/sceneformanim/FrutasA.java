@@ -48,7 +48,7 @@ public class FrutasA extends AppCompatActivity {
     private ModelAnimator animator;
     private int nextAnimation;
     private FloatingActionButton btn_anim;
-    private ModelRenderable tigre, punto, manzana, uva, melon, pera, pina, sandia;
+    private ModelRenderable tigre, punto, manzana, uva, melon, pera, pina, sandia, banana;
     private TransformableNode transformableNode;
 
     private int clickNo = 0;
@@ -72,6 +72,7 @@ public class FrutasA extends AppCompatActivity {
         // TODO Auto-generated method stub
         if (keyCode == event.KEYCODE_BACK) {
             pushButton=false;
+            audioi.stop();
         }
         return super.onKeyDown(keyCode, event);
     }
@@ -335,6 +336,22 @@ public class FrutasA extends AppCompatActivity {
                 }
             }
         });
+        //ESCUCHA BOTON SI SANDIA ES PULSADO
+        Banana.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                Status1 = 3;
+                if (currentSelectedAnchorNode != null) {
+
+                    Session session = arFragment.getArSceneView().getSession();
+                    Anchor currentAnchor = currentSelectedAnchorNode.getAnchor();
+                    Pose oldPose = currentAnchor.getPose();
+                    Pose newPose = oldPose.compose(Pose.makeTranslation(0,0.05f,0));
+                    currentSelectedAnchorNode = moveRenderable(currentSelectedAnchorNode, newPose);
+
+                }
+            }
+        });
         ejecutarTarea();
 
     }
@@ -396,6 +413,11 @@ public class FrutasA extends AppCompatActivity {
                     AnimationData data = sandia.getAnimationData(nextAnimation);
                     nextAnimation = (nextAnimation + 1) % sandia.getAnimationDataCount();
                     animator = new ModelAnimator(data, sandia);
+                    animator.start();
+                } else if (choose == "banana") {
+                    AnimationData data = banana.getAnimationData(nextAnimation);
+                    nextAnimation = (nextAnimation + 1) % banana.getAnimationDataCount();
+                    animator = new ModelAnimator(data, banana);
                     animator.start();
                 }
 
@@ -502,6 +524,15 @@ public class FrutasA extends AppCompatActivity {
                     Toast.makeText(this, ""+throwable.getMessage(), Toast.LENGTH_SHORT).show();
                     return null;
                 });
+        //CARGA SANDIA
+        ModelRenderable.builder()
+                .setSource(this, R.raw.banana1)
+                .build()
+                .thenAccept(renderable -> banana = renderable)
+                .exceptionally(throwable -> {
+                    Toast.makeText(this, ""+throwable.getMessage(), Toast.LENGTH_SHORT).show();
+                    return null;
+                });
     }
 
     private AnchorNode moveRenderable(AnchorNode markAnchorNodeToMove, Pose newPoseToMoveTo) {
@@ -546,7 +577,7 @@ public class FrutasA extends AppCompatActivity {
                 pushButton = true;
                 stopSound(choose);
                 choose = "banana";
-                //andy.setRenderable(banana);
+                andy.setRenderable(banana);
                 //audiobanana.start();
                 information = "La banana es de color amarillo por fuera pero blanco por dentro, es muy dulce y muy rico en vitaminas.";
                 validationBug();
